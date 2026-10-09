@@ -12,6 +12,7 @@ import TransactionsPage from './pages/TransactionsPage'
 import PredictorPage from './pages/PredictorPage'
 import BudgetsPage from './pages/BudgetsPage'
 import SettingsPage from './pages/SettingsPage'
+import NotFoundPage from './pages/NotFoundPage'
 import { CommandPalette } from './components/layout/CommandPalette'
 import { OnboardingTour } from './components/layout/OnboardingTour'
 
@@ -103,8 +104,8 @@ export default function App() {
                       </ProtectedRoute>
                     }
                   />
-                  {/* Catch-all redirect */}
-                  <Route path="*" element={<Navigate to="/" replace />} />
+                  {/* 404 Not Found Page */}
+                  <Route path="*" element={<NotFoundPage />} />
                 </Routes>
               </main>
             </div>

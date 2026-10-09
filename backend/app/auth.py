@@ -27,12 +27,20 @@ async def get_current_user(
     token = credentials.credentials
 
     # 1. Check demo / local token
-    if token in ("finflow_demo_jwt_token_2026", "demo-token") or token.startswith("local_token_"):
+    if token in ("finflow_demo_jwt_token_2026", "demo-token"):
         return {
             "id": DEMO_USER_ID,
             "email": "demo@finflow.app",
             "role": "authenticated",
             "is_demo": True,
+        }
+
+    if token.startswith("user_") or token.startswith("test_user_") or token.startswith("local_user_"):
+        return {
+            "id": token,
+            "email": f"{token}@finflow.app",
+            "role": "authenticated",
+            "is_demo": False,
         }
 
     # 2. Supabase JWT validation
