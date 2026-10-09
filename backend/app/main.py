@@ -3,8 +3,12 @@ from fastapi.middleware.cors import CORSMiddleware
 from contextlib import asynccontextmanager
 import sentry_sdk
 from .config import CORS_ORIGINS, ENVIRONMENT, SENTRY_DSN, MODEL_PATH
+from .database import init_db
+from .services.transactions import seed_sample_data, get_summary
+from .auth import DEMO_USER_ID
+from .routers.transactions import router as transactions_router
+from .routers.analytics import router as analytics_router
 
-# Optional Sentry initialization
 if SENTRY_DSN:
     sentry_sdk.init(
         dsn=SENTRY_DSN,
@@ -15,11 +19,20 @@ if SENTRY_DSN:
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    # Startup actions
-    print(f"[FinFlow] Backend starting in {ENVIRONMENT} mode...")
-    print(f"[FinFlow] Model path configured at: {MODEL_PATH}")
+    # Initialize DB schema
+    init_db()
+    # Auto-seed demo account if needed
+    summary = get_summary(DEMO_USER_ID)
+    if summary["transaction_count"] == 0:
+        try:
+            seeded = seed_sample_data(DEMO_USER_ID)
+            print(f"[FinFlow] Auto-seeded {seeded} benchmark records into demo account!")
+        except Exception as e:
+            print(f"[FinFlow] Notice on seeding demo data: {e}")
+
+    print(f"[FinFlow] Backend active in {ENVIRONMENT} mode.")
     yield
-    print("[FinFlow] Backend shutting down cleanly...")
+    print("[FinFlow] Backend shutdown complete.")
 
 app = FastAPI(
     title="FinFlow API – Personal Finance Tracker",
@@ -28,7 +41,6 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
-# Enable CORS
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[origin.strip() for origin in CORS_ORIGINS if origin.strip()] or ["*"],
@@ -36,6 +48,10 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# Include Routers
+app.include_router(transactions_router)
+app.include_router(analytics_router)
 
 @app.get("/")
 async def root():
