@@ -8,6 +8,7 @@ import LandingPage from './pages/LandingPage'
 import LoginPage from './pages/LoginPage'
 import RegisterPage from './pages/RegisterPage'
 import DashboardPage from './pages/DashboardPage'
+import TransactionsPage from './pages/TransactionsPage'
 
 export default function App() {
   const [isDark, setIsDark] = useState(true)
@@ -45,6 +46,14 @@ export default function App() {
                     element={
                       <ProtectedRoute>
                         <DashboardPage />
+                      </ProtectedRoute>
+                    }
+                  />
+                  <Route
+                    path="/transactions"
+                    element={
+                      <ProtectedRoute>
+                        <TransactionsPage />
                       </ProtectedRoute>
                     }
                   />

@@ -1,2 +1,12 @@
 [     449ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=2b7ee4e1:15557
 [     742ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o @ http://127.0.0.1:5173/login:0
+[ 1481031ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://127.0.0.1:5173/node_modules/.vite/deps/recharts.js?v=22cc26e9:0
+[ 1481033ms] [ERROR] [vite] Failed to reload /src/pages/DashboardPage.jsx. This could be due to syntax errors or importing non-existent modules. (see errors above) @ http://127.0.0.1:5173/@vite/client:356
+[ 1481959ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://127.0.0.1:5173/node_modules/.vite/deps/recharts.js?v=550e0fcc:0
+[ 1488944ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://127.0.0.1:5173/node_modules/.vite/deps/recharts.js?v=550e0fcc:0
+[ 1575668ms] [INFO] %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=9978239e:15557
+[ 1575959ms] [VERBOSE] [DOM] Input elements should have autocomplete attributes (suggested: "current-password"): (More info: https://goo.gl/9p2vKq) %o @ http://127.0.0.1:5173/login:0
+[ 2246743ms] [ERROR] [vite] SyntaxError: The requested module '/src/pages/DashboardPage.jsx?t=1791572696315' does not provide an export named 'default' @ http://127.0.0.1:5173/@vite/client:356
+[ 2246744ms] [ERROR] [vite] Failed to reload /src/App.jsx. This could be due to syntax errors or importing non-existent modules. (see errors above) @ http://127.0.0.1:5173/@vite/client:356
+[ 2910624ms] [ERROR] [vite] SyntaxError: The requested module '/src/pages/DashboardPage.jsx?t=1791572696315' does not provide an export named 'default' @ http://127.0.0.1:5173/@vite/client:356
+[ 2910625ms] [ERROR] [vite] Failed to reload /src/App.jsx. This could be due to syntax errors or importing non-existent modules. (see errors above) @ http://127.0.0.1:5173/@vite/client:356
