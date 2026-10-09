@@ -1,0 +1,63 @@
+- generic [ref=f1e3]:
+  - generic [ref=f1e4]:
+    - navigation [ref=f1e5]:
+      - generic [ref=f1e6]:
+        - link "FinFlow Demo" [ref=f1e7] [cursor=pointer]:
+          - /url: /dashboard
+          - generic [ref=f1e13]:
+            - generic [ref=f1e14]: FinFlow
+            - generic [ref=f1e15]: Demo
+        - generic [ref=f1e16]:
+          - button "Toggle theme" [ref=f1e17] [cursor=pointer]
+          - button "A" [ref=f1e22] [cursor=pointer]
+          - button [ref=f1e26] [cursor=pointer]
+    - main [ref=f1e28]:
+      - generic [ref=f1e30]:
+        - generic [ref=f1e31]:
+          - generic [ref=f1e37]:
+            - heading "FinFlow Access" [level=2] [ref=f1e38]
+            - paragraph [ref=f1e39]: Autonomous wealth analytics & ML classification
+          - generic [ref=f1e40]:
+            - generic [ref=f1e45]:
+              - generic [ref=f1e46]: AI Transaction Engine
+              - text: 95.8% accuracy on 18 features
+            - generic [ref=f1e51]:
+              - generic [ref=f1e52]: Row Level Security
+              - text: PostgreSQL user isolation
+          - generic [ref=f1e53]: Need instant testing? Click below to load demo data.
+        - generic [ref=f1e54]:
+          - generic [ref=f1e55]:
+            - heading "Welcome back" [level=3] [ref=f1e56]
+            - paragraph [ref=f1e57]: Enter your credentials or test with the pre-seeded demo account.
+          - generic [ref=f1e58]:
+            - generic [ref=f1e63]:
+              - generic [ref=f1e64]: Demo Account Ready
+              - text: demo@finflow.app / Demo@1234
+            - button "Try Demo" [ref=f1e65] [cursor=pointer]
+          - generic [ref=f1e66]:
+            - generic [ref=f1e67]:
+              - generic [ref=f1e68]: Email Address *
+              - textbox "Email Address *" [ref=f1e70]:
+                - /placeholder: alex@finflow.app
+            - generic [ref=f1e71]:
+              - generic [ref=f1e72]:
+                - generic [ref=f1e73]: Password *
+                - generic [ref=f1e74]:
+                  - textbox "Password *" [ref=f1e75]:
+                    - /placeholder: ••••••••
+                  - button [ref=f1e76] [cursor=pointer]
+              - generic [ref=f1e80]:
+                - generic [ref=f1e81] [cursor=pointer]:
+                  - checkbox "Remember me" [checked] [ref=f1e82]
+                  - text: Remember me
+                - button "Forgot password?" [ref=f1e83] [cursor=pointer]
+            - button "Sign In to FinFlow" [ref=f1e84] [cursor=pointer]
+          - generic [ref=f1e87]:
+            - generic [ref=f1e88]: or continue with
+            - button "Google Sign-In" [ref=f1e91] [cursor=pointer]
+          - paragraph [ref=f1e97]:
+            - text: Don't have an account yet?
+            - link "Create account" [ref=f1e98] [cursor=pointer]:
+              - /url: /register
+  - contentinfo [ref=f1e99]:
+    - paragraph [ref=f1e100]: FinFlow – Personal Finance Tracker • Built with FastAPI, Supabase & React • 95.8% ML Accuracy
