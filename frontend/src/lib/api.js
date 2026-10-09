@@ -108,3 +108,39 @@ export const predict = (data) =>
   apiFetch('/api/predict', { method: 'POST', body: data })
 
 export const getModelInsights = () => apiFetch('/api/model/insights')
+
+// === Phase 7: Smart Features ===
+export const getBudgets = (params) => apiFetch('/api/budgets', { params })
+export const createOrUpdateBudget = (data) =>
+  apiFetch('/api/budgets', { method: 'POST', body: data })
+export const deleteBudget = (id) =>
+  apiFetch(`/api/budgets/${id}`, { method: 'DELETE' })
+
+export const getGoals = () => apiFetch('/api/goals')
+export const createGoal = (data) =>
+  apiFetch('/api/goals', { method: 'POST', body: data })
+export const contributeToGoal = (id, amount) =>
+  apiFetch(`/api/goals/${id}/contribute`, { method: 'POST', body: { amount } })
+export const deleteGoal = (id) =>
+  apiFetch(`/api/goals/${id}`, { method: 'DELETE' })
+
+export const getRecurring = () => apiFetch('/api/recurring')
+export const createRecurring = (data) =>
+  apiFetch('/api/recurring', { method: 'POST', body: data })
+export const deleteRecurring = (id) =>
+  apiFetch(`/api/recurring/${id}`, { method: 'DELETE' })
+
+export const getSmartInsights = () => apiFetch('/api/smart/insights')
+export const getDailyHeatmap = (days = 180) =>
+  apiFetch('/api/analytics/daily-heatmap', { params: { days } })
+
+export const getNotifications = () => apiFetch('/api/notifications')
+export const markNotificationRead = (id) =>
+  apiFetch(`/api/notifications/${id}/read`, { method: 'POST' })
+export const markAllNotificationsRead = () =>
+  apiFetch('/api/notifications/read-all', { method: 'POST' })
+
+export const getUserProfile = () => apiFetch('/api/user/profile')
+export const updateUserProfile = (data) =>
+  apiFetch('/api/user/profile', { method: 'PUT', body: data })
+

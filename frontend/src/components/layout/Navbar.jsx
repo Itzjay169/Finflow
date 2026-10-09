@@ -14,11 +14,13 @@ import {
   X,
   Sparkles,
   ChevronDown,
+  Search,
 } from 'lucide-react'
 import { useAuth } from '../../context/AuthContext'
 import { ThemeToggle, Button, Badge } from '../ui'
+import { NotificationsBell } from './NotificationsBell'
 
-export const Navbar = ({ isDark, onToggleTheme }) => {
+export const Navbar = ({ isDark, onToggleTheme, onOpenCommandPalette }) => {
   const { user, isAuthenticated, isDemo, signOut } = useAuth()
   const [dropdownOpen, setDropdownOpen] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -96,6 +98,21 @@ export const Navbar = ({ isDark, onToggleTheme }) => {
 
         {/* Right side controls */}
         <div className="flex items-center gap-2.5">
+          {isAuthenticated && (
+            <>
+              <button
+                type="button"
+                onClick={onOpenCommandPalette}
+                className="hidden sm:flex items-center gap-2 px-2.5 py-1.5 rounded-xl text-xs text-slate-400 hover:text-slate-200 bg-slate-200/40 dark:bg-slate-900/40 border border-slate-300/40 dark:border-slate-800 transition-colors cursor-pointer"
+              >
+                <Search className="w-3.5 h-3.5" />
+                <span className="text-[11px]">Search...</span>
+                <kbd className="text-[10px] bg-slate-300 dark:bg-slate-800 px-1 py-0.2 rounded font-mono">Ctrl+K</kbd>
+              </button>
+              <NotificationsBell />
+            </>
+          )}
+
           <ThemeToggle isDark={isDark} onToggle={onToggleTheme} />
 
           {isAuthenticated ? (

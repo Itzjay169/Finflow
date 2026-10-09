@@ -10,9 +10,26 @@ import RegisterPage from './pages/RegisterPage'
 import DashboardPage from './pages/DashboardPage'
 import TransactionsPage from './pages/TransactionsPage'
 import PredictorPage from './pages/PredictorPage'
+import BudgetsPage from './pages/BudgetsPage'
+import SettingsPage from './pages/SettingsPage'
+import { CommandPalette } from './components/layout/CommandPalette'
+import { OnboardingTour } from './components/layout/OnboardingTour'
 
 export default function App() {
   const [isDark, setIsDark] = useState(true)
+  const [isCommandPaletteOpen, setIsCommandPaletteOpen] = useState(false)
+
+  // Listen for Ctrl+K
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+        e.preventDefault()
+        setIsCommandPaletteOpen((prev) => !prev)
+      }
+    }
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [])
 
   useEffect(() => {
     if (isDark) {
@@ -35,7 +52,11 @@ export default function App() {
             </div>
 
             <div className="relative z-10">
-              <Navbar isDark={isDark} onToggleTheme={() => setIsDark(!isDark)} />
+              <Navbar
+                isDark={isDark}
+                onToggleTheme={() => setIsDark(!isDark)}
+                onOpenCommandPalette={() => setIsCommandPaletteOpen(true)}
+              />
 
               <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <Routes>
@@ -66,11 +87,37 @@ export default function App() {
                       </ProtectedRoute>
                     }
                   />
+                  <Route
+                    path="/budgets"
+                    element={
+                      <ProtectedRoute>
+                        <BudgetsPage />
+                      </ProtectedRoute>
+                    }
+                  />
+                  <Route
+                    path="/settings"
+                    element={
+                      <ProtectedRoute>
+                        <SettingsPage />
+                      </ProtectedRoute>
+                    }
+                  />
                   {/* Catch-all redirect */}
                   <Route path="*" element={<Navigate to="/" replace />} />
                 </Routes>
               </main>
             </div>
+
+            {/* Global Search / Command Palette (Ctrl+K) */}
+            <CommandPalette
+              isOpen={isCommandPaletteOpen}
+              onClose={() => setIsCommandPaletteOpen(false)}
+              onToggleTheme={() => setIsDark(!isDark)}
+            />
+
+            {/* Interactive Onboarding Tour for new users */}
+            <OnboardingTour />
 
             <footer className="relative z-10 border-t border-slate-200 dark:border-slate-800/60 py-6 text-center text-xs text-slate-500">
               <p>FinFlow – Personal Finance Tracker &bull; Built with FastAPI, Supabase & React &bull; 95.8% ML Accuracy</p>
