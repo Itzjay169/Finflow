@@ -9,6 +9,7 @@ import LoginPage from './pages/LoginPage'
 import RegisterPage from './pages/RegisterPage'
 import DashboardPage from './pages/DashboardPage'
 import TransactionsPage from './pages/TransactionsPage'
+import PredictorPage from './pages/PredictorPage'
 
 export default function App() {
   const [isDark, setIsDark] = useState(true)
@@ -54,6 +55,14 @@ export default function App() {
                     element={
                       <ProtectedRoute>
                         <TransactionsPage />
+                      </ProtectedRoute>
+                    }
+                  />
+                  <Route
+                    path="/predictor"
+                    element={
+                      <ProtectedRoute>
+                        <PredictorPage />
                       </ProtectedRoute>
                     }
                   />

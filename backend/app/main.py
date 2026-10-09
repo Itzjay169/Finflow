@@ -8,6 +8,7 @@ from .services.transactions import seed_sample_data, get_summary
 from .auth import DEMO_USER_ID
 from .routers.transactions import router as transactions_router
 from .routers.analytics import router as analytics_router
+from .routers.predictor import router as predictor_router
 
 if SENTRY_DSN:
     sentry_sdk.init(
@@ -52,6 +53,7 @@ app.add_middleware(
 # Include Routers
 app.include_router(transactions_router)
 app.include_router(analytics_router)
+app.include_router(predictor_router)
 
 @app.get("/")
 async def root():
