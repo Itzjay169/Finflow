@@ -1,0 +1,1201 @@
+transaction_id,user_id,date,transaction_type,category,amount,payment_mode,location,notes
+T100001,U032,2025-10-09,Expense,Food,12199,Debit Card,Mumbai,Snacks
+T100002,U004,2025-02-02,Income,Salary,60302,UPI,Pune,Monthly salary
+T100003,U092,2025-07-23,Expense,Food,9245,Bank Transfer,Ahmedabad,Dinner
+T100004,U090,2025-06-13,Income,Investment,5851,Cash,Bangalore,Dividend
+T100005,U049,2025-04-05,Income,Investment,18396,UPI,Bangalore,Dividend
+T100006,U069,2026-04-16,Expense,Food,12005,UPI,Chennai,Lunch
+T100007,U074,2026-01-06,Expense,Groceries,14557,Debit Card,Delhi,Supermarket
+T100008,U111,2025-08-27,Expense,Bills,1357,UPI,Chennai,Internet bill
+T100009,U046,2026-01-15,Expense,Entertainment,2714,Debit Card,Hyderabad,Movie
+T100010,U021,2025-09-08,Expense,Fuel,8801,Cash,Chennai,Petrol
+T100011,U108,2025-11-29,Expense,Education,3648,UPI,Pune,Course fee
+T100012,U028,2025-03-09,Expense,Travel,4436,Net Banking,Bangalore,Cab
+T100013,U019,2026-04-15,Expense,Travel,14544,Credit Card,Mumbai,Cab
+T100014,U115,2026-03-15,Expense,Education,4354,Net Banking,Chennai,Course fee
+T100015,U012,2026-05-21,Income,Freelance,71784,UPI,Delhi,Client payment
+T100016,U050,2025-03-07,Expense,Travel,9821,Cash,Jaipur,Cab
+T100017,U088,2025-01-12,Expense,Education,14153,Bank Transfer,Delhi,Course fee
+T100018,U056,2025-10-28,Expense,Entertainment,1877,Debit Card,Kolkata,Movie
+T100019,U065,2025-07-02,Expense,Bills,8251,UPI,Hyderabad,Electricity bill
+T100020,U118,2026-06-28,Income,Freelance,75697,UPI,Jaipur,Client payment
+T100021,U031,2025-11-11,Expense,Rent,5997,UPI,Pune,Monthly rent
+T100022,U099,2026-06-30,Income,Bonus,14071,Debit Card,Mumbai,Performance bonus
+T100023,U112,2026-06-25,Expense,Fuel,4392,Net Banking,Chennai,Petrol
+T100024,U052,2025-11-16,Expense,Shopping,11730,Bank Transfer,Bangalore,Electronics
+T100025,U029,2025-09-11,Expense,Healthcare,2032,UPI,Bangalore,Medicine
+T100026,U001,2025-08-14,Expense,Shopping,9691,UPI,Bhubaneswar,Clothes
+T100027,U066,2025-03-14,Income,Salary,48309,Debit Card,Hyderabad,Monthly salary
+T100028,U032,2026-04-30,Income,Freelance,79847,Cash,Chennai,Client payment
+T100029,U053,2026-03-10,Income,Bonus,51438,Cash,Bhubaneswar,Performance bonus
+T100030,U025,2025-09-12,Income,Investment,19322,Debit Card,Ahmedabad,Dividend
+T100031,U032,2026-04-19,Income,Freelance,41509,UPI,Kolkata,Client payment
+T100032,U022,2025-08-31,Income,Salary,17224,Cash,Kolkata,Monthly salary
+T100033,U049,2025-06-18,Income,Bonus,12685,UPI,Chennai,Performance bonus
+T100034,U090,2026-03-10,Expense,Healthcare,4723,Bank Transfer,Ahmedabad,Medicine
+T100035,U075,2025-03-01,Income,Investment,33534,Bank Transfer,Ahmedabad,Dividend
+T100036,U065,2026-05-04,Expense,Food,871,Net Banking,Mumbai,Lunch
+T100037,U009,2025-07-10,Expense,Rent,13998,Net Banking,Delhi,Monthly rent
+T100038,U080,2025-02-10,Expense,Groceries,4083,UPI,Chennai,Supermarket
+T100039,U031,2025-11-18,Expense,Shopping,11022,Credit Card,Chennai,Clothes
+T100040,U119,2025-11-20,Expense,Bills,7541,UPI,Bhubaneswar,Internet bill
+T100041,U069,2025-03-17,Expense,Groceries,1688,Debit Card,Ahmedabad,Supermarket
+T100042,U048,2025-09-08,Income,Investment,14016,Credit Card,Mumbai,Dividend
+T100043,U002,2026-06-26,Expense,Bills,10071,Bank Transfer,Ahmedabad,Internet bill
+T100044,U034,2025-05-18,Expense,Rent,14437,UPI,Delhi,Monthly rent
+T100045,U027,2025-12-18,Expense,Groceries,3500,Bank Transfer,Hyderabad,Supermarket
+T100046,U107,2026-03-10,Expense,Food,1562,Credit Card,Bhubaneswar,Lunch
+T100047,U021,2025-09-26,Expense,Fuel,10488,Bank Transfer,Kolkata,Petrol
+T100048,U070,2025-06-02,Expense,Rent,1282,UPI,Bangalore,Monthly rent
+T100049,U116,2026-01-09,Expense,Food,5100,UPI,Bangalore,Lunch
+T100050,U080,2026-02-21,Expense,Rent,5844,Bank Transfer,Mumbai,Monthly rent
+T100051,U004,2026-02-27,Expense,Fuel,14491,Debit Card,Bangalore,Petrol
+T100052,U101,2025-06-13,Expense,Shopping,4421,Bank Transfer,Delhi,Electronics
+T100053,U105,2025-07-24,Expense,Healthcare,3694,Cash,Bangalore,Medicine
+T100054,U085,2025-01-25,Expense,Shopping,3702,Debit Card,Chennai,Electronics
+T100055,U045,2025-10-13,Expense,Rent,12720,Bank Transfer,Ahmedabad,Monthly rent
+T100056,U015,2025-01-29,Expense,Education,5475,Credit Card,Mumbai,Course fee
+T100057,U056,2025-11-18,Income,Bonus,50309,Net Banking,Ahmedabad,Performance bonus
+T100058,U006,2025-09-18,Expense,Groceries,3164,Bank Transfer,Chennai,Supermarket
+T100059,U047,2025-07-21,Expense,Education,11303,Cash,Delhi,Course fee
+T100060,U065,2025-11-04,Expense,Rent,11842,Credit Card,Chennai,Monthly rent
+T100061,U025,2025-05-11,Expense,Bills,9133,Cash,Chennai,Electricity bill
+T100062,U039,2025-01-01,Expense,Bills,6703,Credit Card,Pune,Internet bill
+T100063,U060,2025-11-26,Expense,Groceries,10776,Cash,Kolkata,Supermarket
+T100064,U037,2025-03-28,Expense,Fuel,10844,Net Banking,Jaipur,Petrol
+T100065,U104,2025-08-19,Income,Freelance,45687,Debit Card,Mumbai,Client payment
+T100066,U054,2026-04-12,Income,Bonus,14545,Bank Transfer,Jaipur,Performance bonus
+T100067,U032,2026-02-14,Expense,Travel,8149,Debit Card,Bhubaneswar,Cab
+T100068,U060,2026-06-15,Expense,Shopping,2931,UPI,Ahmedabad,Clothes
+T100069,U103,2025-05-17,Expense,Rent,7528,Cash,Ahmedabad,Monthly rent
+T100070,U055,2026-06-01,Expense,Healthcare,10087,Net Banking,Kolkata,Medicine
+T100071,U097,2025-09-23,Expense,Healthcare,7423,Debit Card,Hyderabad,Medicine
+T100072,U092,2025-03-21,Expense,Bills,7256,Credit Card,Pune,Internet bill
+T100073,U020,2025-05-22,Expense,Education,1370,Debit Card,Chennai,Course fee
+T100074,U043,2026-02-22,Expense,Rent,6847,Net Banking,Kolkata,Monthly rent
+T100075,U110,2025-01-21,Income,Bonus,56049,Net Banking,Chennai,Performance bonus
+T100076,U110,2026-02-04,Income,Investment,44139,Cash,Ahmedabad,Dividend
+T100077,U004,2026-05-13,Expense,Bills,7190,Cash,Bangalore,Internet bill
+T100078,U004,2026-07-01,Expense,Healthcare,2141,Cash,Jaipur,Medicine
+T100079,U024,2026-04-18,Income,Bonus,22786,UPI,Hyderabad,Performance bonus
+T100080,U098,2025-12-12,Expense,Healthcare,5405,Cash,Hyderabad,Medicine
+T100081,U096,2025-01-20,Expense,Rent,7755,Net Banking,Bhubaneswar,Monthly rent
+T100082,U032,2025-02-01,Income,Salary,10276,Debit Card,Bhubaneswar,Monthly salary
+T100083,U060,2025-08-12,Income,Bonus,19993,Bank Transfer,Hyderabad,Performance bonus
+T100084,U014,2025-11-15,Income,Salary,26465,Net Banking,Bhubaneswar,Monthly salary
+T100085,U010,2025-07-23,Expense,Travel,6548,Net Banking,Pune,Cab
+T100086,U102,2025-05-04,Expense,Bills,13981,Net Banking,Bhubaneswar,Internet bill
+T100087,U083,2026-06-03,Expense,Entertainment,1179,Credit Card,Bhubaneswar,Movie
+T100088,U082,2026-01-06,Expense,Rent,7152,Cash,Mumbai,Monthly rent
+T100089,U060,2026-05-11,Income,Investment,75539,Cash,Jaipur,Dividend
+T100090,U036,2025-03-30,Expense,Shopping,13660,Cash,Pune,Electronics
+T100091,U064,2025-01-30,Expense,Travel,5561,Credit Card,Mumbai,Cab
+T100092,U113,2025-10-14,Income,Investment,49608,Net Banking,Hyderabad,Dividend
+T100093,U093,2025-09-05,Expense,Shopping,1452,Cash,Kolkata,Clothes
+T100094,U012,2025-01-18,Expense,Healthcare,7392,Credit Card,Pune,Medicine
+T100095,U061,2026-01-13,Expense,Bills,10928,Net Banking,Ahmedabad,Internet bill
+T100096,U090,2025-12-27,Expense,Education,5469,Cash,Hyderabad,Course fee
+T100097,U041,2025-07-17,Expense,Rent,11867,UPI,Ahmedabad,Monthly rent
+T100098,U077,2026-06-22,Income,Bonus,41241,Credit Card,Delhi,Performance bonus
+T100099,U002,2025-11-06,Expense,Entertainment,2989,Bank Transfer,Ahmedabad,Movie
+T100100,U090,2025-10-27,Expense,Food,9116,Debit Card,Kolkata,Lunch
+T100101,U062,2026-04-26,Expense,Groceries,4708,Cash,Bangalore,Supermarket
+T100102,U015,2026-05-05,Expense,Bills,14168,UPI,Chennai,Internet bill
+T100103,U104,2025-06-02,Income,Salary,24887,Net Banking,Hyderabad,Monthly salary
+T100104,U078,2026-03-03,Expense,Rent,9193,Net Banking,Jaipur,Monthly rent
+T100105,U039,2026-03-30,Expense,Travel,7431,Net Banking,Chennai,Cab
+T100106,U098,2025-04-12,Expense,Food,10038,Debit Card,Pune,Dinner
+T100107,U071,2025-06-27,Expense,Fuel,3979,UPI,Mumbai,Petrol
+T100108,U005,2025-10-26,Expense,Groceries,7749,Debit Card,Hyderabad,Supermarket
+T100109,U119,2025-08-28,Expense,Healthcare,1216,Credit Card,Jaipur,Medicine
+T100110,U117,2025-06-02,Expense,Education,3733,Credit Card,Mumbai,Course fee
+T100111,U057,2025-10-23,Income,Investment,79607,UPI,Kolkata,Dividend
+T100112,U057,2026-05-21,Expense,Bills,8249,UPI,Jaipur,Electricity bill
+T100113,U004,2025-09-14,Expense,Entertainment,9941,UPI,Pune,Movie
+T100114,U098,2025-02-11,Expense,Bills,9491,Debit Card,Kolkata,Internet bill
+T100115,U082,2026-03-23,Expense,Fuel,9640,Cash,Delhi,Petrol
+T100116,U110,2025-04-18,Expense,Entertainment,5310,Debit Card,Bangalore,Movie
+T100117,U105,2026-02-15,Expense,Bills,10905,Net Banking,Bhubaneswar,Internet bill
+T100118,U099,2025-04-29,Income,Investment,47372,Cash,Ahmedabad,Dividend
+T100119,U007,2026-02-28,Expense,Education,7619,Debit Card,Ahmedabad,Course fee
+T100120,U098,2026-03-29,Expense,Healthcare,10296,UPI,Pune,Medicine
+T100121,U016,2026-05-12,Expense,Bills,7228,UPI,Jaipur,Electricity bill
+T100122,U071,2025-01-15,Expense,Bills,9074,Cash,Delhi,Electricity bill
+T100123,U083,2025-05-01,Expense,Rent,7610,Debit Card,Kolkata,Monthly rent
+T100124,U061,2026-05-10,Expense,Bills,6857,Debit Card,Kolkata,Electricity bill
+T100125,U111,2025-05-20,Expense,Groceries,8377,UPI,Hyderabad,Supermarket
+T100126,U037,2025-01-03,Expense,Education,4427,Bank Transfer,Hyderabad,Course fee
+T100127,U045,2026-05-11,Expense,Healthcare,8874,Credit Card,Ahmedabad,Medicine
+T100128,U090,2025-07-13,Expense,Entertainment,14297,Debit Card,Jaipur,Movie
+T100129,U096,2025-11-22,Income,Bonus,10720,Cash,Chennai,Performance bonus
+T100130,U017,2025-02-07,Expense,Fuel,8165,Net Banking,Jaipur,Petrol
+T100131,U117,2026-06-23,Expense,Healthcare,1683,Cash,Bhubaneswar,Medicine
+T100132,U101,2026-04-26,Expense,Fuel,1275,Credit Card,Bangalore,Petrol
+T100133,U049,2026-07-01,Expense,Entertainment,14014,Credit Card,Kolkata,Movie
+T100134,U030,2025-10-22,Expense,Shopping,10390,Bank Transfer,Delhi,Electronics
+T100135,U089,2025-06-20,Expense,Rent,7319,Credit Card,Bhubaneswar,Monthly rent
+T100136,U048,2026-01-03,Expense,Food,4856,Cash,Mumbai,Lunch
+T100137,U022,2025-07-04,Expense,Groceries,11220,Debit Card,Delhi,Supermarket
+T100138,U030,2025-05-27,Expense,Shopping,8203,Cash,Hyderabad,Electronics
+T100139,U116,2026-04-22,Expense,Food,14777,Credit Card,Ahmedabad,Lunch
+T100140,U089,2026-03-11,Income,Investment,44210,Credit Card,Kolkata,Dividend
+T100141,U031,2025-04-20,Income,Bonus,68335,Cash,Jaipur,Performance bonus
+T100142,U036,2026-02-10,Expense,Bills,409,UPI,Jaipur,Electricity bill
+T100143,U100,2025-10-21,Expense,Healthcare,13695,Debit Card,Jaipur,Medicine
+T100144,U081,2025-05-21,Income,Freelance,37850,UPI,Bhubaneswar,Client payment
+T100145,U094,2026-01-09,Expense,Food,9545,Debit Card,Delhi,Dinner
+T100146,U017,2025-07-25,Expense,Travel,2927,Net Banking,Bangalore,Cab
+T100147,U104,2026-05-09,Expense,Bills,13561,Credit Card,Bangalore,Electricity bill
+T100148,U111,2025-08-20,Expense,Rent,2356,Bank Transfer,Chennai,Monthly rent
+T100149,U069,2025-09-28,Income,Bonus,6824,UPI,Kolkata,Performance bonus
+T100150,U106,2026-01-26,Expense,Bills,9627,Bank Transfer,Bangalore,Electricity bill
+T100151,U118,2025-12-02,Expense,Healthcare,460,Net Banking,Pune,Medicine
+T100152,U084,2025-11-06,Expense,Healthcare,14949,Cash,Delhi,Medicine
+T100153,U015,2026-05-20,Income,Salary,44893,UPI,Pune,Monthly salary
+T100154,U076,2026-03-06,Expense,Entertainment,11035,Bank Transfer,Mumbai,Movie
+T100155,U036,2026-02-22,Expense,Healthcare,10136,UPI,Bangalore,Medicine
+T100156,U013,2026-01-07,Expense,Shopping,14065,Bank Transfer,Bangalore,Electronics
+T100157,U109,2025-05-06,Income,Investment,29878,Cash,Delhi,Dividend
+T100158,U101,2025-02-21,Expense,Groceries,399,Credit Card,Pune,Supermarket
+T100159,U076,2025-08-01,Expense,Shopping,1174,Debit Card,Pune,Electronics
+T100160,U110,2025-10-11,Expense,Groceries,96,Debit Card,Mumbai,Supermarket
+T100161,U017,2025-01-27,Expense,Rent,10880,UPI,Bangalore,Monthly rent
+T100162,U007,2025-09-29,Expense,Food,2904,Debit Card,Chennai,Snacks
+T100163,U100,2026-04-05,Income,Salary,67422,Credit Card,Ahmedabad,Monthly salary
+T100164,U094,2025-02-14,Expense,Shopping,10127,Bank Transfer,Ahmedabad,Electronics
+T100165,U109,2026-05-06,Expense,Food,1046,Cash,Chennai,Snacks
+T100166,U042,2025-03-24,Income,Bonus,14632,Net Banking,Mumbai,Performance bonus
+T100167,U038,2026-06-28,Income,Investment,54925,Cash,Ahmedabad,Dividend
+T100168,U056,2025-08-09,Income,Salary,77264,Cash,Pune,Monthly salary
+T100169,U094,2026-03-02,Expense,Healthcare,6582,UPI,Bangalore,Medicine
+T100170,U088,2025-06-06,Expense,Bills,6182,Cash,Delhi,Electricity bill
+T100171,U096,2025-04-09,Expense,Rent,7125,Bank Transfer,Bangalore,Monthly rent
+T100172,U086,2025-12-04,Expense,Groceries,9251,UPI,Chennai,Supermarket
+T100173,U037,2025-02-22,Expense,Travel,14272,Net Banking,Hyderabad,Cab
+T100174,U029,2026-05-09,Income,Freelance,25280,UPI,Bangalore,Client payment
+T100175,U109,2026-03-16,Income,Investment,34643,Net Banking,Jaipur,Dividend
+T100176,U035,2025-07-04,Expense,Bills,524,Bank Transfer,Hyderabad,Internet bill
+T100177,U073,2025-05-27,Expense,Fuel,14301,Bank Transfer,Chennai,Petrol
+T100178,U028,2026-06-28,Income,Salary,17026,Cash,Chennai,Monthly salary
+T100179,U100,2025-11-29,Expense,Entertainment,5155,Net Banking,Jaipur,Movie
+T100180,U087,2025-02-20,Expense,Fuel,2629,UPI,Hyderabad,Petrol
+T100181,U054,2026-03-29,Expense,Healthcare,9996,Credit Card,Pune,Medicine
+T100182,U068,2026-05-14,Expense,Rent,4690,Bank Transfer,Hyderabad,Monthly rent
+T100183,U039,2025-07-29,Income,Salary,6007,Debit Card,Mumbai,Monthly salary
+T100184,U096,2026-05-25,Expense,Rent,176,Cash,Mumbai,Monthly rent
+T100185,U010,2025-12-29,Expense,Shopping,8246,Cash,Bhubaneswar,Electronics
+T100186,U074,2026-03-16,Income,Salary,46033,Cash,Chennai,Monthly salary
+T100187,U103,2025-06-25,Income,Salary,47568,Net Banking,Kolkata,Monthly salary
+T100188,U076,2026-03-23,Income,Salary,36891,Cash,Ahmedabad,Monthly salary
+T100189,U029,2025-12-14,Expense,Bills,12269,Credit Card,Mumbai,Electricity bill
+T100190,U025,2026-06-07,Expense,Rent,8743,Credit Card,Bangalore,Monthly rent
+T100191,U023,2025-07-22,Income,Freelance,38550,Net Banking,Mumbai,Client payment
+T100192,U088,2026-04-05,Income,Bonus,65811,Net Banking,Jaipur,Performance bonus
+T100193,U009,2026-03-27,Expense,Entertainment,2523,Cash,Kolkata,Movie
+T100194,U065,2025-12-27,Expense,Groceries,970,UPI,Hyderabad,Supermarket
+T100195,U010,2025-10-21,Expense,Food,6091,Bank Transfer,Delhi,Snacks
+T100196,U058,2025-02-12,Expense,Travel,7631,Net Banking,Pune,Cab
+T100197,U058,2025-03-05,Expense,Education,2521,UPI,Bangalore,Course fee
+T100198,U091,2025-09-11,Expense,Fuel,691,Cash,Kolkata,Petrol
+T100199,U100,2026-02-23,Expense,Bills,6397,Credit Card,Jaipur,Electricity bill
+T100200,U013,2025-12-04,Expense,Entertainment,1129,Net Banking,Chennai,Movie
+T100201,U043,2025-06-03,Expense,Groceries,14357,UPI,Jaipur,Supermarket
+T100202,U017,2026-02-06,Expense,Bills,10798,Net Banking,Delhi,Internet bill
+T100203,U086,2025-05-11,Expense,Entertainment,13373,Bank Transfer,Ahmedabad,Movie
+T100204,U003,2026-01-06,Expense,Travel,8381,Credit Card,Hyderabad,Cab
+T100205,U025,2026-05-13,Expense,Entertainment,12602,Debit Card,Mumbai,Movie
+T100206,U005,2026-06-24,Income,Salary,71543,Bank Transfer,Bangalore,Monthly salary
+T100207,U107,2025-07-05,Expense,Fuel,2708,Bank Transfer,Jaipur,Petrol
+T100208,U087,2026-01-09,Expense,Food,6781,Bank Transfer,Pune,Dinner
+T100209,U031,2026-07-01,Expense,Healthcare,3883,Credit Card,Kolkata,Medicine
+T100210,U099,2026-04-18,Expense,Groceries,7268,Credit Card,Chennai,Supermarket
+T100211,U112,2025-05-22,Expense,Shopping,13177,Credit Card,Bhubaneswar,Electronics
+T100212,U109,2026-06-13,Expense,Education,1730,UPI,Hyderabad,Course fee
+T100213,U019,2026-06-10,Expense,Bills,7411,Cash,Delhi,Electricity bill
+T100214,U007,2026-03-01,Expense,Entertainment,486,Cash,Ahmedabad,Movie
+T100215,U004,2025-08-18,Income,Salary,54140,Credit Card,Delhi,Monthly salary
+T100216,U118,2025-10-21,Expense,Fuel,677,Cash,Mumbai,Petrol
+T100217,U003,2025-03-23,Expense,Food,14891,Credit Card,Pune,Lunch
+T100218,U015,2026-03-10,Expense,Groceries,8697,Credit Card,Pune,Supermarket
+T100219,U009,2026-04-14,Income,Freelance,60027,UPI,Kolkata,Client payment
+T100220,U038,2025-05-28,Expense,Groceries,4013,Cash,Bhubaneswar,Supermarket
+T100221,U068,2025-03-29,Income,Bonus,29551,Credit Card,Delhi,Performance bonus
+T100222,U048,2026-02-01,Expense,Healthcare,763,Credit Card,Bhubaneswar,Medicine
+T100223,U099,2025-04-17,Expense,Entertainment,4000,Net Banking,Bangalore,Movie
+T100224,U090,2026-04-21,Income,Investment,27949,Cash,Mumbai,Dividend
+T100225,U026,2025-10-28,Income,Bonus,9847,UPI,Pune,Performance bonus
+T100226,U105,2026-02-12,Expense,Bills,8494,Net Banking,Kolkata,Internet bill
+T100227,U111,2026-01-01,Income,Freelance,42501,UPI,Bangalore,Client payment
+T100228,U096,2026-02-14,Income,Investment,62272,Cash,Chennai,Dividend
+T100229,U048,2026-05-25,Expense,Healthcare,11388,Net Banking,Hyderabad,Medicine
+T100230,U070,2025-07-04,Expense,Rent,7105,Credit Card,Bangalore,Monthly rent
+T100231,U078,2026-04-02,Income,Investment,45173,Bank Transfer,Chennai,Dividend
+T100232,U094,2025-02-13,Expense,Entertainment,7375,Credit Card,Jaipur,Movie
+T100233,U047,2026-02-20,Expense,Food,1279,Net Banking,Mumbai,Lunch
+T100234,U009,2025-05-10,Income,Bonus,9561,Debit Card,Bangalore,Performance bonus
+T100235,U087,2025-06-07,Expense,Groceries,580,Cash,Bangalore,Supermarket
+T100236,U068,2025-05-21,Expense,Rent,9453,Credit Card,Chennai,Monthly rent
+T100237,U095,2025-01-27,Expense,Shopping,1908,Debit Card,Kolkata,Electronics
+T100238,U091,2025-09-24,Expense,Rent,4338,Cash,Pune,Monthly rent
+T100239,U018,2025-05-06,Expense,Healthcare,3329,UPI,Kolkata,Medicine
+T100240,U086,2025-11-24,Expense,Healthcare,1488,Credit Card,Delhi,Medicine
+T100241,U102,2025-06-28,Expense,Fuel,11712,Credit Card,Ahmedabad,Petrol
+T100242,U102,2025-08-31,Income,Freelance,23202,Cash,Bhubaneswar,Client payment
+T100243,U079,2025-05-13,Expense,Entertainment,7707,UPI,Delhi,Movie
+T100244,U099,2026-02-25,Expense,Healthcare,8662,Cash,Jaipur,Medicine
+T100245,U060,2026-04-06,Income,Investment,14720,Bank Transfer,Ahmedabad,Dividend
+T100246,U065,2026-03-20,Income,Freelance,21912,UPI,Delhi,Client payment
+T100247,U045,2025-08-19,Expense,Fuel,5336,Net Banking,Hyderabad,Petrol
+T100248,U081,2025-05-09,Expense,Education,4546,Credit Card,Jaipur,Course fee
+T100249,U022,2025-06-07,Expense,Fuel,9746,Bank Transfer,Jaipur,Petrol
+T100250,U011,2025-01-30,Expense,Groceries,724,UPI,Jaipur,Supermarket
+T100251,U064,2025-02-01,Expense,Groceries,6875,Bank Transfer,Ahmedabad,Supermarket
+T100252,U104,2025-09-08,Expense,Bills,7962,Bank Transfer,Chennai,Internet bill
+T100253,U054,2026-03-27,Expense,Food,2639,Cash,Kolkata,Lunch
+T100254,U094,2025-11-23,Expense,Fuel,5171,Credit Card,Chennai,Petrol
+T100255,U041,2025-04-19,Expense,Education,9252,Debit Card,Kolkata,Course fee
+T100256,U007,2025-04-10,Expense,Shopping,2358,Credit Card,Chennai,Electronics
+T100257,U025,2025-11-17,Income,Freelance,47917,Debit Card,Kolkata,Client payment
+T100258,U012,2025-01-24,Expense,Bills,8198,Cash,Ahmedabad,Internet bill
+T100259,U007,2025-12-28,Expense,Shopping,9607,UPI,Hyderabad,Electronics
+T100260,U002,2026-07-04,Expense,Healthcare,4731,UPI,Chennai,Medicine
+T100261,U047,2026-02-17,Expense,Entertainment,12565,UPI,Chennai,Movie
+T100262,U010,2025-10-23,Expense,Shopping,5989,Cash,Ahmedabad,Electronics
+T100263,U017,2025-05-02,Expense,Bills,13571,UPI,Chennai,Internet bill
+T100264,U097,2026-01-10,Expense,Entertainment,9189,Debit Card,Pune,Movie
+T100265,U092,2025-05-21,Expense,Food,687,Credit Card,Kolkata,Snacks
+T100266,U018,2026-06-12,Expense,Groceries,14683,Credit Card,Jaipur,Supermarket
+T100267,U107,2026-06-04,Income,Investment,49089,Net Banking,Ahmedabad,Dividend
+T100268,U048,2025-01-18,Expense,Bills,7830,Credit Card,Delhi,Internet bill
+T100269,U034,2026-05-01,Expense,Food,9829,Bank Transfer,Jaipur,Snacks
+T100270,U068,2025-06-24,Income,Salary,67973,Bank Transfer,Jaipur,Monthly salary
+T100271,U025,2025-04-23,Income,Freelance,9138,UPI,Kolkata,Client payment
+T100272,U053,2025-07-28,Expense,Travel,11363,Net Banking,Jaipur,Cab
+T100273,U067,2025-05-22,Expense,Food,11613,Debit Card,Ahmedabad,Dinner
+T100274,U041,2026-01-21,Expense,Healthcare,8659,Debit Card,Kolkata,Medicine
+T100275,U025,2026-05-11,Expense,Bills,10045,Debit Card,Hyderabad,Internet bill
+T100276,U089,2025-08-01,Income,Investment,42880,Bank Transfer,Kolkata,Dividend
+T100277,U037,2025-10-08,Expense,Education,13081,UPI,Jaipur,Course fee
+T100278,U099,2025-12-20,Expense,Travel,13458,Debit Card,Hyderabad,Cab
+T100279,U084,2026-03-29,Expense,Rent,5724,Credit Card,Kolkata,Monthly rent
+T100280,U018,2025-10-06,Income,Investment,78664,UPI,Jaipur,Dividend
+T100281,U013,2025-02-23,Income,Freelance,35518,Cash,Bangalore,Client payment
+T100282,U053,2025-06-11,Income,Freelance,5679,Bank Transfer,Kolkata,Client payment
+T100283,U083,2025-10-20,Expense,Bills,5312,UPI,Delhi,Electricity bill
+T100284,U113,2026-03-04,Expense,Food,2918,Debit Card,Bhubaneswar,Dinner
+T100285,U113,2025-10-24,Expense,Fuel,12321,UPI,Bhubaneswar,Petrol
+T100286,U059,2025-10-19,Expense,Rent,5539,Bank Transfer,Ahmedabad,Monthly rent
+T100287,U060,2026-06-01,Expense,Fuel,13993,Credit Card,Pune,Petrol
+T100288,U092,2025-09-21,Expense,Healthcare,10671,Debit Card,Bhubaneswar,Medicine
+T100289,U023,2025-07-17,Expense,Groceries,11099,Net Banking,Chennai,Supermarket
+T100290,U024,2025-04-08,Expense,Rent,6617,Debit Card,Kolkata,Monthly rent
+T100291,U031,2026-01-28,Expense,Food,4322,Cash,Hyderabad,Dinner
+T100292,U084,2025-09-25,Expense,Groceries,237,Credit Card,Pune,Supermarket
+T100293,U052,2025-06-13,Expense,Healthcare,5076,Bank Transfer,Ahmedabad,Medicine
+T100294,U029,2025-08-15,Expense,Bills,6071,Debit Card,Kolkata,Electricity bill
+T100295,U090,2026-03-02,Expense,Groceries,6171,Net Banking,Kolkata,Supermarket
+T100296,U068,2025-03-25,Expense,Groceries,14355,Cash,Ahmedabad,Supermarket
+T100297,U026,2026-06-02,Income,Salary,13094,Net Banking,Ahmedabad,Monthly salary
+T100298,U092,2025-07-30,Income,Bonus,20235,Net Banking,Kolkata,Performance bonus
+T100299,U059,2025-02-26,Expense,Healthcare,13299,Debit Card,Ahmedabad,Medicine
+T100300,U087,2026-04-19,Expense,Food,9205,Credit Card,Bhubaneswar,Dinner
+T100301,U075,2025-08-12,Expense,Food,12269,UPI,Bhubaneswar,Dinner
+T100302,U120,2025-03-03,Expense,Rent,8916,UPI,Kolkata,Monthly rent
+T100303,U099,2025-05-19,Expense,Fuel,12648,Bank Transfer,Chennai,Petrol
+T100304,U049,2026-01-22,Expense,Travel,7398,UPI,Ahmedabad,Cab
+T100305,U069,2025-07-02,Expense,Entertainment,1993,Cash,Ahmedabad,Movie
+T100306,U097,2025-01-04,Expense,Shopping,13727,UPI,Hyderabad,Electronics
+T100307,U049,2026-06-29,Expense,Education,6998,Debit Card,Pune,Course fee
+T100308,U005,2025-04-26,Expense,Bills,3138,Bank Transfer,Chennai,Electricity bill
+T100309,U058,2025-02-04,Income,Salary,18224,Net Banking,Bhubaneswar,Monthly salary
+T100310,U070,2025-08-28,Expense,Travel,7241,Debit Card,Bhubaneswar,Cab
+T100311,U074,2025-11-23,Expense,Bills,3886,Net Banking,Bangalore,Electricity bill
+T100312,U029,2026-06-18,Expense,Fuel,10866,Cash,Hyderabad,Petrol
+T100313,U007,2026-05-23,Income,Freelance,60994,Credit Card,Chennai,Client payment
+T100314,U049,2025-11-04,Expense,Travel,2494,Debit Card,Ahmedabad,Cab
+T100315,U104,2025-05-28,Income,Freelance,44418,Cash,Bhubaneswar,Client payment
+T100316,U050,2025-05-18,Expense,Education,8733,Debit Card,Hyderabad,Course fee
+T100317,U012,2026-01-15,Expense,Rent,7419,Net Banking,Pune,Monthly rent
+T100318,U112,2025-02-10,Expense,Groceries,9928,UPI,Pune,Supermarket
+T100319,U028,2025-01-16,Expense,Entertainment,5017,Debit Card,Delhi,Movie
+T100320,U051,2025-07-29,Expense,Groceries,11580,Debit Card,Ahmedabad,Supermarket
+T100321,U084,2026-07-01,Expense,Travel,7689,Credit Card,Hyderabad,Cab
+T100322,U103,2025-04-11,Expense,Healthcare,7685,Bank Transfer,Kolkata,Medicine
+T100323,U006,2026-02-28,Expense,Entertainment,5176,Net Banking,Pune,Movie
+T100324,U026,2025-06-06,Income,Bonus,43691,Credit Card,Pune,Performance bonus
+T100325,U033,2025-12-12,Expense,Shopping,8230,Cash,Kolkata,Electronics
+T100326,U093,2025-05-24,Income,Investment,27185,Net Banking,Kolkata,Dividend
+T100327,U068,2025-03-02,Expense,Education,10565,UPI,Delhi,Course fee
+T100328,U009,2025-08-25,Expense,Travel,2302,Bank Transfer,Mumbai,Cab
+T100329,U080,2025-03-03,Income,Bonus,53916,Bank Transfer,Jaipur,Performance bonus
+T100330,U071,2026-06-29,Expense,Food,158,Cash,Bhubaneswar,Lunch
+T100331,U003,2025-10-21,Expense,Bills,8827,Net Banking,Chennai,Electricity bill
+T100332,U031,2025-06-02,Income,Salary,73732,Debit Card,Jaipur,Monthly salary
+T100333,U011,2026-02-11,Expense,Bills,13074,Credit Card,Chennai,Internet bill
+T100334,U084,2025-03-24,Expense,Shopping,4964,Bank Transfer,Bhubaneswar,Clothes
+T100335,U008,2026-05-03,Expense,Travel,9105,Bank Transfer,Bhubaneswar,Cab
+T100336,U115,2025-04-08,Income,Bonus,48420,Net Banking,Bhubaneswar,Performance bonus
+T100337,U119,2025-02-17,Income,Bonus,40532,UPI,Hyderabad,Performance bonus
+T100338,U076,2025-08-01,Income,Investment,7052,Debit Card,Chennai,Dividend
+T100339,U087,2026-02-03,Expense,Groceries,3989,Net Banking,Bangalore,Supermarket
+T100340,U065,2025-03-22,Expense,Fuel,13001,Bank Transfer,Bangalore,Petrol
+T100341,U078,2025-12-15,Income,Freelance,14963,Net Banking,Jaipur,Client payment
+T100342,U101,2025-10-07,Expense,Entertainment,535,Cash,Kolkata,Movie
+T100343,U088,2025-07-10,Expense,Travel,7125,Net Banking,Chennai,Cab
+T100344,U092,2025-09-10,Expense,Bills,13125,UPI,Delhi,Internet bill
+T100345,U047,2025-11-21,Income,Freelance,56068,UPI,Delhi,Client payment
+T100346,U014,2025-10-04,Expense,Healthcare,5946,Debit Card,Delhi,Medicine
+T100347,U053,2026-06-09,Expense,Education,9138,UPI,Bhubaneswar,Course fee
+T100348,U111,2025-11-29,Expense,Rent,9830,Cash,Bhubaneswar,Monthly rent
+T100349,U074,2025-09-06,Expense,Rent,11925,Net Banking,Mumbai,Monthly rent
+T100350,U064,2025-10-02,Income,Investment,44469,Debit Card,Delhi,Dividend
+T100351,U101,2026-05-11,Expense,Travel,4961,UPI,Bangalore,Cab
+T100352,U059,2025-07-20,Expense,Healthcare,9778,UPI,Mumbai,Medicine
+T100353,U103,2026-01-25,Income,Bonus,48544,Credit Card,Kolkata,Performance bonus
+T100354,U042,2025-11-04,Expense,Groceries,2280,Net Banking,Pune,Supermarket
+T100355,U095,2025-10-26,Expense,Travel,5278,Bank Transfer,Kolkata,Cab
+T100356,U047,2026-02-07,Expense,Bills,13427,UPI,Jaipur,Electricity bill
+T100357,U094,2025-01-28,Expense,Education,2997,Cash,Pune,Course fee
+T100358,U087,2026-02-23,Expense,Rent,13467,Cash,Mumbai,Monthly rent
+T100359,U010,2026-01-22,Income,Freelance,60460,Cash,Jaipur,Client payment
+T100360,U070,2026-03-05,Expense,Education,8350,UPI,Bangalore,Course fee
+T100361,U083,2025-06-20,Income,Freelance,51531,Net Banking,Bhubaneswar,Client payment
+T100362,U014,2026-03-17,Expense,Entertainment,13095,UPI,Delhi,Movie
+T100363,U051,2026-01-19,Income,Freelance,63429,Cash,Jaipur,Client payment
+T100364,U038,2025-04-18,Expense,Food,7959,Cash,Delhi,Lunch
+T100365,U044,2025-11-16,Expense,Fuel,5757,Cash,Pune,Petrol
+T100366,U041,2026-04-09,Expense,Rent,7228,UPI,Hyderabad,Monthly rent
+T100367,U083,2025-12-18,Expense,Rent,420,UPI,Mumbai,Monthly rent
+T100368,U072,2025-12-05,Expense,Education,2673,Cash,Kolkata,Course fee
+T100369,U051,2026-03-19,Expense,Fuel,3103,UPI,Jaipur,Petrol
+T100370,U091,2025-01-05,Expense,Travel,6420,Debit Card,Pune,Cab
+T100371,U103,2025-04-15,Expense,Rent,9509,Net Banking,Mumbai,Monthly rent
+T100372,U086,2025-09-26,Expense,Healthcare,1917,Cash,Ahmedabad,Medicine
+T100373,U045,2025-04-27,Expense,Groceries,6481,Credit Card,Kolkata,Supermarket
+T100374,U087,2025-03-28,Expense,Bills,10117,Debit Card,Bangalore,Electricity bill
+T100375,U089,2026-01-18,Income,Salary,28992,Debit Card,Ahmedabad,Monthly salary
+T100376,U055,2026-01-28,Expense,Fuel,9467,Debit Card,Kolkata,Petrol
+T100377,U024,2025-05-24,Expense,Healthcare,4782,Credit Card,Kolkata,Medicine
+T100378,U025,2025-05-20,Expense,Food,7989,Cash,Ahmedabad,Snacks
+T100379,U054,2026-05-19,Expense,Travel,11268,Bank Transfer,Kolkata,Cab
+T100380,U005,2025-10-27,Income,Salary,33905,Credit Card,Pune,Monthly salary
+T100381,U071,2026-05-23,Income,Bonus,79140,Net Banking,Delhi,Performance bonus
+T100382,U070,2026-01-11,Expense,Education,13538,UPI,Kolkata,Course fee
+T100383,U039,2025-09-11,Expense,Rent,12108,UPI,Kolkata,Monthly rent
+T100384,U100,2025-05-01,Expense,Rent,7243,Debit Card,Pune,Monthly rent
+T100385,U022,2026-03-15,Expense,Groceries,10417,Net Banking,Mumbai,Supermarket
+T100386,U069,2025-12-26,Expense,Food,9390,Credit Card,Jaipur,Snacks
+T100387,U110,2025-10-01,Income,Investment,42923,Net Banking,Delhi,Dividend
+T100388,U111,2025-10-11,Expense,Travel,1021,Bank Transfer,Mumbai,Cab
+T100389,U063,2026-02-07,Income,Investment,37447,Debit Card,Jaipur,Dividend
+T100390,U082,2025-03-19,Expense,Travel,7455,UPI,Chennai,Cab
+T100391,U042,2026-05-15,Expense,Entertainment,7499,Net Banking,Bhubaneswar,Movie
+T100392,U109,2026-01-02,Expense,Healthcare,10451,UPI,Ahmedabad,Medicine
+T100393,U035,2026-05-22,Income,Bonus,32767,Credit Card,Hyderabad,Performance bonus
+T100394,U101,2026-05-12,Expense,Fuel,9325,Credit Card,Bhubaneswar,Petrol
+T100395,U119,2025-05-08,Income,Bonus,7134,Debit Card,Kolkata,Performance bonus
+T100396,U113,2025-05-16,Income,Bonus,31518,Bank Transfer,Hyderabad,Performance bonus
+T100397,U033,2026-01-05,Expense,Bills,1579,UPI,Bangalore,Electricity bill
+T100398,U084,2026-03-16,Income,Investment,35689,UPI,Delhi,Dividend
+T100399,U067,2025-08-20,Income,Salary,22393,Bank Transfer,Kolkata,Monthly salary
+T100400,U089,2026-03-09,Income,Investment,20806,Debit Card,Kolkata,Dividend
+T100401,U041,2025-04-16,Income,Salary,18425,Credit Card,Hyderabad,Monthly salary
+T100402,U009,2025-05-27,Expense,Fuel,10561,Net Banking,Jaipur,Petrol
+T100403,U093,2025-12-26,Expense,Fuel,7260,Debit Card,Mumbai,Petrol
+T100404,U012,2025-08-11,Expense,Healthcare,14139,UPI,Mumbai,Medicine
+T100405,U041,2026-03-16,Expense,Travel,5809,Debit Card,Pune,Cab
+T100406,U100,2025-10-19,Expense,Shopping,9116,Bank Transfer,Bhubaneswar,Electronics
+T100407,U083,2025-10-30,Income,Freelance,56347,UPI,Pune,Client payment
+T100408,U068,2025-03-14,Expense,Shopping,8235,UPI,Bangalore,Electronics
+T100409,U098,2025-06-26,Income,Bonus,52895,Cash,Delhi,Performance bonus
+T100410,U006,2025-08-09,Expense,Food,4345,UPI,Chennai,Snacks
+T100411,U055,2026-03-02,Expense,Education,12618,Bank Transfer,Chennai,Course fee
+T100412,U036,2025-06-06,Expense,Education,10143,UPI,Hyderabad,Course fee
+T100413,U069,2025-06-09,Expense,Shopping,13289,Credit Card,Chennai,Clothes
+T100414,U008,2025-09-02,Expense,Travel,12009,Debit Card,Delhi,Cab
+T100415,U016,2025-06-29,Income,Salary,45539,UPI,Mumbai,Monthly salary
+T100416,U101,2026-06-14,Income,Investment,73551,Bank Transfer,Hyderabad,Dividend
+T100417,U099,2025-05-01,Expense,Bills,12058,UPI,Bangalore,Internet bill
+T100418,U064,2025-03-20,Expense,Rent,4358,Cash,Ahmedabad,Monthly rent
+T100419,U033,2025-06-11,Income,Freelance,53193,UPI,Jaipur,Client payment
+T100420,U032,2025-01-13,Income,Salary,10772,UPI,Kolkata,Monthly salary
+T100421,U071,2025-02-06,Expense,Fuel,2982,Bank Transfer,Chennai,Petrol
+T100422,U035,2025-11-24,Expense,Travel,11851,UPI,Jaipur,Cab
+T100423,U103,2025-08-17,Income,Salary,28507,Net Banking,Bhubaneswar,Monthly salary
+T100424,U042,2025-11-15,Income,Bonus,42002,UPI,Ahmedabad,Performance bonus
+T100425,U095,2025-11-08,Income,Freelance,43219,Net Banking,Pune,Client payment
+T100426,U094,2025-07-20,Expense,Healthcare,12708,Net Banking,Pune,Medicine
+T100427,U070,2025-08-27,Income,Bonus,8133,Credit Card,Bhubaneswar,Performance bonus
+T100428,U027,2025-04-17,Income,Bonus,45306,Net Banking,Pune,Performance bonus
+T100429,U012,2025-10-14,Expense,Food,2382,UPI,Pune,Snacks
+T100430,U075,2025-03-28,Expense,Entertainment,7561,UPI,Ahmedabad,Movie
+T100431,U056,2025-03-05,Expense,Travel,1276,Bank Transfer,Mumbai,Cab
+T100432,U090,2026-02-07,Expense,Entertainment,13170,Bank Transfer,Bangalore,Movie
+T100433,U018,2025-07-27,Expense,Shopping,1273,Net Banking,Delhi,Clothes
+T100434,U053,2025-11-18,Income,Bonus,66086,UPI,Ahmedabad,Performance bonus
+T100435,U060,2025-11-12,Expense,Shopping,7454,Credit Card,Delhi,Clothes
+T100436,U107,2025-08-09,Income,Investment,10286,Credit Card,Mumbai,Dividend
+T100437,U007,2026-06-10,Expense,Entertainment,6542,Bank Transfer,Hyderabad,Movie
+T100438,U110,2026-02-19,Expense,Fuel,559,Cash,Ahmedabad,Petrol
+T100439,U002,2025-05-05,Income,Salary,23322,UPI,Pune,Monthly salary
+T100440,U075,2025-03-28,Income,Bonus,53790,Net Banking,Hyderabad,Performance bonus
+T100441,U104,2026-03-31,Income,Salary,30919,Debit Card,Delhi,Monthly salary
+T100442,U119,2025-06-22,Income,Bonus,11637,Net Banking,Chennai,Performance bonus
+T100443,U023,2026-03-13,Expense,Travel,11243,Credit Card,Pune,Cab
+T100444,U005,2025-06-02,Expense,Healthcare,14524,Net Banking,Jaipur,Medicine
+T100445,U008,2026-05-06,Expense,Healthcare,6800,UPI,Hyderabad,Medicine
+T100446,U081,2025-09-13,Income,Freelance,73919,Net Banking,Bhubaneswar,Client payment
+T100447,U045,2026-05-12,Expense,Entertainment,7909,Net Banking,Ahmedabad,Movie
+T100448,U077,2025-11-23,Expense,Fuel,477,Debit Card,Bhubaneswar,Petrol
+T100449,U099,2026-01-02,Income,Bonus,74393,Net Banking,Pune,Performance bonus
+T100450,U105,2026-07-01,Income,Freelance,39934,Bank Transfer,Bhubaneswar,Client payment
+T100451,U023,2025-06-27,Expense,Travel,5863,Debit Card,Jaipur,Cab
+T100452,U091,2025-01-29,Expense,Entertainment,9742,Bank Transfer,Bangalore,Movie
+T100453,U070,2026-05-20,Expense,Shopping,13758,Credit Card,Mumbai,Electronics
+T100454,U003,2025-08-13,Income,Salary,35490,Net Banking,Kolkata,Monthly salary
+T100455,U044,2025-05-14,Expense,Groceries,3350,Bank Transfer,Mumbai,Supermarket
+T100456,U109,2025-04-24,Income,Freelance,23566,Net Banking,Bangalore,Client payment
+T100457,U044,2025-04-14,Expense,Travel,9651,Credit Card,Bangalore,Cab
+T100458,U084,2026-05-14,Expense,Travel,13023,Credit Card,Mumbai,Cab
+T100459,U094,2025-11-11,Income,Freelance,54595,Bank Transfer,Hyderabad,Client payment
+T100460,U024,2025-02-03,Income,Salary,56327,Net Banking,Bangalore,Monthly salary
+T100461,U043,2025-05-25,Expense,Rent,8179,Bank Transfer,Delhi,Monthly rent
+T100462,U106,2025-04-01,Expense,Entertainment,2800,Bank Transfer,Bangalore,Movie
+T100463,U045,2025-03-11,Income,Freelance,37707,Credit Card,Delhi,Client payment
+T100464,U114,2025-06-20,Income,Bonus,60004,Cash,Kolkata,Performance bonus
+T100465,U101,2026-05-06,Expense,Travel,1711,Net Banking,Pune,Cab
+T100466,U041,2025-01-21,Expense,Food,4881,Credit Card,Delhi,Lunch
+T100467,U071,2025-03-18,Expense,Travel,2686,UPI,Bangalore,Cab
+T100468,U078,2025-06-18,Expense,Travel,10759,Cash,Mumbai,Cab
+T100469,U090,2026-02-24,Income,Freelance,29901,Net Banking,Ahmedabad,Client payment
+T100470,U007,2025-04-09,Expense,Bills,3941,Cash,Jaipur,Internet bill
+T100471,U012,2026-03-14,Income,Investment,5500,Credit Card,Jaipur,Dividend
+T100472,U082,2025-06-24,Income,Salary,32125,Credit Card,Delhi,Monthly salary
+T100473,U061,2026-02-12,Expense,Bills,12909,Cash,Hyderabad,Electricity bill
+T100474,U114,2026-01-15,Expense,Travel,3079,Cash,Bangalore,Cab
+T100475,U034,2026-04-22,Expense,Bills,7254,Debit Card,Hyderabad,Electricity bill
+T100476,U104,2025-12-19,Income,Salary,16233,Net Banking,Chennai,Monthly salary
+T100477,U054,2026-06-20,Expense,Travel,13458,Net Banking,Kolkata,Cab
+T100478,U065,2025-02-05,Expense,Rent,6518,Net Banking,Ahmedabad,Monthly rent
+T100479,U028,2025-06-21,Income,Bonus,27659,Debit Card,Mumbai,Performance bonus
+T100480,U107,2025-06-01,Expense,Travel,3358,Net Banking,Hyderabad,Cab
+T100481,U072,2026-02-02,Expense,Rent,1475,Cash,Ahmedabad,Monthly rent
+T100482,U101,2025-01-13,Expense,Education,7556,Bank Transfer,Jaipur,Course fee
+T100483,U119,2025-04-13,Income,Freelance,24424,UPI,Jaipur,Client payment
+T100484,U113,2025-12-19,Expense,Education,14470,Cash,Hyderabad,Course fee
+T100485,U005,2026-04-30,Expense,Groceries,10027,Debit Card,Hyderabad,Supermarket
+T100486,U114,2026-02-10,Income,Bonus,10083,Credit Card,Pune,Performance bonus
+T100487,U003,2026-01-17,Expense,Bills,14746,Credit Card,Hyderabad,Internet bill
+T100488,U112,2025-04-11,Expense,Healthcare,14111,Debit Card,Mumbai,Medicine
+T100489,U035,2025-11-25,Expense,Healthcare,12731,Bank Transfer,Chennai,Medicine
+T100490,U098,2026-05-12,Income,Freelance,58368,Net Banking,Bangalore,Client payment
+T100491,U091,2025-11-15,Expense,Fuel,1125,Net Banking,Chennai,Petrol
+T100492,U023,2025-01-30,Expense,Education,14456,Debit Card,Pune,Course fee
+T100493,U091,2026-01-05,Income,Bonus,11626,Debit Card,Hyderabad,Performance bonus
+T100494,U088,2025-05-07,Expense,Education,6553,UPI,Pune,Course fee
+T100495,U076,2026-05-01,Expense,Healthcare,2959,Net Banking,Bangalore,Medicine
+T100496,U004,2025-10-19,Income,Investment,16847,Cash,Bhubaneswar,Dividend
+T100497,U083,2025-08-15,Expense,Shopping,14092,Debit Card,Pune,Electronics
+T100498,U061,2025-01-10,Expense,Education,378,Debit Card,Mumbai,Course fee
+T100499,U115,2026-03-10,Income,Investment,41094,Cash,Bangalore,Dividend
+T100500,U106,2026-06-18,Expense,Healthcare,5000,Net Banking,Chennai,Medicine
+T100501,U039,2025-10-17,Income,Investment,78591,Bank Transfer,Delhi,Dividend
+T100502,U034,2025-10-11,Income,Investment,47616,Bank Transfer,Hyderabad,Dividend
+T100503,U085,2026-02-18,Income,Freelance,12441,Credit Card,Mumbai,Client payment
+T100504,U052,2026-03-05,Expense,Bills,4300,Cash,Bhubaneswar,Electricity bill
+T100505,U082,2026-07-02,Expense,Shopping,11294,Cash,Bangalore,Electronics
+T100506,U013,2025-10-28,Expense,Education,3017,Cash,Mumbai,Course fee
+T100507,U088,2025-07-07,Expense,Education,12549,Credit Card,Delhi,Course fee
+T100508,U048,2025-12-06,Expense,Bills,6939,Credit Card,Jaipur,Internet bill
+T100509,U111,2025-02-24,Expense,Rent,7759,Bank Transfer,Jaipur,Monthly rent
+T100510,U112,2025-05-03,Expense,Shopping,8249,Bank Transfer,Chennai,Electronics
+T100511,U044,2025-07-25,Expense,Fuel,2300,Cash,Jaipur,Petrol
+T100512,U043,2026-05-15,Income,Freelance,15592,Bank Transfer,Mumbai,Client payment
+T100513,U027,2025-10-08,Expense,Food,7456,Debit Card,Jaipur,Lunch
+T100514,U082,2026-03-21,Expense,Rent,2170,Cash,Chennai,Monthly rent
+T100515,U069,2025-02-08,Expense,Travel,126,Debit Card,Bangalore,Cab
+T100516,U087,2025-01-19,Expense,Education,3172,UPI,Pune,Course fee
+T100517,U014,2025-05-13,Expense,Entertainment,5163,Cash,Ahmedabad,Movie
+T100518,U059,2025-10-25,Income,Salary,44085,Bank Transfer,Ahmedabad,Monthly salary
+T100519,U046,2026-05-17,Expense,Fuel,5665,Debit Card,Mumbai,Petrol
+T100520,U094,2025-08-05,Income,Freelance,22197,UPI,Jaipur,Client payment
+T100521,U099,2025-09-19,Income,Salary,54177,Net Banking,Jaipur,Monthly salary
+T100522,U084,2025-04-21,Expense,Food,10895,UPI,Bhubaneswar,Snacks
+T100523,U071,2025-05-07,Income,Bonus,54840,Credit Card,Kolkata,Performance bonus
+T100524,U085,2026-03-07,Income,Salary,44467,UPI,Ahmedabad,Monthly salary
+T100525,U066,2025-04-18,Expense,Fuel,6912,Bank Transfer,Jaipur,Petrol
+T100526,U078,2025-07-23,Expense,Rent,8204,Debit Card,Hyderabad,Monthly rent
+T100527,U006,2025-06-14,Expense,Travel,4889,Net Banking,Kolkata,Cab
+T100528,U001,2025-08-29,Expense,Healthcare,5466,UPI,Delhi,Medicine
+T100529,U100,2025-04-03,Expense,Healthcare,2493,Net Banking,Delhi,Medicine
+T100530,U034,2025-10-31,Expense,Shopping,7533,Cash,Bhubaneswar,Clothes
+T100531,U047,2025-10-25,Expense,Food,14013,Bank Transfer,Bangalore,Dinner
+T100532,U002,2025-02-16,Expense,Rent,13996,Debit Card,Mumbai,Monthly rent
+T100533,U113,2025-10-02,Expense,Healthcare,10237,Bank Transfer,Delhi,Medicine
+T100534,U052,2026-02-15,Expense,Fuel,1915,Cash,Hyderabad,Petrol
+T100535,U084,2026-03-08,Expense,Healthcare,13155,Debit Card,Delhi,Medicine
+T100536,U014,2025-06-13,Expense,Food,13883,Cash,Jaipur,Dinner
+T100537,U100,2026-01-24,Expense,Healthcare,3019,Credit Card,Jaipur,Medicine
+T100538,U015,2026-05-15,Expense,Fuel,7964,Cash,Kolkata,Petrol
+T100539,U099,2026-06-22,Income,Investment,6620,Bank Transfer,Jaipur,Dividend
+T100540,U089,2026-06-20,Expense,Entertainment,8554,Bank Transfer,Jaipur,Movie
+T100541,U085,2025-12-21,Expense,Shopping,7945,Bank Transfer,Chennai,Clothes
+T100542,U002,2025-02-25,Expense,Education,14665,Bank Transfer,Mumbai,Course fee
+T100543,U042,2026-05-19,Expense,Fuel,1276,Debit Card,Bangalore,Petrol
+T100544,U052,2026-01-23,Income,Freelance,77154,Debit Card,Delhi,Client payment
+T100545,U110,2025-04-01,Expense,Groceries,7391,Cash,Kolkata,Supermarket
+T100546,U052,2025-04-16,Income,Bonus,7329,Cash,Bhubaneswar,Performance bonus
+T100547,U114,2025-11-08,Expense,Groceries,10192,Net Banking,Ahmedabad,Supermarket
+T100548,U106,2026-01-08,Expense,Healthcare,5634,UPI,Pune,Medicine
+T100549,U092,2026-04-30,Expense,Groceries,9879,Bank Transfer,Bangalore,Supermarket
+T100550,U046,2025-12-16,Income,Freelance,5287,Bank Transfer,Hyderabad,Client payment
+T100551,U064,2025-06-18,Expense,Food,14744,Debit Card,Chennai,Lunch
+T100552,U120,2025-05-04,Expense,Shopping,3122,Cash,Pune,Electronics
+T100553,U014,2025-12-13,Expense,Shopping,11793,Cash,Bhubaneswar,Clothes
+T100554,U018,2026-06-01,Expense,Healthcare,7543,Cash,Bhubaneswar,Medicine
+T100555,U119,2026-05-10,Expense,Travel,13793,Net Banking,Mumbai,Cab
+T100556,U085,2026-02-01,Expense,Fuel,1746,Net Banking,Jaipur,Petrol
+T100557,U036,2025-09-12,Expense,Travel,6909,Cash,Bangalore,Cab
+T100558,U078,2026-02-27,Expense,Fuel,2313,Bank Transfer,Ahmedabad,Petrol
+T100559,U092,2025-11-18,Expense,Education,14151,Bank Transfer,Ahmedabad,Course fee
+T100560,U091,2025-05-16,Income,Investment,50258,Bank Transfer,Mumbai,Dividend
+T100561,U075,2026-05-07,Expense,Entertainment,9262,Net Banking,Chennai,Movie
+T100562,U067,2025-01-14,Expense,Travel,13293,UPI,Bhubaneswar,Cab
+T100563,U097,2025-10-01,Income,Salary,31201,Debit Card,Hyderabad,Monthly salary
+T100564,U097,2025-07-28,Income,Salary,43684,Net Banking,Bhubaneswar,Monthly salary
+T100565,U096,2025-08-18,Expense,Rent,10144,Bank Transfer,Ahmedabad,Monthly rent
+T100566,U050,2026-01-26,Income,Investment,11157,Cash,Bangalore,Dividend
+T100567,U107,2026-03-30,Income,Investment,31619,Debit Card,Bangalore,Dividend
+T100568,U023,2026-04-05,Expense,Shopping,4869,Bank Transfer,Delhi,Clothes
+T100569,U006,2026-01-22,Expense,Education,2005,Cash,Hyderabad,Course fee
+T100570,U060,2025-12-05,Income,Investment,5739,Bank Transfer,Mumbai,Dividend
+T100571,U063,2025-11-05,Income,Investment,11665,Net Banking,Ahmedabad,Dividend
+T100572,U024,2025-08-14,Income,Investment,73864,Net Banking,Delhi,Dividend
+T100573,U045,2025-04-05,Expense,Education,6659,Debit Card,Pune,Course fee
+T100574,U061,2026-06-28,Expense,Bills,3629,Net Banking,Bhubaneswar,Electricity bill
+T100575,U006,2025-09-07,Expense,Healthcare,3987,Bank Transfer,Bangalore,Medicine
+T100576,U070,2025-09-20,Expense,Rent,6372,Bank Transfer,Hyderabad,Monthly rent
+T100577,U058,2026-06-05,Expense,Entertainment,8476,Cash,Bhubaneswar,Movie
+T100578,U011,2026-06-11,Expense,Shopping,5298,UPI,Mumbai,Clothes
+T100579,U111,2025-08-07,Expense,Shopping,11032,Bank Transfer,Chennai,Clothes
+T100580,U004,2025-06-07,Income,Bonus,14452,Cash,Bangalore,Performance bonus
+T100581,U072,2025-09-15,Income,Salary,28329,UPI,Jaipur,Monthly salary
+T100582,U081,2026-04-07,Expense,Travel,6407,Cash,Chennai,Cab
+T100583,U083,2025-01-07,Income,Salary,75101,Bank Transfer,Jaipur,Monthly salary
+T100584,U046,2025-03-16,Expense,Groceries,795,Net Banking,Delhi,Supermarket
+T100585,U037,2025-03-30,Expense,Bills,9987,Cash,Chennai,Internet bill
+T100586,U069,2025-06-10,Expense,Food,7815,Debit Card,Mumbai,Snacks
+T100587,U039,2025-05-28,Expense,Education,4882,Bank Transfer,Bangalore,Course fee
+T100588,U006,2025-05-07,Expense,Education,2366,UPI,Jaipur,Course fee
+T100589,U096,2025-08-04,Expense,Rent,5042,Bank Transfer,Bangalore,Monthly rent
+T100590,U024,2025-06-14,Expense,Education,2383,Debit Card,Jaipur,Course fee
+T100591,U109,2025-02-25,Income,Freelance,79356,Net Banking,Kolkata,Client payment
+T100592,U026,2025-04-11,Expense,Rent,4157,Bank Transfer,Jaipur,Monthly rent
+T100593,U013,2025-08-29,Expense,Entertainment,2150,Credit Card,Jaipur,Movie
+T100594,U043,2026-04-07,Expense,Entertainment,8010,Net Banking,Hyderabad,Movie
+T100595,U055,2025-11-20,Expense,Entertainment,13283,Debit Card,Bhubaneswar,Movie
+T100596,U108,2025-10-11,Income,Freelance,62163,Credit Card,Mumbai,Client payment
+T100597,U100,2026-01-03,Expense,Healthcare,7346,Credit Card,Kolkata,Medicine
+T100598,U115,2025-05-24,Income,Salary,41780,Net Banking,Pune,Monthly salary
+T100599,U115,2025-03-19,Expense,Rent,11968,UPI,Ahmedabad,Monthly rent
+T100600,U117,2025-08-06,Expense,Groceries,6687,UPI,Ahmedabad,Supermarket
+T100601,U047,2025-06-02,Expense,Education,7784,Cash,Pune,Course fee
+T100602,U065,2026-01-08,Income,Salary,57007,UPI,Pune,Monthly salary
+T100603,U023,2025-06-13,Expense,Fuel,7360,Net Banking,Jaipur,Petrol
+T100604,U029,2025-02-11,Expense,Healthcare,5928,Cash,Pune,Medicine
+T100605,U067,2025-07-31,Expense,Shopping,751,Credit Card,Chennai,Electronics
+T100606,U014,2025-11-28,Expense,Food,703,Bank Transfer,Ahmedabad,Snacks
+T100607,U049,2025-06-28,Expense,Bills,9530,Bank Transfer,Chennai,Internet bill
+T100608,U049,2025-09-15,Expense,Rent,8515,Debit Card,Ahmedabad,Monthly rent
+T100609,U114,2026-05-09,Expense,Entertainment,8026,Net Banking,Bhubaneswar,Movie
+T100610,U083,2026-06-11,Expense,Shopping,1313,Credit Card,Pune,Clothes
+T100611,U054,2025-08-24,Income,Investment,20509,Credit Card,Delhi,Dividend
+T100612,U083,2025-06-15,Expense,Healthcare,3502,Cash,Bhubaneswar,Medicine
+T100613,U006,2026-06-09,Income,Freelance,22658,Net Banking,Mumbai,Client payment
+T100614,U077,2026-02-20,Income,Freelance,72717,Net Banking,Bhubaneswar,Client payment
+T100615,U112,2026-04-28,Expense,Shopping,7409,Cash,Mumbai,Clothes
+T100616,U080,2025-07-06,Expense,Groceries,2388,Bank Transfer,Ahmedabad,Supermarket
+T100617,U030,2025-03-12,Income,Investment,64437,Cash,Chennai,Dividend
+T100618,U088,2026-06-01,Income,Freelance,73512,Cash,Mumbai,Client payment
+T100619,U097,2026-05-31,Income,Salary,74655,UPI,Delhi,Monthly salary
+T100620,U115,2025-01-02,Expense,Groceries,8885,Bank Transfer,Chennai,Supermarket
+T100621,U055,2026-06-27,Expense,Food,11480,Debit Card,Kolkata,Dinner
+T100622,U018,2026-03-12,Expense,Groceries,1650,Credit Card,Kolkata,Supermarket
+T100623,U033,2026-02-23,Expense,Rent,4691,Debit Card,Bhubaneswar,Monthly rent
+T100624,U049,2025-01-08,Expense,Rent,8565,Bank Transfer,Pune,Monthly rent
+T100625,U084,2026-03-13,Expense,Rent,2585,Net Banking,Hyderabad,Monthly rent
+T100626,U079,2026-01-10,Expense,Travel,9301,Credit Card,Chennai,Cab
+T100627,U048,2025-07-03,Expense,Education,7954,Net Banking,Ahmedabad,Course fee
+T100628,U100,2025-12-19,Expense,Bills,9514,Bank Transfer,Chennai,Electricity bill
+T100629,U058,2025-08-24,Expense,Rent,12302,Bank Transfer,Mumbai,Monthly rent
+T100630,U021,2025-02-23,Income,Bonus,49359,Cash,Bhubaneswar,Performance bonus
+T100631,U012,2026-03-22,Expense,Healthcare,9884,UPI,Hyderabad,Medicine
+T100632,U120,2026-01-29,Expense,Groceries,668,Cash,Jaipur,Supermarket
+T100633,U082,2025-06-29,Expense,Groceries,991,Cash,Kolkata,Supermarket
+T100634,U101,2025-02-04,Income,Investment,30525,Net Banking,Ahmedabad,Dividend
+T100635,U084,2025-09-02,Expense,Food,5943,UPI,Mumbai,Lunch
+T100636,U052,2026-02-09,Expense,Travel,5835,Net Banking,Pune,Cab
+T100637,U093,2025-10-19,Expense,Rent,1527,Net Banking,Jaipur,Monthly rent
+T100638,U059,2025-07-19,Expense,Bills,3757,Cash,Jaipur,Electricity bill
+T100639,U072,2025-04-20,Expense,Travel,8344,UPI,Ahmedabad,Cab
+T100640,U033,2026-06-10,Expense,Rent,13205,Net Banking,Jaipur,Monthly rent
+T100641,U099,2026-05-11,Expense,Travel,9276,Debit Card,Bangalore,Cab
+T100642,U062,2025-01-29,Expense,Groceries,14173,UPI,Hyderabad,Supermarket
+T100643,U103,2025-08-24,Expense,Shopping,11140,Credit Card,Chennai,Electronics
+T100644,U032,2025-09-27,Expense,Food,11532,Credit Card,Delhi,Dinner
+T100645,U061,2025-07-02,Expense,Entertainment,1295,Credit Card,Bangalore,Movie
+T100646,U064,2025-07-14,Expense,Bills,3044,Bank Transfer,Pune,Electricity bill
+T100647,U026,2025-08-23,Expense,Bills,3437,Debit Card,Jaipur,Internet bill
+T100648,U087,2025-03-22,Income,Salary,20712,Bank Transfer,Kolkata,Monthly salary
+T100649,U048,2026-05-09,Expense,Education,742,Net Banking,Bangalore,Course fee
+T100650,U063,2025-10-09,Expense,Groceries,14283,Debit Card,Ahmedabad,Supermarket
+T100651,U068,2025-02-25,Expense,Groceries,2151,Cash,Kolkata,Supermarket
+T100652,U059,2025-06-28,Expense,Travel,14146,UPI,Ahmedabad,Cab
+T100653,U049,2025-08-04,Expense,Food,243,Net Banking,Delhi,Dinner
+T100654,U031,2025-09-27,Expense,Bills,3116,Credit Card,Kolkata,Internet bill
+T100655,U054,2025-08-04,Expense,Healthcare,6995,Bank Transfer,Bangalore,Medicine
+T100656,U074,2025-07-04,Expense,Bills,7434,Debit Card,Jaipur,Electricity bill
+T100657,U072,2025-08-30,Expense,Bills,13224,Cash,Chennai,Electricity bill
+T100658,U023,2025-01-10,Income,Freelance,66995,Cash,Kolkata,Client payment
+T100659,U101,2025-11-20,Expense,Education,8798,Cash,Hyderabad,Course fee
+T100660,U013,2026-02-12,Expense,Groceries,831,Bank Transfer,Mumbai,Supermarket
+T100661,U058,2025-04-09,Income,Investment,67460,Bank Transfer,Bangalore,Dividend
+T100662,U045,2025-09-21,Expense,Education,9183,UPI,Chennai,Course fee
+T100663,U100,2025-06-28,Expense,Groceries,3309,Credit Card,Bangalore,Supermarket
+T100664,U114,2026-04-03,Expense,Healthcare,12743,UPI,Chennai,Medicine
+T100665,U082,2025-06-21,Expense,Fuel,14275,Credit Card,Chennai,Petrol
+T100666,U044,2025-06-15,Expense,Rent,1346,Debit Card,Bangalore,Monthly rent
+T100667,U035,2026-02-09,Expense,Bills,9968,Cash,Bangalore,Internet bill
+T100668,U017,2025-01-24,Expense,Fuel,14045,Bank Transfer,Pune,Petrol
+T100669,U051,2025-06-20,Expense,Rent,3500,UPI,Delhi,Monthly rent
+T100670,U004,2025-02-25,Expense,Healthcare,9035,Cash,Ahmedabad,Medicine
+T100671,U040,2026-02-04,Income,Freelance,16050,Debit Card,Pune,Client payment
+T100672,U108,2026-06-24,Expense,Fuel,2200,Debit Card,Bhubaneswar,Petrol
+T100673,U060,2026-05-03,Expense,Entertainment,14209,Net Banking,Hyderabad,Movie
+T100674,U068,2026-03-22,Income,Freelance,64840,Bank Transfer,Ahmedabad,Client payment
+T100675,U104,2025-08-21,Expense,Healthcare,8891,UPI,Kolkata,Medicine
+T100676,U002,2025-11-07,Expense,Bills,2601,UPI,Ahmedabad,Electricity bill
+T100677,U089,2025-01-09,Expense,Healthcare,8817,Cash,Kolkata,Medicine
+T100678,U102,2025-08-25,Income,Bonus,43393,UPI,Ahmedabad,Performance bonus
+T100679,U021,2025-09-13,Income,Bonus,56740,Bank Transfer,Chennai,Performance bonus
+T100680,U067,2025-09-03,Income,Salary,60343,Net Banking,Hyderabad,Monthly salary
+T100681,U053,2025-10-03,Expense,Education,13301,Debit Card,Delhi,Course fee
+T100682,U035,2026-04-09,Income,Salary,64682,Bank Transfer,Jaipur,Monthly salary
+T100683,U069,2025-02-20,Income,Salary,24942,UPI,Mumbai,Monthly salary
+T100684,U094,2026-03-25,Expense,Fuel,11767,UPI,Pune,Petrol
+T100685,U054,2025-12-17,Income,Bonus,33467,Credit Card,Kolkata,Performance bonus
+T100686,U108,2025-03-24,Expense,Food,5460,Debit Card,Bhubaneswar,Dinner
+T100687,U024,2026-04-27,Expense,Rent,8949,Debit Card,Hyderabad,Monthly rent
+T100688,U050,2025-09-12,Expense,Rent,12635,Cash,Pune,Monthly rent
+T100689,U061,2025-08-02,Income,Salary,73306,Cash,Hyderabad,Monthly salary
+T100690,U016,2026-06-18,Income,Salary,77034,Credit Card,Kolkata,Monthly salary
+T100691,U031,2025-04-26,Income,Salary,33545,Bank Transfer,Chennai,Monthly salary
+T100692,U102,2026-02-10,Income,Investment,20682,Debit Card,Bhubaneswar,Dividend
+T100693,U048,2025-06-08,Expense,Healthcare,11328,UPI,Pune,Medicine
+T100694,U008,2025-03-03,Expense,Groceries,5594,Credit Card,Mumbai,Supermarket
+T100695,U104,2025-12-22,Income,Freelance,46515,Cash,Pune,Client payment
+T100696,U033,2025-05-18,Expense,Entertainment,11918,UPI,Kolkata,Movie
+T100697,U025,2026-05-17,Expense,Education,11470,Net Banking,Mumbai,Course fee
+T100698,U009,2025-06-14,Expense,Healthcare,4560,Net Banking,Mumbai,Medicine
+T100699,U059,2026-01-11,Expense,Bills,8923,UPI,Ahmedabad,Internet bill
+T100700,U100,2026-01-08,Expense,Food,10203,Net Banking,Pune,Dinner
+T100701,U025,2026-02-01,Expense,Education,13469,Net Banking,Kolkata,Course fee
+T100702,U015,2025-11-26,Expense,Entertainment,6764,UPI,Ahmedabad,Movie
+T100703,U026,2025-02-02,Income,Freelance,28414,UPI,Kolkata,Client payment
+T100704,U080,2026-06-23,Income,Bonus,69213,Bank Transfer,Jaipur,Performance bonus
+T100705,U120,2025-01-14,Income,Freelance,14289,Debit Card,Kolkata,Client payment
+T100706,U106,2026-03-02,Expense,Food,5963,Credit Card,Bhubaneswar,Snacks
+T100707,U107,2025-03-14,Expense,Food,12080,Credit Card,Delhi,Lunch
+T100708,U069,2025-08-25,Expense,Rent,1708,Cash,Pune,Monthly rent
+T100709,U072,2025-07-03,Expense,Shopping,9389,Bank Transfer,Ahmedabad,Electronics
+T100710,U090,2026-04-15,Expense,Groceries,5914,Bank Transfer,Chennai,Supermarket
+T100711,U065,2026-02-16,Income,Freelance,77085,Credit Card,Mumbai,Client payment
+T100712,U109,2025-11-29,Expense,Entertainment,9062,Credit Card,Chennai,Movie
+T100713,U073,2025-09-04,Expense,Entertainment,10018,Net Banking,Pune,Movie
+T100714,U058,2026-04-09,Expense,Bills,5948,Cash,Bhubaneswar,Electricity bill
+T100715,U018,2026-06-15,Expense,Groceries,317,Credit Card,Bhubaneswar,Supermarket
+T100716,U003,2025-11-19,Expense,Shopping,14070,Bank Transfer,Hyderabad,Clothes
+T100717,U018,2025-06-09,Income,Bonus,51616,Credit Card,Bangalore,Performance bonus
+T100718,U073,2026-02-14,Income,Investment,17046,Debit Card,Delhi,Dividend
+T100719,U077,2025-04-08,Expense,Fuel,8049,Bank Transfer,Hyderabad,Petrol
+T100720,U100,2025-03-22,Expense,Groceries,6301,UPI,Bangalore,Supermarket
+T100721,U112,2025-05-04,Expense,Travel,6874,Debit Card,Jaipur,Cab
+T100722,U068,2025-11-09,Expense,Travel,936,UPI,Bangalore,Cab
+T100723,U087,2025-02-21,Expense,Shopping,2559,Bank Transfer,Chennai,Electronics
+T100724,U029,2025-04-03,Expense,Groceries,8319,Cash,Hyderabad,Supermarket
+T100725,U074,2026-05-03,Income,Investment,15819,Bank Transfer,Bhubaneswar,Dividend
+T100726,U100,2026-03-21,Expense,Travel,8271,Bank Transfer,Mumbai,Cab
+T100727,U084,2026-02-09,Expense,Shopping,8043,Net Banking,Pune,Clothes
+T100728,U088,2025-11-28,Income,Investment,61369,Net Banking,Delhi,Dividend
+T100729,U025,2025-12-23,Expense,Travel,6034,Credit Card,Bangalore,Cab
+T100730,U080,2026-03-29,Expense,Fuel,5779,Debit Card,Kolkata,Petrol
+T100731,U020,2026-01-18,Expense,Shopping,3321,Bank Transfer,Delhi,Clothes
+T100732,U112,2025-06-01,Expense,Shopping,10224,Credit Card,Bhubaneswar,Electronics
+T100733,U061,2026-04-06,Expense,Rent,5049,UPI,Bangalore,Monthly rent
+T100734,U097,2026-06-20,Expense,Shopping,3389,Credit Card,Ahmedabad,Electronics
+T100735,U049,2025-01-19,Expense,Fuel,11438,Net Banking,Ahmedabad,Petrol
+T100736,U102,2025-07-25,Expense,Food,4703,Bank Transfer,Jaipur,Dinner
+T100737,U085,2026-02-02,Income,Salary,13729,Credit Card,Bangalore,Monthly salary
+T100738,U066,2026-01-25,Income,Bonus,35299,Bank Transfer,Delhi,Performance bonus
+T100739,U024,2025-04-01,Expense,Groceries,8759,Debit Card,Ahmedabad,Supermarket
+T100740,U119,2025-09-11,Expense,Food,701,Net Banking,Hyderabad,Dinner
+T100741,U088,2025-12-22,Expense,Fuel,351,Credit Card,Bangalore,Petrol
+T100742,U113,2025-09-21,Income,Investment,13127,Cash,Bhubaneswar,Dividend
+T100743,U012,2025-05-21,Income,Investment,56491,Bank Transfer,Chennai,Dividend
+T100744,U040,2026-03-13,Expense,Groceries,2552,Net Banking,Bangalore,Supermarket
+T100745,U075,2025-05-22,Expense,Shopping,10740,Net Banking,Pune,Clothes
+T100746,U056,2025-05-19,Expense,Education,14952,Debit Card,Jaipur,Course fee
+T100747,U024,2025-05-02,Expense,Education,8782,Credit Card,Mumbai,Course fee
+T100748,U057,2025-11-07,Expense,Travel,6787,Bank Transfer,Hyderabad,Cab
+T100749,U004,2025-07-09,Expense,Rent,2205,Net Banking,Jaipur,Monthly rent
+T100750,U030,2025-08-26,Expense,Groceries,3833,Bank Transfer,Bhubaneswar,Supermarket
+T100751,U109,2026-05-30,Income,Bonus,22575,Net Banking,Kolkata,Performance bonus
+T100752,U018,2026-05-01,Income,Bonus,69414,Debit Card,Pune,Performance bonus
+T100753,U029,2026-02-27,Income,Salary,40370,Bank Transfer,Pune,Monthly salary
+T100754,U111,2025-11-29,Income,Bonus,69217,Cash,Pune,Performance bonus
+T100755,U093,2026-01-25,Expense,Food,10010,Credit Card,Chennai,Snacks
+T100756,U068,2026-07-04,Expense,Groceries,9778,Bank Transfer,Bhubaneswar,Supermarket
+T100757,U067,2025-09-09,Expense,Food,14431,Net Banking,Chennai,Snacks
+T100758,U025,2025-02-20,Income,Bonus,72649,Credit Card,Kolkata,Performance bonus
+T100759,U055,2025-06-20,Expense,Bills,7608,Credit Card,Jaipur,Electricity bill
+T100760,U012,2026-04-08,Expense,Fuel,7645,Bank Transfer,Ahmedabad,Petrol
+T100761,U042,2026-02-28,Income,Freelance,56520,Cash,Bhubaneswar,Client payment
+T100762,U012,2026-04-11,Expense,Shopping,14509,Credit Card,Bangalore,Clothes
+T100763,U091,2025-04-27,Expense,Rent,1544,Cash,Bangalore,Monthly rent
+T100764,U079,2026-06-08,Expense,Travel,11959,Debit Card,Chennai,Cab
+T100765,U021,2025-06-03,Income,Freelance,48934,Debit Card,Mumbai,Client payment
+T100766,U037,2026-04-02,Expense,Bills,12012,Bank Transfer,Mumbai,Electricity bill
+T100767,U002,2025-09-17,Expense,Shopping,107,Cash,Kolkata,Electronics
+T100768,U031,2026-05-21,Expense,Food,10011,Debit Card,Jaipur,Snacks
+T100769,U077,2025-03-23,Expense,Travel,7289,Net Banking,Bhubaneswar,Cab
+T100770,U007,2025-08-01,Expense,Bills,10204,Debit Card,Mumbai,Electricity bill
+T100771,U086,2025-02-03,Expense,Food,2431,Net Banking,Jaipur,Dinner
+T100772,U054,2025-04-22,Expense,Rent,853,Debit Card,Mumbai,Monthly rent
+T100773,U059,2025-07-01,Expense,Groceries,9426,Bank Transfer,Jaipur,Supermarket
+T100774,U042,2025-11-03,Expense,Rent,12641,Credit Card,Chennai,Monthly rent
+T100775,U061,2025-10-27,Expense,Education,1113,Debit Card,Delhi,Course fee
+T100776,U090,2025-08-03,Expense,Travel,8645,Debit Card,Jaipur,Cab
+T100777,U055,2025-10-22,Income,Salary,68394,Net Banking,Bangalore,Monthly salary
+T100778,U079,2025-05-13,Expense,Groceries,5847,Net Banking,Kolkata,Supermarket
+T100779,U091,2025-08-27,Expense,Fuel,14527,Credit Card,Pune,Petrol
+T100780,U103,2025-08-01,Income,Bonus,20456,Net Banking,Chennai,Performance bonus
+T100781,U002,2025-08-06,Income,Investment,78454,Bank Transfer,Pune,Dividend
+T100782,U065,2025-11-04,Expense,Rent,5092,Net Banking,Bangalore,Monthly rent
+T100783,U093,2026-02-10,Income,Investment,49742,Net Banking,Jaipur,Dividend
+T100784,U119,2025-12-13,Expense,Shopping,5465,Bank Transfer,Kolkata,Electronics
+T100785,U081,2025-06-09,Expense,Fuel,7938,Cash,Ahmedabad,Petrol
+T100786,U107,2025-02-27,Expense,Travel,12216,Net Banking,Hyderabad,Cab
+T100787,U103,2025-12-06,Expense,Food,3462,Credit Card,Delhi,Lunch
+T100788,U081,2026-01-20,Expense,Food,5606,Net Banking,Mumbai,Snacks
+T100789,U111,2025-04-30,Expense,Fuel,9801,Credit Card,Bangalore,Petrol
+T100790,U048,2025-09-01,Expense,Rent,8193,Cash,Hyderabad,Monthly rent
+T100791,U101,2026-01-19,Expense,Fuel,1888,UPI,Pune,Petrol
+T100792,U116,2026-05-10,Expense,Food,13141,Net Banking,Mumbai,Lunch
+T100793,U040,2026-06-21,Expense,Healthcare,12050,Credit Card,Mumbai,Medicine
+T100794,U027,2025-05-16,Expense,Education,11137,Bank Transfer,Bhubaneswar,Course fee
+T100795,U040,2025-01-05,Expense,Education,1947,UPI,Jaipur,Course fee
+T100796,U099,2026-06-18,Expense,Food,1739,Bank Transfer,Hyderabad,Lunch
+T100797,U042,2025-08-03,Expense,Bills,10516,Debit Card,Pune,Internet bill
+T100798,U086,2026-03-28,Expense,Entertainment,12711,UPI,Hyderabad,Movie
+T100799,U014,2026-06-11,Income,Salary,6999,Debit Card,Ahmedabad,Monthly salary
+T100800,U074,2025-10-18,Expense,Bills,2369,Debit Card,Mumbai,Electricity bill
+T100801,U007,2026-03-31,Expense,Entertainment,8906,Debit Card,Bhubaneswar,Movie
+T100802,U007,2026-01-28,Expense,Food,1785,UPI,Chennai,Dinner
+T100803,U043,2025-11-16,Income,Bonus,51612,Debit Card,Ahmedabad,Performance bonus
+T100804,U012,2025-05-15,Expense,Healthcare,9352,Bank Transfer,Kolkata,Medicine
+T100805,U029,2025-08-26,Expense,Healthcare,7759,Debit Card,Jaipur,Medicine
+T100806,U101,2025-12-05,Expense,Travel,3054,Credit Card,Kolkata,Cab
+T100807,U062,2025-12-26,Income,Bonus,19796,Cash,Mumbai,Performance bonus
+T100808,U066,2025-05-11,Expense,Groceries,9465,UPI,Chennai,Supermarket
+T100809,U069,2025-11-06,Expense,Rent,13033,Cash,Chennai,Monthly rent
+T100810,U062,2025-06-12,Income,Freelance,76820,Cash,Delhi,Client payment
+T100811,U070,2025-12-17,Income,Bonus,62062,Bank Transfer,Pune,Performance bonus
+T100812,U015,2026-05-14,Expense,Rent,12163,Net Banking,Jaipur,Monthly rent
+T100813,U023,2026-04-01,Expense,Rent,13518,Credit Card,Chennai,Monthly rent
+T100814,U042,2026-01-24,Expense,Groceries,12687,Cash,Bhubaneswar,Supermarket
+T100815,U085,2025-05-31,Income,Freelance,5024,Debit Card,Kolkata,Client payment
+T100816,U027,2025-07-20,Expense,Groceries,7376,Bank Transfer,Bangalore,Supermarket
+T100817,U012,2025-12-19,Expense,Bills,7172,Net Banking,Bhubaneswar,Internet bill
+T100818,U116,2026-01-14,Expense,Bills,1072,Net Banking,Bhubaneswar,Electricity bill
+T100819,U111,2025-10-16,Expense,Entertainment,1847,UPI,Pune,Movie
+T100820,U092,2025-11-22,Expense,Travel,10293,Cash,Chennai,Cab
+T100821,U061,2025-06-27,Expense,Shopping,10904,Debit Card,Pune,Electronics
+T100822,U020,2026-03-04,Expense,Entertainment,13811,Credit Card,Mumbai,Movie
+T100823,U085,2026-05-14,Income,Salary,23873,Cash,Mumbai,Monthly salary
+T100824,U080,2026-03-12,Income,Bonus,64772,Debit Card,Kolkata,Performance bonus
+T100825,U029,2025-12-30,Expense,Healthcare,6353,Debit Card,Chennai,Medicine
+T100826,U035,2026-05-29,Expense,Shopping,11717,Cash,Ahmedabad,Electronics
+T100827,U091,2026-05-10,Income,Salary,79468,Credit Card,Delhi,Monthly salary
+T100828,U110,2026-06-24,Expense,Rent,2377,Credit Card,Kolkata,Monthly rent
+T100829,U061,2025-09-09,Expense,Groceries,1499,Bank Transfer,Delhi,Supermarket
+T100830,U061,2025-01-12,Expense,Entertainment,8815,Cash,Ahmedabad,Movie
+T100831,U103,2025-12-28,Expense,Entertainment,6947,Credit Card,Hyderabad,Movie
+T100832,U008,2025-09-24,Income,Investment,78886,Bank Transfer,Kolkata,Dividend
+T100833,U037,2025-01-28,Expense,Bills,13302,Cash,Delhi,Electricity bill
+T100834,U079,2025-05-16,Expense,Bills,4179,Credit Card,Hyderabad,Internet bill
+T100835,U085,2025-06-04,Income,Salary,27886,Cash,Bangalore,Monthly salary
+T100836,U103,2025-07-05,Expense,Shopping,7994,Net Banking,Bhubaneswar,Electronics
+T100837,U108,2025-06-07,Expense,Fuel,9807,Cash,Chennai,Petrol
+T100838,U074,2025-08-04,Income,Bonus,26926,Bank Transfer,Bangalore,Performance bonus
+T100839,U060,2025-06-21,Expense,Rent,910,Cash,Kolkata,Monthly rent
+T100840,U088,2026-01-24,Expense,Education,3878,Bank Transfer,Chennai,Course fee
+T100841,U002,2026-03-22,Expense,Education,14308,Credit Card,Kolkata,Course fee
+T100842,U013,2025-02-12,Expense,Education,11238,Net Banking,Bangalore,Course fee
+T100843,U035,2025-10-04,Expense,Bills,5538,UPI,Hyderabad,Internet bill
+T100844,U067,2025-07-19,Expense,Shopping,12080,Credit Card,Mumbai,Electronics
+T100845,U002,2025-03-11,Expense,Food,13676,Cash,Delhi,Snacks
+T100846,U093,2025-08-13,Income,Bonus,51073,Credit Card,Hyderabad,Performance bonus
+T100847,U077,2025-08-11,Income,Salary,12455,Bank Transfer,Delhi,Monthly salary
+T100848,U115,2025-07-09,Income,Freelance,54277,UPI,Mumbai,Client payment
+T100849,U119,2026-04-10,Expense,Rent,10515,Credit Card,Chennai,Monthly rent
+T100850,U049,2025-03-05,Expense,Rent,4593,Cash,Bangalore,Monthly rent
+T100851,U009,2026-03-28,Expense,Bills,2965,Cash,Pune,Internet bill
+T100852,U070,2025-05-28,Income,Bonus,19212,Cash,Pune,Performance bonus
+T100853,U010,2025-02-05,Expense,Bills,1742,UPI,Jaipur,Internet bill
+T100854,U020,2026-05-25,Expense,Food,14738,Bank Transfer,Bhubaneswar,Lunch
+T100855,U116,2025-12-04,Expense,Bills,2533,Cash,Jaipur,Electricity bill
+T100856,U052,2026-03-23,Expense,Healthcare,7883,Bank Transfer,Delhi,Medicine
+T100857,U120,2026-07-03,Income,Bonus,20886,Credit Card,Bangalore,Performance bonus
+T100858,U110,2026-07-02,Expense,Rent,6035,Credit Card,Delhi,Monthly rent
+T100859,U023,2025-07-27,Expense,Bills,10663,Net Banking,Bhubaneswar,Internet bill
+T100860,U115,2026-02-04,Expense,Bills,11451,UPI,Bangalore,Internet bill
+T100861,U005,2025-05-24,Income,Bonus,29833,Debit Card,Bhubaneswar,Performance bonus
+T100862,U064,2025-11-12,Expense,Rent,13038,Net Banking,Kolkata,Monthly rent
+T100863,U052,2025-02-13,Income,Salary,49265,UPI,Pune,Monthly salary
+T100864,U119,2025-08-27,Expense,Education,2490,UPI,Bhubaneswar,Course fee
+T100865,U032,2025-02-16,Expense,Food,7770,Bank Transfer,Mumbai,Lunch
+T100866,U059,2025-04-10,Income,Salary,45283,Net Banking,Mumbai,Monthly salary
+T100867,U077,2026-05-25,Expense,Rent,1920,Net Banking,Pune,Monthly rent
+T100868,U042,2026-02-16,Expense,Travel,5577,UPI,Jaipur,Cab
+T100869,U076,2025-02-16,Expense,Shopping,12571,Debit Card,Bangalore,Clothes
+T100870,U090,2025-06-22,Income,Freelance,59415,Credit Card,Ahmedabad,Client payment
+T100871,U013,2025-05-17,Expense,Groceries,716,Bank Transfer,Jaipur,Supermarket
+T100872,U011,2026-05-14,Expense,Food,14461,UPI,Bhubaneswar,Lunch
+T100873,U054,2025-10-18,Expense,Groceries,14581,Bank Transfer,Kolkata,Supermarket
+T100874,U053,2026-04-07,Income,Investment,73562,Debit Card,Mumbai,Dividend
+T100875,U081,2025-04-01,Expense,Healthcare,10077,Credit Card,Bangalore,Medicine
+T100876,U068,2025-05-01,Income,Freelance,30153,UPI,Jaipur,Client payment
+T100877,U060,2025-08-13,Expense,Education,8365,Bank Transfer,Pune,Course fee
+T100878,U064,2026-05-01,Income,Salary,24558,Debit Card,Mumbai,Monthly salary
+T100879,U056,2025-08-03,Income,Investment,42363,Credit Card,Bangalore,Dividend
+T100880,U021,2025-06-30,Income,Salary,75432,UPI,Kolkata,Monthly salary
+T100881,U054,2025-11-30,Income,Freelance,63303,Debit Card,Bangalore,Client payment
+T100882,U031,2025-04-11,Expense,Entertainment,3781,Bank Transfer,Chennai,Movie
+T100883,U075,2026-04-28,Expense,Shopping,1254,Cash,Bhubaneswar,Electronics
+T100884,U048,2026-02-01,Income,Bonus,28338,Debit Card,Kolkata,Performance bonus
+T100885,U017,2025-12-10,Expense,Bills,3363,UPI,Jaipur,Electricity bill
+T100886,U059,2026-04-22,Expense,Rent,14003,Cash,Mumbai,Monthly rent
+T100887,U074,2025-06-24,Income,Investment,25550,Net Banking,Pune,Dividend
+T100888,U076,2025-08-10,Expense,Education,8065,Cash,Kolkata,Course fee
+T100889,U042,2025-09-11,Income,Bonus,37329,Cash,Jaipur,Performance bonus
+T100890,U054,2025-01-06,Expense,Groceries,2490,UPI,Bhubaneswar,Supermarket
+T100891,U068,2026-03-12,Expense,Education,600,Cash,Kolkata,Course fee
+T100892,U089,2025-01-13,Expense,Shopping,1411,Bank Transfer,Chennai,Clothes
+T100893,U003,2025-04-03,Income,Investment,36334,Cash,Hyderabad,Dividend
+T100894,U059,2025-01-25,Expense,Groceries,12293,Cash,Mumbai,Supermarket
+T100895,U111,2025-01-02,Income,Investment,65856,Bank Transfer,Delhi,Dividend
+T100896,U038,2025-02-03,Expense,Entertainment,8748,Cash,Hyderabad,Movie
+T100897,U095,2025-12-10,Expense,Rent,10215,UPI,Ahmedabad,Monthly rent
+T100898,U060,2026-01-10,Expense,Rent,6324,Net Banking,Bhubaneswar,Monthly rent
+T100899,U072,2025-03-10,Expense,Education,11598,Bank Transfer,Pune,Course fee
+T100900,U084,2025-04-27,Expense,Shopping,8891,Cash,Jaipur,Clothes
+T100901,U115,2025-12-28,Expense,Shopping,5300,Credit Card,Ahmedabad,Electronics
+T100902,U058,2025-12-20,Expense,Rent,6158,Cash,Ahmedabad,Monthly rent
+T100903,U116,2026-06-30,Expense,Education,11163,Credit Card,Kolkata,Course fee
+T100904,U012,2026-04-14,Expense,Rent,3135,UPI,Chennai,Monthly rent
+T100905,U036,2025-06-18,Expense,Rent,1841,UPI,Mumbai,Monthly rent
+T100906,U038,2025-01-24,Income,Freelance,73247,Cash,Ahmedabad,Client payment
+T100907,U038,2025-01-22,Expense,Travel,7322,Debit Card,Delhi,Cab
+T100908,U083,2026-06-17,Expense,Shopping,13729,Credit Card,Chennai,Electronics
+T100909,U108,2026-06-27,Expense,Entertainment,8015,Net Banking,Kolkata,Movie
+T100910,U022,2025-11-10,Expense,Fuel,14767,Credit Card,Pune,Petrol
+T100911,U019,2025-02-18,Expense,Bills,12661,Credit Card,Hyderabad,Internet bill
+T100912,U037,2026-07-03,Expense,Groceries,2684,Debit Card,Mumbai,Supermarket
+T100913,U074,2025-11-21,Income,Salary,10393,Debit Card,Kolkata,Monthly salary
+T100914,U086,2025-02-05,Expense,Shopping,9265,Credit Card,Bangalore,Clothes
+T100915,U039,2026-07-01,Expense,Education,2713,UPI,Bhubaneswar,Course fee
+T100916,U020,2025-11-24,Expense,Fuel,7554,UPI,Ahmedabad,Petrol
+T100917,U097,2025-10-24,Expense,Bills,7814,Net Banking,Mumbai,Internet bill
+T100918,U116,2026-05-06,Expense,Rent,12037,UPI,Mumbai,Monthly rent
+T100919,U058,2025-08-14,Expense,Travel,10167,Credit Card,Delhi,Cab
+T100920,U101,2025-08-16,Income,Freelance,74000,Credit Card,Pune,Client payment
+T100921,U051,2026-06-09,Income,Bonus,16452,Debit Card,Kolkata,Performance bonus
+T100922,U051,2026-01-05,Expense,Education,968,Debit Card,Chennai,Course fee
+T100923,U045,2025-12-20,Expense,Food,4713,Credit Card,Kolkata,Snacks
+T100924,U037,2026-03-30,Income,Bonus,59474,Debit Card,Chennai,Performance bonus
+T100925,U039,2025-08-01,Income,Salary,23827,Cash,Ahmedabad,Monthly salary
+T100926,U053,2025-01-07,Income,Bonus,16593,Bank Transfer,Hyderabad,Performance bonus
+T100927,U026,2025-05-21,Income,Bonus,79437,Debit Card,Chennai,Performance bonus
+T100928,U107,2025-11-06,Expense,Food,13530,Net Banking,Hyderabad,Dinner
+T100929,U102,2025-01-28,Expense,Healthcare,3728,UPI,Mumbai,Medicine
+T100930,U054,2025-10-22,Expense,Healthcare,2084,Debit Card,Kolkata,Medicine
+T100931,U077,2025-03-10,Income,Investment,69625,Bank Transfer,Bangalore,Dividend
+T100932,U089,2026-05-03,Expense,Bills,10339,UPI,Bangalore,Electricity bill
+T100933,U019,2025-03-01,Expense,Fuel,9579,Credit Card,Kolkata,Petrol
+T100934,U054,2026-01-05,Expense,Food,4517,Bank Transfer,Bangalore,Lunch
+T100935,U066,2025-03-20,Expense,Education,10518,Debit Card,Mumbai,Course fee
+T100936,U112,2025-11-27,Expense,Fuel,8958,Credit Card,Hyderabad,Petrol
+T100937,U075,2026-07-02,Expense,Entertainment,1620,Credit Card,Mumbai,Movie
+T100938,U053,2026-05-12,Income,Investment,53891,Credit Card,Mumbai,Dividend
+T100939,U109,2026-06-23,Income,Freelance,29696,Net Banking,Ahmedabad,Client payment
+T100940,U119,2025-05-15,Expense,Rent,1959,UPI,Kolkata,Monthly rent
+T100941,U114,2026-03-29,Expense,Entertainment,2327,Net Banking,Ahmedabad,Movie
+T100942,U029,2025-05-02,Income,Investment,8769,Debit Card,Mumbai,Dividend
+T100943,U055,2025-03-22,Expense,Shopping,2183,Bank Transfer,Delhi,Clothes
+T100944,U026,2025-02-13,Income,Bonus,61524,UPI,Bhubaneswar,Performance bonus
+T100945,U039,2025-03-09,Expense,Bills,759,Bank Transfer,Bhubaneswar,Electricity bill
+T100946,U024,2025-07-24,Expense,Groceries,3415,Bank Transfer,Bangalore,Supermarket
+T100947,U021,2025-12-27,Income,Investment,50591,Net Banking,Jaipur,Dividend
+T100948,U068,2025-01-15,Expense,Rent,1673,Debit Card,Pune,Monthly rent
+T100949,U118,2025-08-08,Income,Salary,17934,Net Banking,Kolkata,Monthly salary
+T100950,U024,2025-04-20,Expense,Fuel,7253,Credit Card,Chennai,Petrol
+T100951,U098,2025-04-26,Income,Freelance,58422,Credit Card,Delhi,Client payment
+T100952,U091,2026-01-05,Income,Freelance,69987,Credit Card,Ahmedabad,Client payment
+T100953,U037,2026-01-30,Income,Bonus,20167,Cash,Jaipur,Performance bonus
+T100954,U038,2026-02-22,Expense,Healthcare,3750,Cash,Pune,Medicine
+T100955,U023,2026-01-12,Expense,Healthcare,11176,UPI,Kolkata,Medicine
+T100956,U016,2025-03-29,Expense,Education,10839,Debit Card,Chennai,Course fee
+T100957,U009,2025-06-22,Expense,Rent,12197,Credit Card,Pune,Monthly rent
+T100958,U108,2025-08-27,Income,Bonus,21090,Cash,Kolkata,Performance bonus
+T100959,U097,2025-10-07,Expense,Groceries,9776,Bank Transfer,Chennai,Supermarket
+T100960,U066,2026-05-12,Expense,Groceries,6676,Credit Card,Mumbai,Supermarket
+T100961,U030,2026-05-25,Income,Investment,69138,Bank Transfer,Mumbai,Dividend
+T100962,U087,2026-05-26,Income,Salary,13942,UPI,Mumbai,Monthly salary
+T100963,U080,2025-11-07,Expense,Entertainment,2552,Net Banking,Delhi,Movie
+T100964,U102,2026-05-20,Expense,Education,12625,Cash,Pune,Course fee
+T100965,U070,2025-09-25,Expense,Healthcare,8320,Credit Card,Ahmedabad,Medicine
+T100966,U050,2025-05-02,Expense,Food,7101,Cash,Bangalore,Dinner
+T100967,U072,2025-07-01,Expense,Food,588,Bank Transfer,Hyderabad,Snacks
+T100968,U092,2025-11-16,Income,Bonus,22627,Cash,Kolkata,Performance bonus
+T100969,U061,2026-04-27,Expense,Healthcare,10864,Net Banking,Mumbai,Medicine
+T100970,U079,2026-01-22,Expense,Healthcare,9733,Bank Transfer,Bangalore,Medicine
+T100971,U017,2025-02-16,Expense,Food,9724,Credit Card,Bangalore,Snacks
+T100972,U055,2025-04-10,Expense,Entertainment,6285,Credit Card,Bangalore,Movie
+T100973,U083,2025-08-29,Expense,Shopping,4106,Credit Card,Jaipur,Clothes
+T100974,U015,2025-11-09,Expense,Rent,14286,Credit Card,Mumbai,Monthly rent
+T100975,U073,2026-03-09,Expense,Food,7601,Net Banking,Chennai,Dinner
+T100976,U049,2025-11-21,Income,Bonus,7914,Net Banking,Chennai,Performance bonus
+T100977,U044,2025-07-30,Expense,Healthcare,1689,Cash,Ahmedabad,Medicine
+T100978,U026,2026-03-23,Income,Investment,52622,Cash,Delhi,Dividend
+T100979,U103,2026-02-16,Expense,Food,4921,Debit Card,Jaipur,Snacks
+T100980,U035,2025-12-11,Expense,Groceries,1602,UPI,Jaipur,Supermarket
+T100981,U084,2025-03-20,Expense,Entertainment,13085,Credit Card,Ahmedabad,Movie
+T100982,U054,2025-07-24,Expense,Education,5183,Cash,Hyderabad,Course fee
+T100983,U081,2025-01-20,Expense,Education,3008,Bank Transfer,Ahmedabad,Course fee
+T100984,U035,2026-04-24,Expense,Shopping,10876,Bank Transfer,Ahmedabad,Electronics
+T100985,U047,2025-07-25,Expense,Food,8606,Cash,Mumbai,Lunch
+T100986,U041,2026-02-25,Income,Investment,62067,UPI,Pune,Dividend
+T100987,U033,2025-06-14,Expense,Bills,10634,Bank Transfer,Jaipur,Electricity bill
+T100988,U004,2025-07-16,Expense,Rent,2506,Debit Card,Hyderabad,Monthly rent
+T100989,U026,2025-02-07,Expense,Travel,6964,Debit Card,Hyderabad,Cab
+T100990,U083,2025-06-30,Income,Investment,77182,UPI,Kolkata,Dividend
+T100991,U111,2025-11-02,Income,Salary,46144,UPI,Chennai,Monthly salary
+T100992,U031,2025-05-24,Expense,Rent,6552,UPI,Jaipur,Monthly rent
+T100993,U033,2026-06-22,Expense,Groceries,12749,Cash,Delhi,Supermarket
+T100994,U104,2026-02-04,Expense,Entertainment,5445,Bank Transfer,Pune,Movie
+T100995,U036,2025-08-08,Income,Salary,27957,Cash,Chennai,Monthly salary
+T100996,U048,2026-07-01,Expense,Food,8084,Bank Transfer,Delhi,Dinner
+T100997,U036,2025-09-10,Expense,Healthcare,11235,Debit Card,Bangalore,Medicine
+T100998,U108,2025-02-05,Expense,Bills,395,Bank Transfer,Bhubaneswar,Electricity bill
+T100999,U116,2026-01-07,Expense,Travel,5117,Bank Transfer,Delhi,Cab
+T101000,U119,2026-02-07,Expense,Travel,178,Credit Card,Hyderabad,Cab
+T101001,U111,2025-08-04,Expense,Shopping,4922,Debit Card,Kolkata,Electronics
+T101002,U036,2025-02-04,Expense,Travel,12982,UPI,Kolkata,Cab
+T101003,U113,2026-03-09,Expense,Entertainment,11803,UPI,Mumbai,Movie
+T101004,U059,2025-12-01,Expense,Entertainment,6945,Bank Transfer,Bhubaneswar,Movie
+T101005,U102,2026-03-31,Expense,Fuel,10374,Bank Transfer,Mumbai,Petrol
+T101006,U015,2025-03-26,Expense,Bills,5190,Debit Card,Pune,Electricity bill
+T101007,U058,2025-11-24,Expense,Travel,13036,Cash,Mumbai,Cab
+T101008,U011,2025-07-23,Income,Investment,41935,Cash,Bangalore,Dividend
+T101009,U003,2025-08-18,Expense,Travel,13725,UPI,Ahmedabad,Cab
+T101010,U090,2025-09-26,Expense,Healthcare,3298,Debit Card,Bhubaneswar,Medicine
+T101011,U012,2025-06-02,Expense,Groceries,4312,Credit Card,Mumbai,Supermarket
+T101012,U016,2026-05-22,Income,Bonus,64468,Debit Card,Pune,Performance bonus
+T101013,U049,2026-05-22,Expense,Bills,4767,Debit Card,Chennai,Electricity bill
+T101014,U054,2025-07-13,Expense,Bills,11956,Debit Card,Chennai,Electricity bill
+T101015,U117,2026-04-07,Income,Investment,35865,Debit Card,Bangalore,Dividend
+T101016,U089,2025-11-28,Income,Bonus,22459,Cash,Pune,Performance bonus
+T101017,U013,2025-03-16,Expense,Groceries,4248,Net Banking,Bhubaneswar,Supermarket
+T101018,U078,2025-12-29,Expense,Shopping,7765,Bank Transfer,Jaipur,Clothes
+T101019,U086,2026-02-09,Income,Bonus,44650,Credit Card,Mumbai,Performance bonus
+T101020,U064,2026-05-31,Expense,Bills,2833,Credit Card,Kolkata,Electricity bill
+T101021,U015,2025-09-24,Income,Bonus,23585,Credit Card,Bhubaneswar,Performance bonus
+T101022,U119,2026-01-05,Expense,Bills,12302,Cash,Hyderabad,Internet bill
+T101023,U056,2025-11-17,Expense,Bills,8520,Debit Card,Bangalore,Internet bill
+T101024,U007,2026-03-27,Expense,Fuel,9154,Debit Card,Mumbai,Petrol
+T101025,U021,2025-09-24,Income,Salary,66636,Bank Transfer,Kolkata,Monthly salary
+T101026,U046,2026-03-29,Income,Bonus,10346,Bank Transfer,Ahmedabad,Performance bonus
+T101027,U016,2025-06-01,Expense,Rent,13908,Credit Card,Delhi,Monthly rent
+T101028,U096,2025-06-22,Expense,Fuel,13729,Net Banking,Hyderabad,Petrol
+T101029,U054,2025-07-04,Expense,Food,8668,UPI,Pune,Dinner
+T101030,U088,2025-10-19,Expense,Entertainment,475,Bank Transfer,Delhi,Movie
+T101031,U020,2025-11-28,Expense,Rent,13763,UPI,Delhi,Monthly rent
+T101032,U077,2025-10-03,Expense,Healthcare,7489,Bank Transfer,Bhubaneswar,Medicine
+T101033,U094,2025-11-29,Expense,Groceries,7473,Bank Transfer,Jaipur,Supermarket
+T101034,U103,2025-11-27,Income,Salary,42087,UPI,Delhi,Monthly salary
+T101035,U099,2025-09-03,Income,Investment,28332,Cash,Delhi,Dividend
+T101036,U037,2026-02-17,Expense,Fuel,6415,Bank Transfer,Mumbai,Petrol
+T101037,U116,2025-11-14,Expense,Travel,12106,Bank Transfer,Jaipur,Cab
+T101038,U066,2026-01-12,Expense,Rent,13682,Debit Card,Kolkata,Monthly rent
+T101039,U012,2026-03-10,Expense,Healthcare,4448,Cash,Bangalore,Medicine
+T101040,U066,2025-02-11,Expense,Travel,1572,Credit Card,Kolkata,Cab
+T101041,U081,2026-06-24,Expense,Fuel,8165,Bank Transfer,Ahmedabad,Petrol
+T101042,U039,2026-05-05,Expense,Travel,1347,Debit Card,Mumbai,Cab
+T101043,U073,2025-10-30,Expense,Education,7057,UPI,Ahmedabad,Course fee
+T101044,U055,2026-06-07,Expense,Education,1813,Cash,Delhi,Course fee
+T101045,U046,2025-09-17,Expense,Groceries,13367,Credit Card,Jaipur,Supermarket
+T101046,U023,2026-04-19,Expense,Food,1916,Debit Card,Chennai,Lunch
+T101047,U097,2026-04-11,Income,Investment,46149,Bank Transfer,Kolkata,Dividend
+T101048,U011,2025-07-09,Expense,Fuel,3508,Bank Transfer,Jaipur,Petrol
+T101049,U003,2026-07-02,Expense,Rent,7157,UPI,Chennai,Monthly rent
+T101050,U112,2026-02-19,Income,Bonus,65314,Bank Transfer,Jaipur,Performance bonus
+T101051,U103,2026-02-09,Expense,Groceries,5960,Credit Card,Delhi,Supermarket
+T101052,U090,2025-01-17,Income,Freelance,19668,Debit Card,Bhubaneswar,Client payment
+T101053,U056,2025-09-05,Expense,Fuel,10695,Bank Transfer,Ahmedabad,Petrol
+T101054,U055,2026-05-01,Income,Bonus,24420,UPI,Delhi,Performance bonus
+T101055,U003,2026-04-28,Expense,Healthcare,7997,Cash,Jaipur,Medicine
+T101056,U002,2025-12-08,Income,Bonus,11674,UPI,Chennai,Performance bonus
+T101057,U005,2025-10-25,Expense,Groceries,9812,Cash,Chennai,Supermarket
+T101058,U030,2026-05-15,Expense,Groceries,11169,Bank Transfer,Bhubaneswar,Supermarket
+T101059,U035,2025-03-07,Expense,Entertainment,9114,Bank Transfer,Chennai,Movie
+T101060,U003,2026-03-23,Income,Investment,63762,Debit Card,Hyderabad,Dividend
+T101061,U029,2026-06-04,Expense,Healthcare,3852,Net Banking,Bangalore,Medicine
+T101062,U107,2026-03-03,Income,Investment,56166,Bank Transfer,Bangalore,Dividend
+T101063,U037,2025-08-01,Expense,Fuel,10238,Bank Transfer,Delhi,Petrol
+T101064,U013,2026-05-19,Income,Freelance,25488,Cash,Kolkata,Client payment
+T101065,U113,2026-01-03,Income,Salary,7376,Credit Card,Bangalore,Monthly salary
+T101066,U056,2025-12-12,Income,Salary,13344,UPI,Jaipur,Monthly salary
+T101067,U044,2025-09-22,Income,Freelance,68748,Credit Card,Bhubaneswar,Client payment
+T101068,U091,2025-04-17,Expense,Education,9950,UPI,Kolkata,Course fee
+T101069,U106,2025-04-15,Expense,Rent,1784,Net Banking,Bhubaneswar,Monthly rent
+T101070,U021,2026-01-06,Income,Salary,31920,Bank Transfer,Hyderabad,Monthly salary
+T101071,U020,2025-04-12,Expense,Healthcare,12052,Bank Transfer,Bangalore,Medicine
+T101072,U057,2025-07-26,Expense,Rent,13953,Cash,Bhubaneswar,Monthly rent
+T101073,U065,2025-10-21,Expense,Healthcare,5642,Debit Card,Delhi,Medicine
+T101074,U020,2025-09-09,Expense,Travel,5958,Net Banking,Chennai,Cab
+T101075,U115,2026-02-24,Income,Bonus,59186,Cash,Ahmedabad,Performance bonus
+T101076,U092,2025-01-11,Expense,Healthcare,2435,Net Banking,Delhi,Medicine
+T101077,U056,2025-06-18,Expense,Travel,12704,UPI,Chennai,Cab
+T101078,U081,2025-03-01,Expense,Fuel,14836,Bank Transfer,Ahmedabad,Petrol
+T101079,U093,2025-11-08,Expense,Education,14362,Bank Transfer,Bangalore,Course fee
+T101080,U090,2025-05-31,Income,Investment,74178,Cash,Kolkata,Dividend
+T101081,U090,2026-03-29,Expense,Groceries,12966,Credit Card,Chennai,Supermarket
+T101082,U043,2026-07-05,Expense,Rent,655,Cash,Mumbai,Monthly rent
+T101083,U097,2025-12-15,Income,Investment,73332,Bank Transfer,Mumbai,Dividend
+T101084,U093,2025-11-08,Income,Investment,36632,Cash,Ahmedabad,Dividend
+T101085,U046,2026-06-04,Expense,Entertainment,4305,UPI,Bhubaneswar,Movie
+T101086,U059,2025-01-06,Expense,Groceries,12122,Credit Card,Pune,Supermarket
+T101087,U092,2025-05-24,Expense,Bills,10976,Cash,Ahmedabad,Electricity bill
+T101088,U013,2026-04-11,Income,Freelance,52352,Debit Card,Chennai,Client payment
+T101089,U061,2025-05-14,Income,Salary,60690,Debit Card,Kolkata,Monthly salary
+T101090,U100,2026-06-16,Expense,Education,6648,Cash,Hyderabad,Course fee
+T101091,U094,2026-05-17,Expense,Healthcare,11338,Cash,Mumbai,Medicine
+T101092,U017,2026-04-14,Expense,Healthcare,11701,Bank Transfer,Ahmedabad,Medicine
+T101093,U096,2025-02-03,Expense,Healthcare,7805,Debit Card,Ahmedabad,Medicine
+T101094,U015,2026-02-23,Expense,Rent,9906,UPI,Bangalore,Monthly rent
+T101095,U040,2026-01-16,Income,Freelance,20432,Credit Card,Hyderabad,Client payment
+T101096,U007,2026-03-08,Expense,Fuel,2378,Credit Card,Hyderabad,Petrol
+T101097,U071,2025-05-06,Income,Bonus,5273,Credit Card,Delhi,Performance bonus
+T101098,U116,2026-04-09,Expense,Groceries,5124,Credit Card,Chennai,Supermarket
+T101099,U065,2025-05-22,Expense,Groceries,2225,Bank Transfer,Kolkata,Supermarket
+T101100,U012,2025-11-30,Expense,Fuel,14244,Net Banking,Jaipur,Petrol
+T101101,U086,2025-02-16,Expense,Travel,5604,Cash,Hyderabad,Cab
+T101102,U072,2025-11-13,Expense,Food,9421,Bank Transfer,Delhi,Snacks
+T101103,U073,2025-02-24,Expense,Shopping,10186,Net Banking,Pune,Electronics
+T101104,U024,2026-06-29,Expense,Food,2020,UPI,Hyderabad,Lunch
+T101105,U078,2026-07-01,Income,Bonus,16094,Credit Card,Chennai,Performance bonus
+T101106,U024,2026-03-24,Expense,Food,5619,Cash,Bhubaneswar,Snacks
+T101107,U013,2025-04-28,Expense,Bills,1541,Net Banking,Mumbai,Internet bill
+T101108,U040,2025-06-07,Income,Investment,16747,Cash,Mumbai,Dividend
+T101109,U092,2025-01-28,Expense,Entertainment,3023,UPI,Hyderabad,Movie
+T101110,U034,2025-11-28,Income,Freelance,59109,Cash,Delhi,Client payment
+T101111,U097,2026-06-05,Income,Freelance,69615,Net Banking,Chennai,Client payment
+T101112,U009,2026-02-21,Expense,Entertainment,7665,Cash,Bhubaneswar,Movie
+T101113,U032,2025-04-14,Expense,Food,4459,Net Banking,Mumbai,Dinner
+T101114,U027,2026-05-28,Expense,Healthcare,1424,Debit Card,Bangalore,Medicine
+T101115,U006,2026-04-08,Expense,Education,6992,UPI,Kolkata,Course fee
+T101116,U120,2025-03-03,Expense,Fuel,58,Cash,Hyderabad,Petrol
+T101117,U075,2025-08-06,Expense,Travel,5807,Net Banking,Hyderabad,Cab
+T101118,U051,2025-04-02,Income,Salary,44405,Bank Transfer,Delhi,Monthly salary
+T101119,U027,2026-03-19,Expense,Bills,14439,Net Banking,Ahmedabad,Internet bill
+T101120,U097,2025-09-25,Expense,Entertainment,10456,Bank Transfer,Kolkata,Movie
+T101121,U059,2025-08-04,Income,Investment,49778,Net Banking,Bangalore,Dividend
+T101122,U078,2025-01-03,Expense,Fuel,10641,Cash,Bhubaneswar,Petrol
+T101123,U098,2026-05-16,Expense,Travel,9156,Cash,Ahmedabad,Cab
+T101124,U115,2025-02-01,Expense,Rent,8875,Bank Transfer,Kolkata,Monthly rent
+T101125,U050,2026-01-02,Expense,Travel,13607,Debit Card,Bhubaneswar,Cab
+T101126,U029,2025-01-10,Expense,Shopping,7333,Bank Transfer,Bhubaneswar,Electronics
+T101127,U105,2025-04-03,Expense,Entertainment,3187,Net Banking,Hyderabad,Movie
+T101128,U036,2025-02-07,Income,Bonus,52579,Cash,Jaipur,Performance bonus
+T101129,U073,2025-10-12,Income,Bonus,19541,Net Banking,Kolkata,Performance bonus
+T101130,U009,2025-06-29,Expense,Groceries,11062,Net Banking,Mumbai,Supermarket
+T101131,U025,2025-10-08,Income,Freelance,73561,Bank Transfer,Bhubaneswar,Client payment
+T101132,U083,2026-03-14,Expense,Healthcare,82,Bank Transfer,Bhubaneswar,Medicine
+T101133,U088,2025-05-05,Expense,Travel,4539,Net Banking,Kolkata,Cab
+T101134,U007,2025-08-18,Expense,Food,14530,Credit Card,Chennai,Snacks
+T101135,U043,2025-07-19,Expense,Food,6470,UPI,Jaipur,Lunch
+T101136,U010,2026-03-10,Expense,Shopping,11347,Debit Card,Pune,Clothes
+T101137,U004,2025-04-10,Expense,Rent,10306,Cash,Chennai,Monthly rent
+T101138,U032,2025-09-14,Expense,Entertainment,13820,UPI,Kolkata,Movie
+T101139,U067,2025-12-08,Expense,Food,13511,Debit Card,Delhi,Snacks
+T101140,U075,2026-04-03,Expense,Rent,10295,UPI,Delhi,Monthly rent
+T101141,U101,2025-03-08,Expense,Travel,5182,Debit Card,Bhubaneswar,Cab
+T101142,U087,2025-04-15,Income,Bonus,13623,UPI,Ahmedabad,Performance bonus
+T101143,U080,2025-04-09,Expense,Travel,6631,Cash,Pune,Cab
+T101144,U113,2026-03-15,Expense,Healthcare,13077,Net Banking,Jaipur,Medicine
+T101145,U043,2026-06-14,Expense,Food,7489,Net Banking,Pune,Lunch
+T101146,U082,2025-05-10,Income,Salary,30377,Net Banking,Hyderabad,Monthly salary
+T101147,U032,2025-07-10,Expense,Groceries,7334,Debit Card,Bhubaneswar,Supermarket
+T101148,U040,2026-01-02,Income,Bonus,72256,Net Banking,Ahmedabad,Performance bonus
+T101149,U048,2025-10-26,Income,Investment,49944,UPI,Ahmedabad,Dividend
+T101150,U026,2025-12-19,Income,Salary,60320,Debit Card,Pune,Monthly salary
+T101151,U077,2026-04-24,Expense,Healthcare,11433,Bank Transfer,Bangalore,Medicine
+T101152,U014,2025-06-16,Expense,Travel,5434,Cash,Bhubaneswar,Cab
+T101153,U060,2025-08-24,Income,Salary,34232,Net Banking,Pune,Monthly salary
+T101154,U027,2026-01-20,Expense,Entertainment,13276,Cash,Mumbai,Movie
+T101155,U072,2025-01-31,Expense,Rent,5913,UPI,Mumbai,Monthly rent
+T101156,U006,2026-01-04,Expense,Groceries,12592,UPI,Pune,Supermarket
+T101157,U093,2025-09-26,Expense,Shopping,14556,Debit Card,Bangalore,Clothes
+T101158,U117,2025-09-26,Income,Salary,28078,UPI,Bhubaneswar,Monthly salary
+T101159,U040,2025-08-04,Expense,Rent,5594,Cash,Pune,Monthly rent
+T101160,U113,2026-03-21,Expense,Fuel,8683,Bank Transfer,Delhi,Petrol
+T101161,U069,2025-07-16,Income,Freelance,29856,Cash,Bangalore,Client payment
+T101162,U110,2025-07-13,Expense,Shopping,806,Net Banking,Hyderabad,Clothes
+T101163,U112,2025-10-14,Expense,Food,10363,Debit Card,Ahmedabad,Snacks
+T101164,U101,2025-03-25,Expense,Shopping,11966,Cash,Jaipur,Clothes
+T101165,U064,2026-01-19,Income,Bonus,71736,Net Banking,Kolkata,Performance bonus
+T101166,U092,2026-05-10,Expense,Entertainment,8659,Cash,Kolkata,Movie
+T101167,U027,2025-02-07,Expense,Groceries,10695,Debit Card,Pune,Supermarket
+T101168,U055,2025-11-10,Expense,Travel,3631,Cash,Jaipur,Cab
+T101169,U018,2025-03-28,Expense,Entertainment,4220,UPI,Hyderabad,Movie
+T101170,U060,2025-02-12,Expense,Shopping,9617,Net Banking,Jaipur,Electronics
+T101171,U048,2026-02-23,Expense,Healthcare,7136,Cash,Bangalore,Medicine
+T101172,U034,2025-08-28,Expense,Fuel,7286,Bank Transfer,Delhi,Petrol
+T101173,U066,2026-05-29,Expense,Bills,13855,Net Banking,Delhi,Internet bill
+T101174,U047,2025-03-15,Expense,Rent,1992,UPI,Ahmedabad,Monthly rent
+T101175,U096,2025-11-06,Expense,Entertainment,4146,Bank Transfer,Hyderabad,Movie
+T101176,U002,2025-09-25,Expense,Fuel,14058,Credit Card,Hyderabad,Petrol
+T101177,U061,2025-01-13,Expense,Travel,6697,Bank Transfer,Ahmedabad,Cab
+T101178,U061,2025-08-03,Expense,Shopping,3767,Debit Card,Ahmedabad,Electronics
+T101179,U041,2025-03-29,Expense,Healthcare,5631,Debit Card,Chennai,Medicine
+T101180,U048,2025-01-31,Income,Bonus,78196,Debit Card,Jaipur,Performance bonus
+T101181,U044,2025-12-30,Expense,Food,8238,Debit Card,Chennai,Dinner
+T101182,U039,2026-07-05,Expense,Travel,12548,Credit Card,Jaipur,Cab
+T101183,U043,2025-06-07,Expense,Food,2329,Net Banking,Jaipur,Snacks
+T101184,U051,2025-07-29,Expense,Travel,6297,UPI,Ahmedabad,Cab
+T101185,U082,2026-04-08,Income,Salary,48101,Credit Card,Delhi,Monthly salary
+T101186,U004,2026-05-16,Income,Freelance,9202,Debit Card,Pune,Client payment
+T101187,U030,2025-07-30,Expense,Travel,4700,Credit Card,Ahmedabad,Cab
+T101188,U022,2025-01-12,Expense,Entertainment,8545,Credit Card,Chennai,Movie
+T101189,U054,2026-07-04,Income,Salary,21926,Cash,Delhi,Monthly salary
+T101190,U040,2025-07-30,Expense,Shopping,2178,Cash,Kolkata,Clothes
+T101191,U065,2025-07-27,Expense,Bills,9675,Bank Transfer,Kolkata,Internet bill
+T101192,U106,2025-03-07,Income,Freelance,63422,Cash,Jaipur,Client payment
+T101193,U059,2026-05-18,Expense,Groceries,14455,Cash,Jaipur,Supermarket
+T101194,U045,2026-04-13,Expense,Bills,10638,Bank Transfer,Hyderabad,Internet bill
+T101195,U023,2025-09-13,Expense,Fuel,6850,Net Banking,Chennai,Petrol
+T101196,U051,2025-04-08,Expense,Fuel,11494,Bank Transfer,Bhubaneswar,Petrol
+T101197,U038,2026-07-05,Expense,Fuel,4535,Bank Transfer,Delhi,Petrol
+T101198,U048,2025-05-05,Expense,Travel,12532,UPI,Delhi,Cab
+T101199,U065,2025-08-01,Expense,Fuel,4191,UPI,Kolkata,Petrol
+T101200,U096,2025-12-18,Income,Bonus,54958,Cash,Pune,Performance bonus
