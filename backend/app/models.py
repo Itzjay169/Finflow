@@ -104,6 +104,18 @@ class ModelInsightsResponse(BaseModel):
     total_samples: int
     feature_columns: List[str]
 
+class ModelSummaryResponse(BaseModel):
+    model_name: str
+    feature_count: int
+    accuracy: float
+    badge_text: str
+    total_samples: int
+    categories_count: int
+    payment_modes_count: int
+    locations_count: int
+    currency: str
+
+
 # === Phase 7: Budgets ===
 class BudgetCreate(BaseModel):
     category: str

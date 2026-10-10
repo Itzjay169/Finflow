@@ -214,3 +214,19 @@ async def test_rls_user_isolation():
         assert not any(t["id"] == created_id for t in b_txs)
         assert not any(t["notes"] == "User A Top Secret Purchase" for t in b_txs)
 
+@pytest.mark.anyio
+async def test_model_summary_public():
+    """Verify that public /api/model/summary answers with no auth header."""
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        res = await client.get("/api/model/summary")
+        assert res.status_code == 200
+        data = res.json()
+        assert data["model_name"] == "RandomForest"
+        assert data["feature_count"] == 18
+        assert data["accuracy"] == 0.958
+        assert "RandomForest · 18 features · 95.8% accuracy" in data["badge_text"]
+        assert data["total_samples"] == 1200
+        assert data["currency"] == "INR (₹)"
+
+

@@ -13,8 +13,14 @@ import PredictorPage from './pages/PredictorPage'
 import BudgetsPage from './pages/BudgetsPage'
 import SettingsPage from './pages/SettingsPage'
 import NotFoundPage from './pages/NotFoundPage'
+import PrivacyPage from './pages/PrivacyPage'
+import TermsPage from './pages/TermsPage'
+import DisclaimerPage from './pages/DisclaimerPage'
+import CookiesPage from './pages/CookiesPage'
 import { CommandPalette } from './components/layout/CommandPalette'
 import { OnboardingTour } from './components/layout/OnboardingTour'
+import { SiteFooter } from './components/layout/SiteFooter'
+
 
 export default function App() {
   const [isDark, setIsDark] = useState(true)
@@ -104,6 +110,10 @@ export default function App() {
                       </ProtectedRoute>
                     }
                   />
+                  <Route path="/privacy" element={<PrivacyPage />} />
+                  <Route path="/terms" element={<TermsPage />} />
+                  <Route path="/disclaimer" element={<DisclaimerPage />} />
+                  <Route path="/cookies" element={<CookiesPage />} />
                   {/* 404 Not Found Page */}
                   <Route path="*" element={<NotFoundPage />} />
                 </Routes>
@@ -120,10 +130,10 @@ export default function App() {
             {/* Interactive Onboarding Tour for new users */}
             <OnboardingTour />
 
-            <footer className="relative z-10 border-t border-slate-200 dark:border-slate-800/60 py-6 text-center text-xs text-slate-500">
-              <p>FinFlow – Personal Finance Tracker &bull; Built with FastAPI, Supabase & React &bull; 95.8% ML Accuracy</p>
-            </footer>
+            {/* Production Reusable Site Footer (Full on Landing/Legal/404, Compact in App) */}
+            <SiteFooter />
           </div>
+
         </ToastProvider>
       </AuthProvider>
     </BrowserRouter>

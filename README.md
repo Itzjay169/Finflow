@@ -241,4 +241,7 @@ FinFlow/
 
 ## License
 
-This project is licensed under the MIT License.
+Copyright © 2026 FinFlow. All rights reserved.
+
+FinFlow, its source code, design, text and graphics are the property of FinFlow. Copying, distributing or reusing any part without written permission is prohibited. Third-party libraries and fonts remain under their own licenses.
+
