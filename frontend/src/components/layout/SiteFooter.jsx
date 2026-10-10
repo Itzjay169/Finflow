@@ -1,4 +1,4 @@
-import { useState, useEffect, useId, Fragment } from 'react'
+import React, { useState, useEffect, useId, Fragment } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion, useReducedMotion } from 'framer-motion'
 
@@ -615,7 +615,7 @@ export function SiteFooter({ variant: forcedVariant }) {
           >
             <span className="font-semibold text-slate-700 dark:text-slate-300">Built with:</span>
             {TECH_CREDITS.map((tech, index) => (
-              <React.Fragment key={tech.name}>
+              <Fragment key={tech.name}>
                 <a
                   href={tech.url}
                   target="_blank"
@@ -626,7 +626,7 @@ export function SiteFooter({ variant: forcedVariant }) {
                   <span className="sr-only">(opens in a new tab)</span>
                 </a>
                 {index < TECH_CREDITS.length - 1 && <span className="text-slate-300 dark:text-slate-700">&bull;</span>}
-              </React.Fragment>
+              </Fragment>
             ))}
           </motion.div>
 
