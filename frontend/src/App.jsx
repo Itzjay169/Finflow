@@ -44,7 +44,7 @@ export default function App() {
     <BrowserRouter>
       <AuthProvider>
         <ToastProvider>
-          <div className="min-h-screen bg-slate-50 dark:bg-[#0B0F19] text-slate-900 dark:text-slate-100 transition-colors duration-300 flex flex-col justify-between">
+          <div className="min-h-screen bg-slate-50 dark:bg-[#080C14] text-slate-900 dark:text-slate-100 transition-colors duration-300 flex flex-col justify-between">
             {/* Ambient Background Radial Glows */}
             <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
               <div className="absolute -top-40 -left-40 w-96 h-96 bg-indigo-600/15 rounded-full blur-3xl" />
@@ -100,7 +100,7 @@ export default function App() {
                     path="/settings"
                     element={
                       <ProtectedRoute>
-                        <SettingsPage />
+                        <SettingsPage isDark={isDark} onToggleTheme={() => setIsDark(!isDark)} />
                       </ProtectedRoute>
                     }
                   />

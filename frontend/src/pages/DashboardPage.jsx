@@ -163,7 +163,7 @@ export default function DashboardPage() {
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pt-2">
         <div>
           <div className="flex items-center gap-2">
-            <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white">
+            <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white">
               {greeting}, <span className="gradient-text">{userName}</span> 👋
             </h1>
             {isDemo && (
@@ -172,11 +172,11 @@ export default function DashboardPage() {
               </Badge>
             )}
           </div>
-          <p className="text-xs text-slate-400 mt-1 flex items-center gap-2">
+          <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 flex items-center gap-2">
             <span>FinFlow Financial Dashboard</span>
             <span>&bull;</span>
-            <span className="text-emerald-400 flex items-center gap-1">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+            <span className="text-emerald-500 dark:text-emerald-400 flex items-center gap-1 font-medium">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 dark:bg-emerald-400 animate-pulse" />
               Live Telemetry
             </span>
           </p>
@@ -189,7 +189,7 @@ export default function DashboardPage() {
             variant="ghost"
             onClick={() => fetchDashboardData(true)}
             isLoading={refreshing}
-            className="border border-slate-700/60"
+            className="border border-slate-200 dark:border-slate-700/60 text-slate-700 dark:text-slate-300"
           >
             <RefreshCw className={`w-3.5 h-3.5 ${refreshing ? 'animate-spin' : ''}`} />
             Refresh
@@ -200,9 +200,9 @@ export default function DashboardPage() {
             variant="outline"
             onClick={handleSeedData}
             isLoading={seeding}
-            className="border-indigo-500/30 text-indigo-300 hover:text-white"
+            className="border-indigo-500/30 text-indigo-600 dark:text-indigo-300 hover:text-indigo-900 dark:hover:text-white"
           >
-            <Database className="w-3.5 h-3.5 text-indigo-400" />
+            <Database className="w-3.5 h-3.5 text-indigo-500 dark:text-indigo-400" />
             Seed Sample Data
           </Button>
 
@@ -210,7 +210,7 @@ export default function DashboardPage() {
             size="sm"
             variant="outline"
             onClick={handleExportCsv}
-            className="border-slate-700/60 text-slate-300 hover:text-white"
+            className="border-slate-200 dark:border-slate-700/60 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white"
           >
             <Download className="w-3.5 h-3.5" />
             Export CSV
@@ -286,16 +286,16 @@ export default function DashboardPage() {
       </div>
 
       {/* Secondary Status Banner */}
-      <div className="p-4 rounded-2xl glass-panel border border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
+      <div className="p-4 rounded-2xl glass-panel border border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
         <div className="flex items-center gap-3">
-          <div className="p-2.5 rounded-xl bg-purple-500/10 border border-purple-500/30 text-purple-400">
+          <div className="p-2.5 rounded-xl bg-purple-500/10 border border-purple-500/30 text-purple-600 dark:text-purple-400">
             <Cpu className="w-4 h-4" />
           </div>
           <div>
-            <p className="font-bold text-slate-200">
+            <p className="font-bold text-slate-900 dark:text-slate-200">
               RandomForest Classifier Active &bull; 95.8% Accuracy
             </p>
-            <p className="text-slate-400 text-[11px]">
+            <p className="text-slate-500 dark:text-slate-400 text-[11px]">
               Trained 18-feature inference engine for instant Income vs Expense classification
             </p>
           </div>
@@ -303,7 +303,7 @@ export default function DashboardPage() {
 
         <div className="flex items-center gap-3 shrink-0">
           <Badge variant="success">Model Online</Badge>
-          <span className="text-slate-400 text-[11px] font-mono">
+          <span className="text-slate-500 dark:text-slate-400 text-[11px] font-mono">
             {summary?.transaction_count || 1200} Records Tracked
           </span>
         </div>

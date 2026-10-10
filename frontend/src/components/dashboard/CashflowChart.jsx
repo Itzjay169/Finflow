@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from 'react'
+import { motion } from 'framer-motion'
 import {
   ResponsiveContainer,
   AreaChart,
@@ -65,64 +66,88 @@ export const CashflowChart = ({ data = [], loading = false }) => {
   }, [data, timeRange])
 
   return (
-    <Card className="bg-slate-900/60 backdrop-blur-xl border-slate-800">
-      <CardHeader className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-800/80">
+    <Card className="bg-white/80 dark:bg-slate-900/60 backdrop-blur-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+      <CardHeader className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-200 dark:border-slate-800/80">
         <div>
-          <CardTitle className="flex items-center gap-2 text-base text-white">
-            <TrendingUp className="w-4 h-4 text-indigo-400" />
+          <CardTitle className="flex items-center gap-2 text-base text-slate-900 dark:text-white">
+            <TrendingUp className="w-4 h-4 text-indigo-500 dark:text-indigo-400" />
             Monthly Cashflow Telemetry
           </CardTitle>
-          <p className="text-xs text-slate-400 mt-0.5">
+          <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
             Compare monthly income inflows vs expense outflows across financial cycles
           </p>
         </div>
 
-        {/* Controls: Chart Type & Time Range */}
-        <div className="flex flex-wrap items-center gap-2">
+        {/* Controls: Chart Type & Time Range Toggles */}
+        <div className="flex flex-wrap items-center gap-2.5">
           {/* Chart Type Toggle */}
-          <div className="flex items-center bg-slate-800/70 p-1 rounded-xl border border-slate-700/60">
+          <div className="relative flex items-center bg-slate-200/80 dark:bg-slate-900/90 p-1 rounded-2xl border border-slate-300/80 dark:border-slate-800 shadow-inner">
             <button
               type="button"
               onClick={() => setChartType('area')}
-              className={`px-2.5 py-1 text-xs font-semibold rounded-lg transition-colors flex items-center gap-1.5 cursor-pointer ${
+              className={`relative px-3 py-1.5 text-xs font-bold rounded-xl transition-colors flex items-center gap-1.5 cursor-pointer z-10 active:scale-95 ${
                 chartType === 'area'
-                  ? 'bg-indigo-600 text-white shadow'
-                  : 'text-slate-400 hover:text-slate-200'
+                  ? 'text-white'
+                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200'
               }`}
             >
+              {chartType === 'area' && (
+                <motion.div
+                  layoutId="chartTypeTogglePill"
+                  className="absolute inset-0 rounded-xl bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-500 shadow-[0_2px_12px_rgba(99,102,241,0.45)] border border-indigo-400/30 z-[-1]"
+                  transition={{ type: "spring", stiffness: 500, damping: 32 }}
+                />
+              )}
               <LineChart className="w-3.5 h-3.5" />
               Area
             </button>
             <button
               type="button"
               onClick={() => setChartType('bar')}
-              className={`px-2.5 py-1 text-xs font-semibold rounded-lg transition-colors flex items-center gap-1.5 cursor-pointer ${
+              className={`relative px-3 py-1.5 text-xs font-bold rounded-xl transition-colors flex items-center gap-1.5 cursor-pointer z-10 active:scale-95 ${
                 chartType === 'bar'
-                  ? 'bg-indigo-600 text-white shadow'
-                  : 'text-slate-400 hover:text-slate-200'
+                  ? 'text-white'
+                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200'
               }`}
             >
+              {chartType === 'bar' && (
+                <motion.div
+                  layoutId="chartTypeTogglePill"
+                  className="absolute inset-0 rounded-xl bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-500 shadow-[0_2px_12px_rgba(99,102,241,0.45)] border border-indigo-400/30 z-[-1]"
+                  transition={{ type: "spring", stiffness: 500, damping: 32 }}
+                />
+              )}
               <BarChart3 className="w-3.5 h-3.5" />
               Bar
             </button>
           </div>
 
           {/* Time range pills */}
-          <div className="flex items-center bg-slate-800/70 p-1 rounded-xl border border-slate-700/60 text-xs">
-            {['6m', '12m', 'all'].map((range) => (
-              <button
-                key={range}
-                type="button"
-                onClick={() => setTimeRange(range)}
-                className={`px-2 py-1 rounded-lg uppercase text-[10px] font-bold transition-colors cursor-pointer ${
-                  timeRange === range
-                    ? 'bg-slate-700 text-white'
-                    : 'text-slate-400 hover:text-slate-200'
-                }`}
-              >
-                {range}
-              </button>
-            ))}
+          <div className="relative flex items-center bg-slate-200/80 dark:bg-slate-900/90 p-1 rounded-2xl border border-slate-300/80 dark:border-slate-800 text-xs shadow-inner">
+            {['6m', '12m', 'all'].map((range) => {
+              const isSelected = timeRange === range
+              return (
+                <button
+                  key={range}
+                  type="button"
+                  onClick={() => setTimeRange(range)}
+                  className={`relative px-2.5 py-1.5 rounded-xl uppercase text-[10px] font-bold transition-colors cursor-pointer z-10 active:scale-95 ${
+                    isSelected
+                      ? 'text-white'
+                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200'
+                  }`}
+                >
+                  {isSelected && (
+                    <motion.div
+                      layoutId="chartRangeTogglePill"
+                      className="absolute inset-0 rounded-xl bg-gradient-to-r from-cyan-600 to-indigo-600 shadow-[0_2px_10px_rgba(6,182,212,0.4)] border border-cyan-400/30 z-[-1]"
+                      transition={{ type: "spring", stiffness: 500, damping: 32 }}
+                    />
+                  )}
+                  {range}
+                </button>
+              )
+            })}
           </div>
         </div>
       </CardHeader>

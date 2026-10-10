@@ -38,7 +38,7 @@ const ACCENT_COLORS = [
   { name: 'Amber', class: 'bg-amber-500', ring: 'ring-amber-400' },
 ]
 
-export default function SettingsPage() {
+export default function SettingsPage({ isDark, onToggleTheme }) {
   const { user, isDemo, signOut } = useAuth()
   const { toast } = useToast()
 
@@ -213,7 +213,59 @@ export default function SettingsPage() {
             Theme & Color Palette
           </div>
 
-          <div className="space-y-4">
+          <div className="space-y-6">
+            <div>
+              <label className="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-2">
+                Interface Theme
+              </label>
+              <div className="inline-flex p-1 rounded-xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-inner">
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (!isDark && onToggleTheme) onToggleTheme()
+                    setThemePref('dark')
+                  }}
+                  className={`relative px-4 py-2 rounded-lg text-xs font-semibold flex items-center gap-2 transition-colors cursor-pointer z-10 ${
+                    isDark
+                      ? 'text-white'
+                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                  }`}
+                >
+                  {isDark && (
+                    <motion.div
+                      layoutId="settingsThemeModePill"
+                      className="absolute inset-0 bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-700 rounded-lg shadow-md shadow-indigo-500/30 -z-10"
+                      transition={{ type: 'spring', stiffness: 450, damping: 32 }}
+                    />
+                  )}
+                  <Moon className={`w-3.5 h-3.5 ${isDark ? 'text-indigo-200 animate-pulse' : ''}`} />
+                  Dark Mode
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (isDark && onToggleTheme) onToggleTheme()
+                    setThemePref('light')
+                  }}
+                  className={`relative px-4 py-2 rounded-lg text-xs font-semibold flex items-center gap-2 transition-colors cursor-pointer z-10 ${
+                    !isDark
+                      ? 'text-amber-950 dark:text-white'
+                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                  }`}
+                >
+                  {!isDark && (
+                    <motion.div
+                      layoutId="settingsThemeModePill"
+                      className="absolute inset-0 bg-gradient-to-r from-amber-400 to-amber-300 rounded-lg shadow-md shadow-amber-400/40 -z-10"
+                      transition={{ type: 'spring', stiffness: 450, damping: 32 }}
+                    />
+                  )}
+                  <Sun className={`w-3.5 h-3.5 ${!isDark ? 'text-amber-800' : ''}`} />
+                  Light Mode
+                </button>
+              </div>
+            </div>
+
             <div>
               <label className="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-2">
                 Color Accent
@@ -224,8 +276,8 @@ export default function SettingsPage() {
                     key={a.name}
                     type="button"
                     onClick={() => setAccentColor(a.name.toLowerCase())}
-                    className={`w-9 h-9 rounded-xl ${a.class} flex items-center justify-center text-white transition-transform hover:scale-110 cursor-pointer ${
-                      accentColor === a.name.toLowerCase() ? `ring-2 ring-offset-2 ${a.ring}` : ''
+                    className={`w-9 h-9 rounded-xl ${a.class} flex items-center justify-center text-white transition-transform hover:scale-110 cursor-pointer shadow-sm ${
+                      accentColor === a.name.toLowerCase() ? `ring-2 ring-offset-2 ring-offset-slate-900 ${a.ring}` : ''
                     }`}
                   >
                     {accentColor === a.name.toLowerCase() && <Check className="w-4 h-4" />}

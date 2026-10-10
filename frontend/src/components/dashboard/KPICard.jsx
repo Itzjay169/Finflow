@@ -62,7 +62,7 @@ export const KPICard = ({
     >
       <Card
         glow
-        className={`relative overflow-hidden transition-all duration-300 ${currentStyle.border} bg-slate-900/60 backdrop-blur-xl`}
+        className={`relative overflow-hidden transition-all duration-300 ${currentStyle.border} bg-white/80 dark:bg-slate-900/60 backdrop-blur-xl shadow-sm`}
       >
         {/* Subtle background ambient corner glow */}
         <div
@@ -70,7 +70,7 @@ export const KPICard = ({
         />
 
         <CardHeader className="flex-row items-center justify-between pb-2">
-          <span className="text-[11px] font-bold tracking-wider uppercase text-slate-400">
+          <span className="text-[11px] font-bold tracking-wider uppercase text-slate-500 dark:text-slate-400">
             {title}
           </span>
           {Icon && (
@@ -82,14 +82,14 @@ export const KPICard = ({
 
         <CardContent className="space-y-2">
           <div className="flex items-baseline justify-between gap-2">
-            <h3 className="text-2xl sm:text-3xl font-black tracking-tight text-white font-mono">
+            <h3 className="text-2xl sm:text-3xl font-black tracking-tight text-slate-900 dark:text-white font-mono">
               {formattedValue !== undefined ? formattedValue : formatINR(value)}
             </h3>
           </div>
 
           {/* Progress bar if specified (e.g. for savings rate) */}
           {progress !== undefined && (
-            <div className="w-full bg-slate-800/80 rounded-full h-1.5 overflow-hidden my-1">
+            <div className="w-full bg-slate-200 dark:bg-slate-800/80 rounded-full h-1.5 overflow-hidden my-1">
               <motion.div
                 initial={{ width: 0 }}
                 animate={{ width: `${Math.min(100, Math.max(0, progress))}%` }}
@@ -101,14 +101,14 @@ export const KPICard = ({
 
           <div className="flex items-center justify-between text-xs pt-1">
             {subtitle && (
-              <span className="text-slate-400 text-[11px] truncate">
+              <span className="text-slate-500 dark:text-slate-400 text-[11px] truncate">
                 {subtitle}
               </span>
             )}
             {trend && (
               <span
                 className={`font-semibold text-[11px] ml-auto shrink-0 flex items-center gap-1 ${
-                  trend.positive ? 'text-emerald-400' : 'text-rose-400'
+                  trend.positive ? 'text-emerald-500 dark:text-emerald-400' : 'text-rose-500 dark:text-rose-400'
                 }`}
               >
                 {trend.value}

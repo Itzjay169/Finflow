@@ -352,25 +352,37 @@ export default function TransactionsPage() {
             </div>
 
             {/* Sliding Pill Type Selector */}
-            <div className="flex items-center bg-slate-800/80 p-1 rounded-xl border border-slate-700/60 text-xs shrink-0">
-              {['all', 'Income', 'Expense'].map((t) => (
-                <button
-                  key={t}
-                  type="button"
-                  onClick={() => handleFilterChange(setTypeFilter, t)}
-                  className={`px-3 py-1 rounded-lg capitalize font-semibold transition-colors cursor-pointer ${
-                    typeFilter === t
-                      ? t === 'Income'
-                        ? 'bg-emerald-600 text-white shadow'
-                        : t === 'Expense'
-                        ? 'bg-rose-600 text-white shadow'
-                        : 'bg-indigo-600 text-white shadow'
-                      : 'text-slate-400 hover:text-slate-200'
-                  }`}
-                >
-                  {t}
-                </button>
-              ))}
+            <div className="relative flex items-center bg-slate-200/80 dark:bg-slate-900/90 p-1 rounded-2xl border border-slate-300/80 dark:border-slate-800 text-xs shrink-0 shadow-inner">
+              {['all', 'Income', 'Expense'].map((t) => {
+                const isSelected = typeFilter === t
+                return (
+                  <button
+                    key={t}
+                    type="button"
+                    onClick={() => handleFilterChange(setTypeFilter, t)}
+                    className={`relative px-3.5 py-1.5 rounded-xl capitalize font-bold transition-colors cursor-pointer select-none z-10 active:scale-95 ${
+                      isSelected
+                        ? 'text-white'
+                        : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200'
+                    }`}
+                  >
+                    {isSelected && (
+                      <motion.div
+                        layoutId="txTypeFilterPill"
+                        className={`absolute inset-0 rounded-xl z-[-1] ${
+                          t === 'Income'
+                            ? 'bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-500 shadow-[0_2px_12px_rgba(16,185,129,0.45)] border border-emerald-400/30'
+                            : t === 'Expense'
+                            ? 'bg-gradient-to-r from-rose-600 via-pink-600 to-rose-500 shadow-[0_2px_12px_rgba(244,63,94,0.45)] border border-rose-400/30'
+                            : 'bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-500 shadow-[0_2px_12px_rgba(99,102,241,0.45)] border border-indigo-400/30'
+                        }`}
+                        transition={{ type: "spring", stiffness: 500, damping: 32 }}
+                      />
+                    )}
+                    {t}
+                  </button>
+                )
+              })}
             </div>
 
             {/* Sort Toggle */}

@@ -870,14 +870,44 @@ export default function BudgetsPage() {
               <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
                 Type
               </label>
-              <select
-                value={recurringForm.transaction_type}
-                onChange={(e) => setRecurringForm({ ...recurringForm, transaction_type: e.target.value })}
-                className="w-full px-3.5 py-2.5 rounded-xl text-sm bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 text-slate-900 dark:text-slate-100 outline-none"
-              >
-                <option value="Expense">Expense</option>
-                <option value="Income">Income</option>
-              </select>
+              <div className="relative p-1 rounded-xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex">
+                <button
+                  type="button"
+                  onClick={() => setRecurringForm({ ...recurringForm, transaction_type: 'Expense' })}
+                  className={`relative flex-1 py-1.5 px-3 rounded-lg text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors z-10 cursor-pointer ${
+                    recurringForm.transaction_type === 'Expense'
+                      ? 'text-white'
+                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                  }`}
+                >
+                  {recurringForm.transaction_type === 'Expense' && (
+                    <motion.div
+                      layoutId="recurringTxTypePill"
+                      className="absolute inset-0 bg-gradient-to-r from-rose-600 to-pink-600 rounded-lg shadow-md shadow-rose-500/25 -z-10"
+                      transition={{ type: 'spring', stiffness: 450, damping: 32 }}
+                    />
+                  )}
+                  Expense
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setRecurringForm({ ...recurringForm, transaction_type: 'Income' })}
+                  className={`relative flex-1 py-1.5 px-3 rounded-lg text-xs font-semibold flex items-center justify-center gap-1.5 transition-colors z-10 cursor-pointer ${
+                    recurringForm.transaction_type === 'Income'
+                      ? 'text-white'
+                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                  }`}
+                >
+                  {recurringForm.transaction_type === 'Income' && (
+                    <motion.div
+                      layoutId="recurringTxTypePill"
+                      className="absolute inset-0 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-lg shadow-md shadow-emerald-500/25 -z-10"
+                      transition={{ type: 'spring', stiffness: 450, damping: 32 }}
+                    />
+                  )}
+                  Income
+                </button>
+              </div>
             </div>
           </div>
 

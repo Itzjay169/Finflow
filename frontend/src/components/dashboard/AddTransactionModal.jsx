@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
+import { motion } from 'framer-motion'
 import confetti from 'canvas-confetti'
 import { Modal, Input, Button } from '../ui'
 import { createTransaction } from '../../lib/api'
 import { useToast } from '../ui/Toast'
-import { IndianRupee, Sparkles, PlusCircle } from 'lucide-react'
+import { IndianRupee, Sparkles, PlusCircle, TrendingUp, TrendingDown } from 'lucide-react'
 
 const EXPENSE_CATEGORIES = [
   'Food',
@@ -145,28 +146,40 @@ export const AddTransactionModal = ({ isOpen, onClose, onSuccess }) => {
           </div>
         )}
 
-        {/* Type Selector Toggle */}
-        <div className="flex rounded-xl bg-slate-800/80 p-1 border border-slate-700/80">
+        {/* Type Selector Sliding Pill Toggle */}
+        <div className="relative flex rounded-2xl bg-slate-200/80 dark:bg-slate-900/90 p-1 border border-slate-300/80 dark:border-slate-800 shadow-inner">
           <button
             type="button"
             onClick={() => handleTypeChange('Expense')}
-            className={`flex-1 py-2 text-xs font-bold rounded-lg transition-all cursor-pointer ${
-              formData.type === 'Expense'
-                ? 'bg-rose-600 text-white shadow-md'
-                : 'text-slate-400 hover:text-slate-200'
+            className={`relative flex-1 py-2.5 text-xs font-bold rounded-xl transition-colors cursor-pointer select-none z-10 flex items-center justify-center gap-1.5 active:scale-98 ${
+              formData.type === 'Expense' ? 'text-white' : 'text-slate-600 dark:text-slate-400 hover:text-rose-500 dark:hover:text-rose-400'
             }`}
           >
+            {formData.type === 'Expense' && (
+              <motion.div
+                layoutId="addTxModalTypePill"
+                className="absolute inset-0 rounded-xl bg-gradient-to-r from-rose-600 via-pink-600 to-rose-500 shadow-[0_2px_14px_rgba(244,63,94,0.45)] border border-rose-400/30 z-[-1]"
+                transition={{ type: "spring", stiffness: 500, damping: 32 }}
+              />
+            )}
+            <TrendingDown className="w-3.5 h-3.5" />
             Expense Outflow
           </button>
           <button
             type="button"
             onClick={() => handleTypeChange('Income')}
-            className={`flex-1 py-2 text-xs font-bold rounded-lg transition-all cursor-pointer ${
-              formData.type === 'Income'
-                ? 'bg-emerald-600 text-white shadow-md'
-                : 'text-slate-400 hover:text-slate-200'
+            className={`relative flex-1 py-2.5 text-xs font-bold rounded-xl transition-colors cursor-pointer select-none z-10 flex items-center justify-center gap-1.5 active:scale-98 ${
+              formData.type === 'Income' ? 'text-white' : 'text-slate-600 dark:text-slate-400 hover:text-emerald-500 dark:hover:text-emerald-400'
             }`}
           >
+            {formData.type === 'Income' && (
+              <motion.div
+                layoutId="addTxModalTypePill"
+                className="absolute inset-0 rounded-xl bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-500 shadow-[0_2px_14px_rgba(16,185,129,0.45)] border border-emerald-400/30 z-[-1]"
+                transition={{ type: "spring", stiffness: 500, damping: 32 }}
+              />
+            )}
+            <TrendingUp className="w-3.5 h-3.5" />
             Income Inflow
           </button>
         </div>

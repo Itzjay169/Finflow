@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { motion } from 'framer-motion'
 import { Card, CardHeader, CardTitle, CardContent, Badge, Button } from '../ui'
 import {
   Receipt,
@@ -29,40 +30,54 @@ export const RecentTransactionsFeed = ({
   })
 
   return (
-    <Card className="bg-slate-900/60 backdrop-blur-xl border-slate-800">
-      <CardHeader className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-800/80">
+    <Card className="bg-white/80 dark:bg-slate-900/60 backdrop-blur-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+      <CardHeader className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-200 dark:border-slate-800/80">
         <div>
-          <CardTitle className="flex items-center gap-2 text-base text-white">
-            <Receipt className="w-4 h-4 text-emerald-400" />
+          <CardTitle className="flex items-center gap-2 text-base text-slate-900 dark:text-white">
+            <Receipt className="w-4 h-4 text-emerald-500 dark:text-emerald-400" />
             Recent Transactions Feed
           </CardTitle>
-          <p className="text-xs text-slate-400 mt-0.5">
+          <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
             Real-time feed of recorded personal expenditures and earnings
           </p>
         </div>
 
         <div className="flex items-center gap-2">
-          {/* Quick filter pills */}
-          <div className="flex items-center bg-slate-800/70 p-1 rounded-xl border border-slate-700/60 text-xs">
-            {['all', 'income', 'expense'].map((f) => (
-              <button
-                key={f}
-                type="button"
-                onClick={() => setFilter(f)}
-                className={`px-2.5 py-1 rounded-lg capitalize text-xs font-semibold transition-colors cursor-pointer ${
-                  filter === f
-                    ? 'bg-indigo-600 text-white shadow'
-                    : 'text-slate-400 hover:text-slate-200'
-                }`}
-              >
-                {f}
-              </button>
-            ))}
+          {/* Animated filter sliding pills */}
+          <div className="relative flex items-center bg-slate-100 dark:bg-slate-800/70 p-1 rounded-xl border border-slate-200 dark:border-slate-700/60 text-xs">
+            {[
+              { id: 'all', label: 'All', gradient: 'from-indigo-600 to-cyan-500 shadow-indigo-500/25' },
+              { id: 'income', label: 'Income', gradient: 'from-emerald-500 to-teal-500 shadow-emerald-500/25' },
+              { id: 'expense', label: 'Expense', gradient: 'from-rose-600 to-pink-600 shadow-rose-500/25' },
+            ].map((f) => {
+              const isSelected = filter === f.id
+              return (
+                <button
+                  key={f.id}
+                  type="button"
+                  onClick={() => setFilter(f.id)}
+                  className={`relative px-2.5 py-1 rounded-lg capitalize text-xs font-semibold transition-colors cursor-pointer z-10 ${
+                    isSelected
+                      ? 'text-white'
+                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200'
+                  }`}
+                >
+                  {isSelected && (
+                    <motion.div
+                      layoutId="feedFilterPill"
+                      className={`absolute inset-0 bg-gradient-to-r ${f.gradient} rounded-lg shadow-sm -z-10`}
+                      transition={{ type: 'spring', stiffness: 450, damping: 32 }}
+                    />
+                  )}
+                  {f.label}
+                </button>
+              )
+            })}
           </div>
 
           <Link
             to="/transactions"
-            className="hidden sm:flex items-center gap-1 text-xs text-indigo-400 hover:text-indigo-300 font-semibold px-2 py-1 rounded-lg hover:bg-slate-800/60 transition-colors"
+            className="hidden sm:flex items-center gap-1 text-xs text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 font-semibold px-2 py-1 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800/60 transition-colors"
           >
             View All
             <ExternalLink className="w-3.5 h-3.5" />
@@ -91,22 +106,22 @@ export const RecentTransactionsFeed = ({
             )}
           </div>
         ) : (
-          <div className="divide-y divide-slate-800/70">
+          <div className="divide-y divide-slate-200 dark:divide-slate-800/70">
             {filtered.slice(0, 7).map((tx) => {
               const isIncome = (tx.transaction_type || tx.type || '').toLowerCase() === 'income'
 
               return (
                 <div
                   key={tx.id}
-                  className="py-3 px-2 flex items-center justify-between gap-3 hover:bg-slate-800/40 rounded-xl transition-colors group"
+                  className="py-3 px-2 flex items-center justify-between gap-3 hover:bg-slate-100/60 dark:hover:bg-slate-800/40 rounded-xl transition-colors group"
                 >
                   {/* Left: Icon & Title */}
                   <div className="flex items-center gap-3 min-w-0">
                     <div
                       className={`w-9 h-9 rounded-xl flex items-center justify-center shrink-0 border ${
                         isIncome
-                          ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-400'
-                          : 'bg-rose-500/10 border-rose-500/30 text-rose-400'
+                          ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-500 dark:text-emerald-400'
+                          : 'bg-rose-500/10 border-rose-500/30 text-rose-500 dark:text-rose-400'
                       }`}
                     >
                       {isIncome ? (
@@ -118,30 +133,30 @@ export const RecentTransactionsFeed = ({
 
                     <div className="min-w-0">
                       <div className="flex items-center gap-2">
-                        <p className="text-xs font-bold text-slate-200 truncate">
+                        <p className="text-xs font-bold text-slate-900 dark:text-slate-200 truncate">
                           {tx.category || 'General'}
                         </p>
                         {tx.notes && (
-                          <span className="text-[10px] text-slate-400 truncate max-w-[120px]">
+                          <span className="text-[10px] text-slate-500 dark:text-slate-400 truncate max-w-[120px]">
                             ({tx.notes})
                           </span>
                         )}
                       </div>
-                      <div className="flex items-center gap-2 text-[10px] text-slate-400 mt-0.5 flex-wrap">
+                      <div className="flex items-center gap-2 text-[10px] text-slate-500 dark:text-slate-400 mt-0.5 flex-wrap">
                         <span className="flex items-center gap-1">
-                          <Calendar className="w-3 h-3 text-slate-500" />
+                          <Calendar className="w-3 h-3 text-slate-400" />
                           {formatDate(tx.date)}
                         </span>
                         <span>&bull;</span>
                         <span className="flex items-center gap-1">
-                          <CreditCard className="w-3 h-3 text-slate-500" />
+                          <CreditCard className="w-3 h-3 text-slate-400" />
                           {tx.payment_mode || 'Cash'}
                         </span>
                         {tx.location && (
                           <>
                             <span>&bull;</span>
                             <span className="flex items-center gap-1">
-                              <MapPin className="w-3 h-3 text-slate-500" />
+                              <MapPin className="w-3 h-3 text-slate-400" />
                               {tx.location}
                             </span>
                           </>
@@ -155,7 +170,7 @@ export const RecentTransactionsFeed = ({
                     <div className="text-right">
                       <p
                         className={`text-sm font-black font-mono tracking-tight ${
-                          isIncome ? 'text-emerald-400' : 'text-rose-400'
+                          isIncome ? 'text-emerald-600 dark:text-emerald-400' : 'text-rose-600 dark:text-rose-400'
                         }`}
                       >
                         {isIncome ? `+${formatINR(tx.amount)}` : `-${formatINR(tx.amount)}`}
@@ -174,7 +189,7 @@ export const RecentTransactionsFeed = ({
                         type="button"
                         onClick={() => onDelete(tx.id)}
                         title="Delete transaction"
-                        className="opacity-0 group-hover:opacity-100 p-1.5 rounded-lg text-slate-500 hover:text-rose-400 hover:bg-rose-500/10 transition-all cursor-pointer"
+                        className="opacity-0 group-hover:opacity-100 p-1.5 rounded-lg text-slate-400 hover:text-rose-500 hover:bg-rose-500/10 transition-all cursor-pointer"
                       >
                         <Trash2 className="w-3.5 h-3.5" />
                       </button>
@@ -186,10 +201,10 @@ export const RecentTransactionsFeed = ({
           </div>
         )}
 
-        <div className="mt-3 pt-3 border-t border-slate-800 text-center sm:hidden">
+        <div className="mt-3 pt-3 border-t border-slate-200 dark:border-slate-800 text-center sm:hidden">
           <Link
             to="/transactions"
-            className="text-xs text-indigo-400 font-semibold hover:underline inline-flex items-center gap-1"
+            className="text-xs text-indigo-600 dark:text-indigo-400 font-semibold hover:underline inline-flex items-center gap-1"
           >
             View all transactions <ExternalLink className="w-3 h-3" />
           </Link>
