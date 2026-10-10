@@ -1,0 +1,24 @@
+[tool.ruff]
+target-version = "py311"
+line-length = 120
+exclude = [
+    "backend/venv",
+    ".pytest_cache",
+    ".ruff_cache",
+    "__pycache__",
+]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM", "ARG"]
+ignore = [
+    "E501",   # Line length handled by formatter
+    "ARG001", # Unused function argument (FastAPI Depends & route signatures)
+    "ARG002", # Unused method argument
+    "B008",   # FastAPI Depends() in default argument
+]
+
+[tool.vulture]
+min_confidence = 80
+paths = ["backend/app"]
+exclude = ["backend/venv"]
+ignore_decorators = ["@app.*", "@router.*", "@pytest.*"]

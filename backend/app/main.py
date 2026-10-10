@@ -1,15 +1,17 @@
+from contextlib import asynccontextmanager
+
+import sentry_sdk
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from contextlib import asynccontextmanager
-import sentry_sdk
-from .config import CORS_ORIGINS, ENVIRONMENT, SENTRY_DSN, MODEL_PATH
-from .database import init_db
-from .services.transactions import seed_sample_data, get_summary
+
 from .auth import DEMO_USER_ID
-from .routers.transactions import router as transactions_router
+from .config import CORS_ORIGINS, ENVIRONMENT, MODEL_PATH, SENTRY_DSN
+from .database import init_db
 from .routers.analytics import router as analytics_router
 from .routers.predictor import router as predictor_router
 from .routers.smart import router as smart_router
+from .routers.transactions import router as transactions_router
+from .services.transactions import get_summary, seed_sample_data
 
 if SENTRY_DSN:
     sentry_sdk.init(

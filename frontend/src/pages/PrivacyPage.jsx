@@ -1,7 +1,7 @@
-import React from 'react'
 import { motion } from 'framer-motion'
-import { Shield, Lock, Database, UserCheck, Trash2, Cookie, Mail } from 'lucide-react'
+import { Shield, Lock, Database, UserCheck, Trash2, Cookie } from 'lucide-react'
 import { siteConfig } from '../config/site'
+
 
 export default function PrivacyPage() {
   return (

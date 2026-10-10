@@ -9,12 +9,13 @@ Model features (18 columns):
   location_Hyderabad, location_Jaipur, location_Kolkata, location_Mumbai, location_Pune
 """
 
-import joblib
-import pandas as pd
-import numpy as np
 from datetime import datetime
-from pathlib import Path
-from ..config import MODEL_PATH, DATASET_PATH
+
+import joblib
+import numpy as np
+import pandas as pd
+
+from ..config import MODEL_PATH
 
 # --- Model singleton ---
 _model = None
@@ -174,9 +175,10 @@ def get_model_insights() -> dict:
     if hasattr(model, "feature_importances_"):
         importances = model.feature_importances_
         fi = []
-        for name, imp in sorted(zip(FEATURE_COLUMNS, importances), key=lambda x: -x[1]):
+        for name, imp in sorted(zip(FEATURE_COLUMNS, importances, strict=False), key=lambda x: -x[1]):
             fi.append({"feature": name, "importance": round(float(imp), 4)})
         result["feature_importances"] = fi
+
 
     return result
 

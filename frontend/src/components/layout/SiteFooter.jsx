@@ -1,6 +1,7 @@
-import React, { useState, useEffect, useId } from 'react'
+import { useState, useEffect, useId, Fragment } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion, useReducedMotion } from 'framer-motion'
+
 import {
   TrendingUp,
   ArrowUp,

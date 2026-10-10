@@ -1,6 +1,6 @@
-import React from 'react'
 import { motion } from 'framer-motion'
-import { Cookie, CheckCircle2, ShieldCheck, Database, RefreshCw } from 'lucide-react'
+import { Cookie, ShieldCheck, Database, RefreshCw } from 'lucide-react'
+
 
 export default function CookiesPage() {
   return (

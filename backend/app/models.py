@@ -1,5 +1,7 @@
+from typing import Any
+
 from pydantic import BaseModel, Field
-from typing import Optional, List, Dict, Any
+
 
 class TransactionCreate(BaseModel):
     date: str
@@ -8,16 +10,16 @@ class TransactionCreate(BaseModel):
     amount: float = Field(..., gt=0)
     payment_mode: str
     location: str
-    notes: Optional[str] = None
+    notes: str | None = None
 
 class TransactionUpdate(BaseModel):
-    date: Optional[str] = None
-    transaction_type: Optional[str] = None
-    category: Optional[str] = None
-    amount: Optional[float] = None
-    payment_mode: Optional[str] = None
-    location: Optional[str] = None
-    notes: Optional[str] = None
+    date: str | None = None
+    transaction_type: str | None = None
+    category: str | None = None
+    amount: float | None = None
+    payment_mode: str | None = None
+    location: str | None = None
+    notes: str | None = None
 
 class TransactionResponse(BaseModel):
     id: str
@@ -28,17 +30,17 @@ class TransactionResponse(BaseModel):
     amount: float
     payment_mode: str
     location: str
-    notes: Optional[str] = None
-    created_at: Optional[str] = None
+    notes: str | None = None
+    created_at: str | None = None
 
 class TransactionListResponse(BaseModel):
     total: int
     page: int
     page_size: int
-    transactions: List[TransactionResponse]
+    transactions: list[TransactionResponse]
 
 class BulkDeleteRequest(BaseModel):
-    transaction_ids: List[str]
+    transaction_ids: list[str]
 
 class SummaryResponse(BaseModel):
     total_income: float
@@ -74,8 +76,8 @@ class LocationAnalyticsItem(BaseModel):
 class TrendsResponse(BaseModel):
     income_mom_pct: float
     expense_mom_pct: float
-    top_categories: List[CategoryAnalyticsItem]
-    top_locations: List[LocationAnalyticsItem]
+    top_categories: list[CategoryAnalyticsItem]
+    top_locations: list[LocationAnalyticsItem]
 
 class PredictRequest(BaseModel):
     amount: float
@@ -99,10 +101,10 @@ class ModelInsightsResponse(BaseModel):
     expense_recall: float
     income_precision: float
     income_recall: float
-    confusion_matrix: List[List[int]]
-    feature_importances: List[Dict[str, Any]]
+    confusion_matrix: list[list[int]]
+    feature_importances: list[dict[str, Any]]
     total_samples: int
-    feature_columns: List[str]
+    feature_columns: list[str]
 
 class ModelSummaryResponse(BaseModel):
     model_name: str
@@ -140,8 +142,8 @@ class GoalCreate(BaseModel):
     title: str
     target_amount: float = Field(..., gt=0)
     current_amount: float = Field(default=0.0, ge=0)
-    deadline: Optional[str] = None
-    category: Optional[str] = None
+    deadline: str | None = None
+    category: str | None = None
 
 class GoalContribute(BaseModel):
     amount: float = Field(..., gt=0)
@@ -152,8 +154,8 @@ class GoalResponse(BaseModel):
     title: str
     target_amount: float
     current_amount: float
-    deadline: Optional[str] = None
-    category: Optional[str] = None
+    deadline: str | None = None
+    category: str | None = None
     percentage: float = 0.0
     remaining: float = 0.0
 
@@ -191,16 +193,16 @@ class NotificationResponse(BaseModel):
 
 # === Phase 7: Profile & Settings ===
 class ProfileUpdate(BaseModel):
-    full_name: Optional[str] = None
-    currency: Optional[str] = None
-    theme_preference: Optional[str] = None
-    accent_color: Optional[str] = None
+    full_name: str | None = None
+    currency: str | None = None
+    theme_preference: str | None = None
+    accent_color: str | None = None
 
 class ProfileResponse(BaseModel):
     id: str
     email: str
-    full_name: Optional[str] = None
-    avatar_url: Optional[str] = None
+    full_name: str | None = None
+    avatar_url: str | None = None
     currency: str = "INR"
     theme_preference: str = "dark"
     accent_color: str = "indigo"

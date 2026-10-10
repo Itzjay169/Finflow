@@ -1,11 +1,14 @@
-import uuid
 import csv
 import io
+import uuid
+from typing import Any
+
 import pandas as pd
-from typing import List, Optional, Dict, Any, Tuple
-from ..database import get_db
+
 from ..config import DATASET_PATH
+from ..database import get_db
 from ..models import TransactionCreate, TransactionUpdate
+
 
 def seed_sample_data(user_id: str) -> int:
     """
@@ -41,7 +44,7 @@ def seed_sample_data(user_id: str) -> int:
 
     return len(rows_to_insert)
 
-def get_summary(user_id: str) -> Dict[str, Any]:
+def get_summary(user_id: str) -> dict[str, Any]:
     with get_db() as conn:
         cursor = conn.cursor()
         cursor.execute("""
@@ -72,20 +75,20 @@ def get_transactions(
     user_id: str,
     page: int = 1,
     page_size: int = 20,
-    transaction_type: Optional[str] = None,
-    category: Optional[str] = None,
-    payment_mode: Optional[str] = None,
-    location: Optional[str] = None,
-    start_date: Optional[str] = None,
-    end_date: Optional[str] = None,
-    search: Optional[str] = None,
+    transaction_type: str | None = None,
+    category: str | None = None,
+    payment_mode: str | None = None,
+    location: str | None = None,
+    start_date: str | None = None,
+    end_date: str | None = None,
+    search: str | None = None,
     sort_by: str = "date",
     sort_order: str = "desc",
-) -> Tuple[int, List[Dict[str, Any]]]:
+) -> tuple[int, list[dict[str, Any]]]:
     query = "SELECT * FROM transactions WHERE user_id = ?"
     count_query = "SELECT COUNT(*) as count FROM transactions WHERE user_id = ?"
-    params: List[Any] = [user_id]
-    count_params: List[Any] = [user_id]
+    params: list[Any] = [user_id]
+    count_params: list[Any] = [user_id]
 
     if transaction_type and transaction_type.lower() != "all":
         query += " AND LOWER(transaction_type) = LOWER(?)"
@@ -151,7 +154,7 @@ def get_transactions(
 
     return total, rows
 
-def create_transaction(user_id: str, data: TransactionCreate) -> Dict[str, Any]:
+def create_transaction(user_id: str, data: TransactionCreate) -> dict[str, Any]:
     tx_id = str(uuid.uuid4())
     with get_db() as conn:
         cursor = conn.cursor()
@@ -172,7 +175,7 @@ def create_transaction(user_id: str, data: TransactionCreate) -> Dict[str, Any]:
         cursor.execute("SELECT * FROM transactions WHERE id = ?", (tx_id,))
         return dict(cursor.fetchone())
 
-def update_transaction(user_id: str, tx_id: str, data: TransactionUpdate) -> Optional[Dict[str, Any]]:
+def update_transaction(user_id: str, tx_id: str, data: TransactionUpdate) -> dict[str, Any] | None:
     updates = []
     params = []
     for field, val in data.model_dump(exclude_unset=True).items():
@@ -202,7 +205,7 @@ def delete_transaction(user_id: str, tx_id: str) -> bool:
         cursor.execute("DELETE FROM transactions WHERE id = ? AND user_id = ?", (tx_id, user_id))
         return cursor.rowcount > 0
 
-def bulk_delete_transactions(user_id: str, tx_ids: List[str]) -> int:
+def bulk_delete_transactions(user_id: str, tx_ids: list[str]) -> int:
     if not tx_ids:
         return 0
     placeholders = ",".join("?" for _ in tx_ids)

@@ -1,8 +1,6 @@
 import sqlite3
-import os
-from pathlib import Path
 from contextlib import contextmanager
-from typing import Generator
+from pathlib import Path
 
 DB_FILE = Path(__file__).resolve().parent.parent / "finflow.db"
 

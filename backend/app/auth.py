@@ -1,7 +1,9 @@
-from fastapi import Depends, HTTPException, status
-from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
+from typing import Any
+
 import jwt
-from typing import Optional, Dict, Any
+from fastapi import Depends, HTTPException, status
+from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
+
 from .config import SUPABASE_JWT_SECRET
 
 security = HTTPBearer(auto_error=False)
@@ -9,8 +11,8 @@ security = HTTPBearer(auto_error=False)
 DEMO_USER_ID = "00000000-0000-0000-0000-000000000001"
 
 async def get_current_user(
-    credentials: Optional[HTTPAuthorizationCredentials] = Depends(security)
-) -> Dict[str, Any]:
+    credentials: HTTPAuthorizationCredentials | None = Depends(security)
+) -> dict[str, Any]:
     """
     Verifies incoming JWT token from Supabase Auth or demo session.
     Returns user payload dictionary containing 'id' and 'email'.
@@ -77,4 +79,5 @@ async def get_current_user(
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail=f"Invalid authentication token: {str(exc)}",
-        )
+        ) from exc
+

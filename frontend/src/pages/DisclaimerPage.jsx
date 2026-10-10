@@ -1,6 +1,6 @@
-import React from 'react'
 import { motion } from 'framer-motion'
 import { AlertTriangle, TrendingUp, Cpu, Database, ShieldAlert } from 'lucide-react'
+
 
 export default function DisclaimerPage() {
   return (

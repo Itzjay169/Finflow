@@ -12,13 +12,7 @@ import {
   Clock,
   ArrowRight,
   ShieldCheck,
-  CheckCircle2,
   AlertCircle,
-  Info,
-  DollarSign,
-  ChevronRight,
-  CreditCard,
-  Zap,
   Trash2,
   Flame,
 } from 'lucide-react'
@@ -38,8 +32,8 @@ import {
 } from '../lib/api'
 import { formatINR } from '../lib/utils'
 import { useToast } from '../components/ui/Toast'
-import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '../components/ui/Card'
-import { Button, Badge, Modal, Input } from '../components/ui'
+import { Card } from '../components/ui/Card'
+import { Button, Badge, Modal } from '../components/ui'
 
 const CATEGORY_OPTIONS = [
   'Food',
@@ -63,8 +57,8 @@ export default function BudgetsPage() {
   const [recurring, setRecurring] = useState([])
   const [smartTips, setSmartTips] = useState([])
   const [heatmapData, setHeatmapData] = useState([])
-  const [maxHeatmapAmt, setMaxHeatmapAmt] = useState(1)
-  const [loading, setLoading] = useState(true)
+  const [_maxHeatmapAmt, setMaxHeatmapAmt] = useState(1)
+  const [_loading, setLoading] = useState(true)
 
   // Modals state
   const [isBudgetModalOpen, setIsBudgetModalOpen] = useState(false)
@@ -90,11 +84,18 @@ export default function BudgetsPage() {
     transaction_type: 'Expense',
     category: 'Bills',
     frequency: 'Monthly',
-    next_due_date: new Date().toISOString().split('T')[0],
+    next_due_date: '',
   })
 
   useEffect(() => {
+    // Set initial recurring date on mount (avoids impure Date() during render)
+    setRecurringForm((prev) => ({
+      ...prev,
+      next_due_date: prev.next_due_date || new Date().toISOString().split('T')[0],
+    }))
     loadAllData()
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- loadAllData is stable, called only on mount
   }, [])
 
   async function loadAllData() {
@@ -493,7 +494,7 @@ export default function BudgetsPage() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {goals.map((g) => {
-            const isCompleted = g.percentage >= 100
+            // Goal completion percentage used for ring progress below
             const circumference = 2 * Math.PI * 34
             const strokeDashoffset = circumference - (Math.min(100, g.percentage) / 100) * circumference
 

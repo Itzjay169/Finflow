@@ -1,0 +1,13 @@
+{
+  "$schema": "https://unpkg.com/knip@5/schema.json",
+  "entry": ["src/main.jsx!", "src/components/layout/SiteFooter.test.jsx!"],
+  "project": ["src/**/*.{js,jsx}!"],
+  "ignoreDependencies": [
+    "@tailwindcss/vite",
+    "tailwindcss",
+    "@eslint/js",
+    "globals",
+    "eslint-plugin-react-hooks",
+    "eslint-plugin-jsx-a11y"
+  ]
+}

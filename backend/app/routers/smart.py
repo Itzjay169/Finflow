@@ -1,20 +1,21 @@
 import uuid
 from datetime import datetime, timedelta
-from typing import List, Dict, Any, Optional
-from fastapi import APIRouter, Depends, HTTPException, status
-from ..database import get_db
+
+from fastapi import APIRouter, Depends, HTTPException
+
 from ..auth import get_current_user
+from ..database import get_db
 from ..models import (
     BudgetCreate,
     BudgetResponse,
-    GoalCreate,
     GoalContribute,
+    GoalCreate,
     GoalResponse,
+    NotificationResponse,
+    ProfileResponse,
+    ProfileUpdate,
     RecurringItemCreate,
     RecurringItemResponse,
-    NotificationResponse,
-    ProfileUpdate,
-    ProfileResponse,
 )
 
 router = APIRouter(prefix="/api", tags=["Smart Features & Budgets"])
@@ -24,10 +25,10 @@ router = APIRouter(prefix="/api", tags=["Smart Features & Budgets"])
 # 1. BUDGETS
 # ==============================================================================
 
-@router.get("/budgets", response_model=List[BudgetResponse])
+@router.get("/budgets", response_model=list[BudgetResponse])
 async def get_budgets(
-    month: Optional[int] = None,
-    year: Optional[int] = None,
+    month: int | None = None,
+    year: int | None = None,
     user: dict = Depends(get_current_user),
 ):
     """Get all budgets for user with current month spending calculations."""
@@ -203,7 +204,7 @@ async def delete_budget(
 # 2. SAVINGS GOALS
 # ==============================================================================
 
-@router.get("/goals", response_model=List[GoalResponse])
+@router.get("/goals", response_model=list[GoalResponse])
 async def get_goals(user: dict = Depends(get_current_user)):
     """Get all savings goals with progress and remaining calculations."""
     user_id = user["id"]
@@ -356,7 +357,7 @@ async def delete_goal(goal_id: str, user: dict = Depends(get_current_user)):
 # 3. RECURRING TRANSACTIONS & BILLS
 # ==============================================================================
 
-@router.get("/recurring", response_model=List[RecurringItemResponse])
+@router.get("/recurring", response_model=list[RecurringItemResponse])
 async def get_recurring_items(user: dict = Depends(get_current_user)):
     """Get all recurring income/expense items with days until due."""
     user_id = user["id"]
@@ -690,7 +691,7 @@ async def get_daily_heatmap(
 # 6. NOTIFICATIONS
 # ==============================================================================
 
-@router.get("/notifications", response_model=List[NotificationResponse])
+@router.get("/notifications", response_model=list[NotificationResponse])
 async def get_notifications(user: dict = Depends(get_current_user)):
     """Fetch user notifications (seeds starter reminders if none)."""
     user_id = user["id"]

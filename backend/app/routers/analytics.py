@@ -1,30 +1,31 @@
+
 from fastapi import APIRouter, Depends
-from typing import List, Dict, Any
+
+from ..auth import get_current_user
 from ..models import (
-    MonthlyAnalyticsItem,
     CategoryAnalyticsItem,
-    PaymentModeAnalyticsItem,
     LocationAnalyticsItem,
+    MonthlyAnalyticsItem,
+    PaymentModeAnalyticsItem,
     TrendsResponse,
 )
-from ..auth import get_current_user
 from ..services import analytics as analytics_service
 
 router = APIRouter(prefix="/api/analytics", tags=["Analytics"])
 
-@router.get("/monthly", response_model=List[MonthlyAnalyticsItem])
+@router.get("/monthly", response_model=list[MonthlyAnalyticsItem])
 async def get_monthly_analytics(user: dict = Depends(get_current_user)):
     return analytics_service.get_monthly_analytics(user["id"])
 
-@router.get("/category", response_model=List[CategoryAnalyticsItem])
+@router.get("/category", response_model=list[CategoryAnalyticsItem])
 async def get_category_analytics(user: dict = Depends(get_current_user)):
     return analytics_service.get_category_analytics(user["id"])
 
-@router.get("/payment-mode", response_model=List[PaymentModeAnalyticsItem])
+@router.get("/payment-mode", response_model=list[PaymentModeAnalyticsItem])
 async def get_payment_mode_analytics(user: dict = Depends(get_current_user)):
     return analytics_service.get_payment_mode_analytics(user["id"])
 
-@router.get("/location", response_model=List[LocationAnalyticsItem])
+@router.get("/location", response_model=list[LocationAnalyticsItem])
 async def get_location_analytics(user: dict = Depends(get_current_user)):
     return analytics_service.get_location_analytics(user["id"])
 

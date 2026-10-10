@@ -1,9 +1,11 @@
 import pytest
-from httpx import AsyncClient, ASGITransport
-from backend.app.main import app
-from backend.app.database import init_db
-from backend.app.services.transactions import seed_sample_data
+from httpx import ASGITransport, AsyncClient
+
 from backend.app.auth import DEMO_USER_ID
+from backend.app.database import init_db
+from backend.app.main import app
+from backend.app.services.transactions import seed_sample_data
+
 
 @pytest.fixture(autouse=True)
 def setup_database():

@@ -14,4 +14,5 @@ class MockIntersectionObserver {
 }
 
 window.IntersectionObserver = MockIntersectionObserver
-global.IntersectionObserver = MockIntersectionObserver
+globalThis.IntersectionObserver = MockIntersectionObserver
+

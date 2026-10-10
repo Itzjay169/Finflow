@@ -1,14 +1,15 @@
+
 from fastapi import APIRouter, Depends, HTTPException, Query, Response
-from typing import Optional, List
+
+from ..auth import get_current_user
 from ..models import (
-    TransactionCreate,
-    TransactionUpdate,
-    TransactionResponse,
-    TransactionListResponse,
     BulkDeleteRequest,
     SummaryResponse,
+    TransactionCreate,
+    TransactionListResponse,
+    TransactionResponse,
+    TransactionUpdate,
 )
-from ..auth import get_current_user
 from ..services import transactions as tx_service
 
 router = APIRouter(prefix="/api", tags=["Transactions"])
@@ -21,13 +22,13 @@ async def get_summary(user: dict = Depends(get_current_user)):
 async def list_transactions(
     page: int = Query(1, ge=1),
     page_size: int = Query(20, ge=1, le=100),
-    transaction_type: Optional[str] = Query(None),
-    category: Optional[str] = Query(None),
-    payment_mode: Optional[str] = Query(None),
-    location: Optional[str] = Query(None),
-    start_date: Optional[str] = Query(None),
-    end_date: Optional[str] = Query(None),
-    search: Optional[str] = Query(None),
+    transaction_type: str | None = Query(None),
+    category: str | None = Query(None),
+    payment_mode: str | None = Query(None),
+    location: str | None = Query(None),
+    start_date: str | None = Query(None),
+    end_date: str | None = Query(None),
+    search: str | None = Query(None),
     sort_by: str = Query("date"),
     sort_order: str = Query("desc"),
     user: dict = Depends(get_current_user),

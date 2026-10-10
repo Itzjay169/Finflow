@@ -1,7 +1,9 @@
-from typing import List, Dict, Any
+from typing import Any
+
 from ..database import get_db
 
-def get_monthly_analytics(user_id: str) -> List[Dict[str, Any]]:
+
+def get_monthly_analytics(user_id: str) -> list[dict[str, Any]]:
     with get_db() as conn:
         cursor = conn.cursor()
         cursor.execute("""
@@ -28,7 +30,7 @@ def get_monthly_analytics(user_id: str) -> List[Dict[str, Any]]:
         })
     return result
 
-def get_category_analytics(user_id: str) -> List[Dict[str, Any]]:
+def get_category_analytics(user_id: str) -> list[dict[str, Any]]:
     with get_db() as conn:
         cursor = conn.cursor()
         cursor.execute("""
@@ -54,7 +56,7 @@ def get_category_analytics(user_id: str) -> List[Dict[str, Any]]:
         for r in rows
     ]
 
-def get_payment_mode_analytics(user_id: str) -> List[Dict[str, Any]]:
+def get_payment_mode_analytics(user_id: str) -> list[dict[str, Any]]:
     with get_db() as conn:
         cursor = conn.cursor()
         cursor.execute("""
@@ -80,7 +82,7 @@ def get_payment_mode_analytics(user_id: str) -> List[Dict[str, Any]]:
         for r in rows
     ]
 
-def get_location_analytics(user_id: str) -> List[Dict[str, Any]]:
+def get_location_analytics(user_id: str) -> list[dict[str, Any]]:
     with get_db() as conn:
         cursor = conn.cursor()
         cursor.execute("""
@@ -106,7 +108,7 @@ def get_location_analytics(user_id: str) -> List[Dict[str, Any]]:
         for r in rows
     ]
 
-def get_trends(user_id: str) -> Dict[str, Any]:
+def get_trends(user_id: str) -> dict[str, Any]:
     monthly = get_monthly_analytics(user_id)
     income_mom = 0.0
     expense_mom = 0.0

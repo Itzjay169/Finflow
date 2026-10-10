@@ -1,6 +1,7 @@
 from fastapi import APIRouter, Depends
-from ..models import PredictRequest, PredictResponse, ModelInsightsResponse, ModelSummaryResponse
+
 from ..auth import get_current_user
+from ..models import ModelInsightsResponse, ModelSummaryResponse, PredictRequest, PredictResponse
 from ..services import predictor as ml_service
 
 router = APIRouter(prefix="/api", tags=["ML Predictor"])

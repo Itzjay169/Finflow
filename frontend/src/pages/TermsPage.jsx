@@ -1,7 +1,7 @@
-import React from 'react'
 import { motion } from 'framer-motion'
 import { FileText, CheckCircle2, AlertTriangle, ShieldCheck, Scale } from 'lucide-react'
 import { siteConfig } from '../config/site'
+
 
 export default function TermsPage() {
   return (
