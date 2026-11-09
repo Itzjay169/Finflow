@@ -10,7 +10,7 @@ import {
 } from 'recharts'
 import { Card, CardHeader, CardTitle, CardContent } from '../ui'
 import { CreditCard, MapPin, Smartphone, Banknote, Landmark } from 'lucide-react'
-import { formatCurrency, formatCompactCurrency } from '../../lib/utils'
+import { formatCurrency, formatCompactCurrency, formatINR } from '../../lib/utils'
 import { usePreferences } from '../../context/PreferencesContext'
 
 const PAYMENT_ICONS = {
@@ -168,7 +168,7 @@ export const PaymentAndLocationCard = ({
                         {pm.payment_mode}
                       </p>
                       <p className="text-[10px] text-slate-500 dark:text-slate-400 font-mono">
-                        {formatINR(pm.amount)} ({pm.percentage}%)
+                        {formatCurrency(pm.amount, preferences?.currency)} ({pm.percentage}%)
                       </p>
                     </div>
                   </div>
@@ -226,7 +226,7 @@ export const PaymentAndLocationCard = ({
                       {loc.location}
                     </p>
                     <p className="text-[10px] text-slate-500 dark:text-slate-400 font-mono">
-                      {formatINR(loc.amount)} ({loc.percentage}%)
+                      {formatCurrency(loc.amount, preferences?.currency)} ({loc.percentage}%)
                     </p>
                   </div>
                 </div>
