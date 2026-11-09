@@ -90,8 +90,8 @@ export default function RegisterPage() {
         {/* Left Side Feature Panel */}
         <div className="md:col-span-5 bg-gradient-to-br from-indigo-900/60 via-purple-900/40 to-slate-900/80 p-8 flex flex-col justify-between relative overflow-hidden border-b md:border-b-0 md:border-r border-slate-700/60">
           <div className="space-y-4 relative z-10 text-left">
-            <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-indigo-600 to-cyan-500 flex items-center justify-center shadow-lg shadow-indigo-600/30">
-              <TrendingUp className="w-6 h-6 text-white" />
+            <div className="w-14 h-14 rounded-2xl overflow-hidden shadow-xl shadow-indigo-600/30 border border-indigo-500/30">
+              <img src="/logo.png" alt="FinFlow Logo" className="w-full h-full object-cover" />
             </div>
             <div>
               <h2 className="text-2xl font-extrabold tracking-tight text-white">Create Account</h2>

@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="frontend/public/logo.png" width="120" height="120" alt="FinFlow Logo" />
+</p>
+
 # FinFlow – Personal Finance Tracker & ML Classifier
 
 [![FastAPI](https://img.shields.io/badge/Backend-FastAPI-009688.svg?logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
@@ -5,34 +9,39 @@
 [![scikit-learn](https://img.shields.io/badge/ML-scikit--learn-F7931E.svg?logo=scikitlearn&logoColor=white)](https://scikit-learn.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Styling-Tailwind%20CSS-06B6D4.svg?logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Instagram](https://img.shields.io/badge/Instagram-@jay__dev._._-E4405F?logo=instagram&logoColor=white)](https://www.instagram.com/jay_dev._._/?hl=en)
 
-FinFlow is an autonomous, full-stack personal finance tracking platform with integrated Machine Learning. It features real-time cashflow analytics, category budgeting, automated savings goals, recurring bills management, and an ensemble **Random Forest Classifier** trained on 18 engineered features to classify transaction types with **99.2% benchmark accuracy**.
+FinFlow is an autonomous, full-stack personal finance tracking platform with integrated Machine Learning. It features real-time cashflow analytics, category budgeting, automated savings goals, recurring bills management, and an ensemble **Random Forest Classifier** trained on 18 engineered features to classify transaction types with **Held-out test accuracy: 95.83% on 240 unseen rows** (evaluated on an 80/20 train/test split on 1,200 rows; training-set accuracy was 99.17%).
+
+> **Developer**: **@jay_dev._._** &nbsp;|&nbsp; Follow on Instagram: [@jay_dev._._](https://www.instagram.com/jay_dev._._/?hl=en)
 
 ---
 
 ## Key Features
 
-- **Executive Analytics Dashboard**: Real-time KPI summaries (Total Income, Total Expense, Net Savings, Savings Rate), MoM cashflow area charts, category distribution donut visualizations, and live transaction feeds.
-- **Machine Learning Inference Engine**: Classify transactions in real-time (`Income` vs `Expense`) using a trained `RandomForestClassifier` with full confidence scores, probability breakdown, and one-click database persistence.
-- **Model Evaluation & Insights**: Live Confusion Matrix heatmap, per-class Precision/Recall metrics, and Gini impurity feature importances.
-- **Full Transaction Management**: Paginated table with multi-field search, multi-condition filtering, sorting, edit modal, delete confirmation, bulk batch deletion, and direct CSV exports.
-- **Smart Budgets & Financial Automation**: Monthly category spending caps with dynamic warning states (amber at 80%, rose at 100%), automated savings milestones with circular progress rings, and upcoming recurring bills reminders.
-- **Algorithmic Smart Insights**: Automated tips detecting cashflow velocity, savings rate milestones, and top spending anomalies.
-- **Daily Spending Heatmap**: GitHub-style 120-day activity calendar displaying daily cash outflows and transaction frequency.
-- **Global Command Palette (`Ctrl+K`)**: Quick navigation, instant search across all transactions, and quick action shortcuts from any screen.
-- **Notifications Hub**: Dropdown notifications bell for upcoming bills, budget threshold alerts, and system milestones.
-- **Interactive Three.js 3D Hero**: Floating, reactive metallic coin stack hero scene built with `@react-three/fiber`.
-- **Pre-Seeded Demo Account**: One-click instant login pre-populated with 1,200 real transactions.
+- **Executive Analytics Dashboard**: Real-time KPI summaries (Total Inflow, Total Outflow, Net Savings, Capital Efficiency / Savings Rate), MoM cashflow area charts, category distribution donut visualizations, and live transaction feeds.
+- **Machine Learning Inference Engine**: Classify transactions in real-time (`Income` vs `Expense`) using a trained `RandomForestClassifier` with full confidence scores, probability breakdown, and an uncertainty threshold (<60% confidence flagged as "Uncertain" for user override).
+- **Algorithmic Cash-Flow Forecast**: Project upcoming balances across 30, 90, and 180 days combining historical run-rate and scheduled recurring obligations.
+- **AI Financial Coach**: Contextual real-time advice cards detecting spending anomalies, category pacing, and upcoming bill reminders with one-click actions.
+- **Transaction Tags & Attachments**: Tag transactions (`#food`, `#weekend`, `#tax`), filter by tags or receipt attachments, and preview receipt URLs directly in the ledger table.
+- **Saved Views & Presets**: One-click preset filters (e.g. "Monthly Groceries", "High-value Expenses", "Salary Credits") with custom preset saving.
+- **Non-Destructive Seeding Safety**: Benchmark sample seeding is non-destructive by default with explicit confirmation before any destructive replacement.
+- **Recurring Bills Automation**: "Mark as Paid" action that automatically creates a ledger transaction and advances the bill's next due date by frequency.
+- **Automated Savings Goals & Milestones**: Target deadlines, circular SVG progress rings, automatic monthly contribution pace calculation, and milestone notifications.
+- **Complete Settings Control Center**: 7 comprehensive cards: Profile, Locale Preferences (INR, USD, EUR, GBP), Financial Defaults, Notifications Center, Data & Privacy (CSV/JSON/printable PDF export, CSV import, demo reset, account deletion), Security & Sessions, and About / System Health.
+- **Global Command Palette (`Ctrl+K`)**: Live search across pages, transactions, budgets, goals, and recurring bills with keyboard arrow navigation and recent search history.
+- **Mobile Fixed Navigation**: Dedicated bottom tab bar for smartphones and tablets.
 
 ---
 
-## Demo Credentials
+## Demo Credentials & Offline Mode
 
 You can test the entire application instantly without configuring external credentials:
 
 - **Email**: `demo@finflow.app`
 - **Password**: `Demo@1234`
 - **One-Click**: Click the **"Try Demo"** button on the Login page.
+- **Offline / Local Fallback**: When running without Supabase cloud credentials, FinFlow automatically generates cryptographic development JWTs using a non-production development secret, providing complete local autonomy.
 
 ---
 
@@ -42,22 +51,23 @@ You can test the entire application instantly without configuring external crede
 graph TD
     User([User Browser])
     
-    subgraph Frontend ["React 19 + Vite (Tailwind + Framer Motion)"]
+    subgraph Frontend ["React 19 + Vite (Tailwind + Framer Motion + TanStack Query)"]
         Landing["Landing & 3D Hero"]
-        Dash["Interactive Dashboard"]
-        Tx["Transactions Manager"]
-        Predict["ML Inference Playground"]
-        Budgets["Budgets & Savings Goals"]
+        Dash["Interactive Dashboard & Forecast"]
+        Tx["Transactions Ledger & Tags"]
+        Predict["ML Inference & History"]
+        Budgets["Budgets, Goals & Recurring"]
+        Settings["Settings 7-Card Center"]
         Cmd["Command Palette (Ctrl+K)"]
     end
 
     subgraph Backend ["FastAPI Python Engine"]
         AuthRouter["JWT Auth & RLS"]
-        TxRouter["Transactions CRUD & Aggregations"]
-        MLRouter["ML Inference & Insights Engine"]
-        SmartRouter["Budgets, Goals & Notifications"]
-        RFModel[("RandomForest Classifier\n(18 Features, 99.2% Acc)")]
-        DB[("SQLite / Supabase Postgres\n(Multi-Tenant Isolation)")]
+        TxRouter["Transactions CRUD, Tags & CSV"]
+        MLRouter["ML Inference & Evaluation (95.83% Test Acc)"]
+        SmartRouter["Budgets, Forecast, Goals & Notifications"]
+        RFModel[("RandomForest Classifier\n(18 Features, 95.83% Held-Out Acc)")]
+        DB[("SQLite / PostgreSQL\n(Database Adapter Layer)")]
     end
 
     User --> Frontend
@@ -73,8 +83,10 @@ graph TD
 
 - **Model Architecture**: `RandomForestClassifier` (100 estimators, scikit-learn).
 - **Target**: `transaction_type` (`Income` vs `Expense`).
-- **Benchmark Accuracy**: **99.17%** on the 1,200 personal finance transaction benchmark.
-- **Confusion Matrix**: `[[872, 0], [10, 318]]` (872/872 expenses correctly identified; 318/328 incomes correctly identified).
+- **Held-out Test Accuracy**: **95.83% on 240 unseen rows** (80/20 train/test split on 1,200 rows).
+- **Test Confusion Matrix**: `[[172, 0], [10, 58]]` (172/172 test expenses correctly identified; 58/68 test incomes correctly identified).
+- **Model Metadata**: Saved in `backend/app/model_metadata.json` with class precision/recall, training date, feature list, and deserialization security notice.
+- **Uncertainty Threshold**: Predictions with confidence below 60% are flagged as "Uncertain" with an interactive manual override.
 - **Engineered Feature Vector (18 Features)**:
   1. `amount`: Primary driver (~78.8% importance).
   2. `year`, `month`, `day_of_week`: Temporal factors.
@@ -89,7 +101,7 @@ graph TD
 - Python 3.10+
 - Node.js 18+ & npm
 
-### 1. Clone & Set Up Backend
+### 1. Set Up Backend
 
 ```bash
 # Navigate to project root
@@ -103,13 +115,13 @@ backend\venv\Scripts\activate
 # Linux/macOS
 source backend/venv/bin/activate
 
-# Install dependencies (scikit-learn, fastapi, pandas, joblib, etc.)
+# Install dependencies (scikit-learn, fastapi, pandas, joblib, PyJWT, etc.)
 pip install -r requirements.txt
 
 # Start FastAPI server on port 8000
 uvicorn backend.app.main:app --host 127.0.0.1 --port 8000 --reload
 ```
-The backend will automatically initialize `backend/finflow.db` and auto-seed the demo account with the 1,200 transaction benchmark.
+The backend initializes `finflow.db` and loads the sample benchmark automatically.
 
 ### 2. Set Up Frontend
 
@@ -130,23 +142,49 @@ Visit **http://127.0.0.1:5173** in your browser.
 
 ## Running the Automated Test Suite
 
-FinFlow includes comprehensive automated backend test coverage:
+FinFlow includes a 42-test automated test suite across backend and frontend:
 
 ```bash
-# Run pytest across all suites
-backend\venv\Scripts\pytest.exe backend/tests -v
+# Run all tests (both backend pytest and frontend vitest)
+npm test
+
+# Run backend tests only (18 tests)
+npm run test:backend
+
+# Run frontend vitest tests only (24 tests)
+npm run test:frontend
+
+# Run code style and linting (ruff + oxlint)
+npm run lint
 ```
 
-### Test Coverage Checklist (9/9 Passed)
-- `test_health`: Service health and model file availability.
-- `test_summary_endpoint`: Summary aggregations across 1,200 records.
-- `test_transactions_pagination_and_filter`: Filtering by type and category.
-- `test_crud_transaction`: Create, read, update, delete transaction lifecycle.
-- `test_analytics_endpoints`: Monthly cashflow, categories, payment modes, locations.
-- `test_export_csv`: Direct CSV streaming endpoint.
-- `test_ml_prediction_and_insights`: Real-time inference accuracy and insights schema.
-- `test_budgets_goals_and_recurring`: Spending caps, goal deposits, and recurring bills.
-- `test_rls_user_isolation`: Strict multi-tenant user data isolation.
+### Backend Test Coverage (18/18 Passed)
+- Token rejection without Authorization header (401).
+- Token rejection for forged / plain prefix tokens (`user_`, `local_user_`).
+- Demo mode rejection in production environment.
+- Transaction CRUD operations with strict validation.
+- Safe non-destructive seeding vs destructive confirmation.
+- Pagination, sorting, and tag/attachment filtering.
+- Strict multi-tenant user isolation.
+- Budget month/year strict calculation.
+- Goal automated monthly contributions and milestone updates.
+- Recurring bill "Mark as paid" transaction creation and date advancement.
+- Cashflow forecasting API.
+- Prediction history persistence, filtering, and deletion.
+- Prediction feedback recording.
+- Strict Pydantic input validation failure schema.
+- Sliding-window rate limiting.
+- System health checks (API, SQLite, ML model artifact).
+
+### Frontend Test Coverage (24/24 Passed)
+- Token retrieval via `supabase.auth.getSession()` and single-retry auto-refresh on 401.
+- Structured response unwrapping and error handling.
+- AuthContext state management, offline development fallback, demo login, and cache eviction on signout.
+- ProtectedRoute authentication redirects and child rendering.
+- ErrorBoundary crash interception and fallback rendering.
+- CommandPalette `Ctrl+K` keybindings, query filtering, keyboard arrow navigation, and recent searches.
+- Predictor 95.83% accuracy label verification and absence of false 99.2% claims.
+- SiteFooter full and compact variants, links validation, and dynamic copyright year logic.
 
 ---
 
@@ -156,34 +194,30 @@ backend\venv\Scripts\pytest.exe backend/tests -v
 
 ```bash
 cd frontend
-
-# Install Vercel CLI
-npm install -g vercel
-
-# Set production environment variables
-vercel env add VITE_API_BASE_URL production "https://your-backend-api.onrender.com"
-
-# Deploy to production
 vercel --prod
 ```
 
+Configure Environment Variables on Vercel:
+- `VITE_API_BASE_URL`: `https://your-backend-api.onrender.com`
+- `VITE_SUPABASE_URL`: `https://your-project.supabase.co` (optional)
+- `VITE_SUPABASE_ANON_KEY`: `your-anon-key` (optional)
+
 ### Backend on Render / Railway
 
-Because the scikit-learn model and pandas dependencies are too large for lightweight serverless functions, deploy the FastAPI backend as a persistent web service:
+> ⚠️ **Persistent Disk Warning for SQLite**:
+> When hosting on ephemeral platforms like Render or Railway without a managed PostgreSQL database, SQLite databases stored on the local container filesystem will be reset on every redeploy or restart unless an attached persistent disk mount (e.g. `/data/finflow.db`) is configured.
+>
+> **Recommended Production Setup**:
+> 1. Attach a persistent disk to your service mounted at `/var/data`, and set `DATABASE_PATH=/var/data/finflow.db`.
+> 2. Alternatively, set `DATABASE_URL=postgresql://user:pass@host:5432/db` to connect to a managed Supabase / PostgreSQL instance.
 
-1. Create a new Web Service on **Render** (or **Railway**) pointing to your repository.
-2. Set **Root Directory**: `.`
-3. Set **Build Command**: `pip install -r requirements.txt`
-4. Set **Start Command**: `uvicorn backend.app.main:app --host 0.0.0.0 --port $PORT`
-5. Configure Environment Variables:
-   - `CORS_ORIGINS`: `https://your-finflow-app.vercel.app`
-   - `ENVIRONMENT`: `production`
-   - `MODEL_PATH`: `transaction_type_classifier.joblib`
-   - `DATASET_PATH`: `personal_finance_dummy_dataset_1200.csv`
-   - `SENTRY_DSN`: `your_sentry_dsn` (optional)
-   - `SUPABASE_URL`: `your_supabase_url` (optional)
-   - `SUPABASE_ANON_KEY`: `your_supabase_anon_key` (optional)
-   - `SUPABASE_JWT_SECRET`: `your_supabase_jwt_secret` (optional)
+Configure Environment Variables on Render / Railway:
+- `ENVIRONMENT`: `production`
+- `CORS_ORIGINS`: `https://your-finflow-app.vercel.app`
+- `MODEL_PATH`: `transaction_type_classifier.joblib`
+- `DATASET_PATH`: `personal_finance_dummy_dataset_1200.csv`
+- `SUPABASE_JWT_SECRET`: `your_production_supabase_jwt_secret` (required in production)
+- `RATE_LIMIT_ENABLED`: `true`
 
 ---
 
@@ -193,55 +227,64 @@ Because the scikit-learn model and pandas dependencies are too large for lightwe
 FinFlow/
 ├── backend/
 │   ├── app/
-│   │   ├── main.py              # FastAPI app & lifespan seeder
-│   │   ├── config.py            # Environment configuration
-│   │   ├── database.py          # SQLite / Supabase schema & migrations
-│   │   ├── auth.py              # JWT authentication & tenant isolation
-│   │   ├── models.py            # Pydantic data schemas
+│   │   ├── main.py              # FastAPI app, security middleware & rate limiting
+│   │   ├── config.py            # Strict environment settings & CORS
+│   │   ├── database.py          # SQLite / PostgreSQL adapter layer & migrations
+│   │   ├── auth.py              # Cryptographic JWT authentication & multi-tenant isolation
+│   │   ├── models.py            # Strict Pydantic models & validation schemas
+│   │   ├── model_metadata.json  # Model version, 95.83% accuracy & security disclosure
 │   │   ├── routers/
-│   │   │   ├── transactions.py  # CRUD & CSV export
-│   │   │   ├── analytics.py     # Cashflow, categories, trends
-│   │   │   ├── predictor.py     # ML inference & evaluation
-│   │   │   └── smart.py         # Budgets, goals, recurring, notifications
+│   │   │   ├── auth.py          # Development & offline session issuance
+│   │   │   ├── transactions.py  # CRUD, duplicates check, tags & CSV
+│   │   │   ├── analytics.py     # Velocity metrics, tags, categories
+│   │   │   ├── predictor.py     # Inference, history, feedback & health
+│   │   │   └── smart.py         # Budgets, forecast, goals, recurring & preferences
 │   │   └── services/
-│   │       ├── predictor.py     # RandomForest inference service
-│   │       └── transactions.py  # Relational operations & seeder
+│   │       ├── predictor.py     # Inference service with uncertainty flag (<60%)
+│   │       └── transactions.py  # Safe seeding, rules & duplicate detection
+│   ├── scripts/
+│   │   └── retrain_model.py     # 80/20 train/test evaluation script (95.83% test acc)
 │   └── tests/
-│       └── test_api.py          # Complete 9-test pytest suite
+│       └── test_api.py          # 18-test pytest suite
 ├── frontend/
 │   ├── src/
 │   │   ├── components/
-│   │   │   ├── common/          # ErrorBoundary, fallbacks
-│   │   │   ├── layout/          # Navbar, CommandPalette, NotificationsBell, Tour
-│   │   │   ├── dashboard/       # KPICards, CashflowChart, Donut, AddModal
+│   │   │   ├── common/          # ErrorBoundary
+│   │   │   ├── layout/          # Navbar, CommandPalette, NotificationsBell, Tour, Footer
+│   │   │   ├── dashboard/       # KPICard, CashflowChart, Donut, ForecastCard, CoachCards
 │   │   │   └── ui/              # Button, Badge, Card, Modal, Toast, Input
 │   │   ├── pages/
-│   │   │   ├── LandingPage.jsx  # Hero, metrics, feature showcase
-│   │   │   ├── LoginPage.jsx    # Split-screen auth with demo trigger
-│   │   │   ├── RegisterPage.jsx # Registration with password strength
-│   │   │   ├── DashboardPage.jsx# Interactive telemetry dashboard
-│   │   │   ├── TransactionsPage.jsx # Data table with multi-filters & bulk actions
-│   │   │   ├── PredictorPage.jsx# Machine Learning playground & insights
-│   │   │   ├── BudgetsPage.jsx  # Category caps, savings rings, bills, heatmap
-│   │   │   ├── SettingsPage.jsx # Preferences, currency, exports, reset
-│   │   │   └── NotFoundPage.jsx # 404 fallback page
+│   │   │   ├── LandingPage.jsx  # Hero & feature showcase
+│   │   │   ├── LoginPage.jsx    # Auth with demo trigger
+│   │   │   ├── RegisterPage.jsx # Registration
+│   │   │   ├── DashboardPage.jsx# Telemetry dashboard & forecast
+│   │   │   ├── TransactionsPage.jsx # Ledger with tags, presets & attachments
+│   │   │   ├── PredictorPage.jsx# ML playground & prediction history
+│   │   │   ├── BudgetsPage.jsx  # Budgets, recurring automation & goals
+│   │   │   └── SettingsPage.jsx # 7-section user control center
+│   │   ├── test/                # Vitest test suites
 │   │   └── lib/
-│   │       ├── api.js           # Full REST API client
-│   │       ├── utils.js         # INR formatting & helpers
-│   │       └── supabase.js      # Supabase client & fallback
-├── docs/                        # Specifications, design tokens & decisions
-├── personal_finance_dummy_dataset_1200.csv
-├── personal_finance_tracker_fixed.ipynb
-├── transaction_type_classifier.joblib
+│   │       ├── api.js           # REST API client with auto-refresh retry
+│   │       └── supabase.js      # Supabase client & demo fallback
+├── supabase/
+│   └── migrations/
+│       └── 20261009000000_initial_schema.sql # Complete RLS & indexes migration
 ├── requirements.txt
+├── package.json
 └── README.md
 ```
 
 ---
 
-## License
+## Developer & Community
 
-Copyright © 2026 FinFlow. All rights reserved.
+- **Developer**: **@jay_dev._._**
+- **Instagram**: Follow on Instagram: [@jay_dev._._](https://www.instagram.com/jay_dev._._/?hl=en)
 
-FinFlow, its source code, design, text and graphics are the property of FinFlow. Copying, distributing or reusing any part without written permission is prohibited. Third-party libraries and fonts remain under their own licenses.
+---
 
+## License & Copyright
+
+This project is licensed under the **MIT License**.
+
+**Copyright © 2026 @jay_dev._._. All rights reserved.**

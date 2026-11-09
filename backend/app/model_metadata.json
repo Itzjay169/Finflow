@@ -1,0 +1,63 @@
+{
+  "model_name": "RandomForestClassifier",
+  "model_version": "1.0.0",
+  "algorithm": "RandomForestClassifier",
+  "n_estimators": 100,
+  "random_state": 42,
+  "training_date": "2026-11-09",
+  "dataset_version": "1.0.0-1200-benchmark",
+  "total_samples": 1200,
+  "train_samples": 960,
+  "test_samples": 240,
+  "evaluation_type": "held_out_test_split",
+  "test_split_ratio": 0.2,
+  "test_accuracy": 0.9583,
+  "test_accuracy_percentage": "95.83%",
+  "held_out_test_description": "Held-out test accuracy: 95.83% on 240 unseen rows.",
+  "confusion_matrix": [
+    [
+      172,
+      0
+    ],
+    [
+      10,
+      58
+    ]
+  ],
+  "feature_count": 18,
+  "feature_columns": [
+    "amount",
+    "year",
+    "month",
+    "day_of_week",
+    "payment_mode_Cash",
+    "payment_mode_Credit Card",
+    "payment_mode_Debit Card",
+    "payment_mode_Net Banking",
+    "payment_mode_UPI",
+    "location_Bangalore",
+    "location_Bhubaneswar",
+    "location_Chennai",
+    "location_Delhi",
+    "location_Hyderabad",
+    "location_Jaipur",
+    "location_Kolkata",
+    "location_Mumbai",
+    "location_Pune"
+  ],
+  "metrics_by_class": {
+    "Expense": {
+      "precision": 0.9451,
+      "recall": 1.0,
+      "f1_score": 0.9718,
+      "support": 172
+    },
+    "Income": {
+      "precision": 1.0,
+      "recall": 0.8529,
+      "f1_score": 0.9206,
+      "support": 68
+    }
+  },
+  "security_notice": "joblib serialization used for trusted internal model artifacts only. Do not load untrusted model files."
+}

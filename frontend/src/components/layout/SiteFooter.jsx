@@ -203,10 +203,10 @@ export function SiteFooter({ variant: forcedVariant }) {
       : []),
     ...(siteConfig.repoUrl
       ? [
-          { label: 'GitHub Repository', href: siteConfig.repoUrl, external: true },
-          { label: 'Setup Guide', href: `${siteConfig.repoUrl}#quick-start`, external: true },
-          { label: 'Report an Issue', href: `${siteConfig.repoUrl}/issues`, external: true },
-        ]
+        { label: 'GitHub Repository', href: siteConfig.repoUrl, external: true },
+        { label: 'Setup Guide', href: `${siteConfig.repoUrl}#quick-start`, external: true },
+        { label: 'Report an Issue', href: `${siteConfig.repoUrl}/issues`, external: true },
+      ]
       : []),
     ...(siteConfig.changelogUrl
       ? [{ label: 'Changelog', href: siteConfig.changelogUrl, external: true }]
@@ -591,7 +591,7 @@ export function SiteFooter({ variant: forcedVariant }) {
               {modelSummary && (
                 <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-600 dark:text-indigo-400 font-semibold">
                   <Cpu className="w-3 h-3" />
-                  {modelSummary.badge_text || 'RandomForest · 18 features · 95.8% accuracy'}
+                  {modelSummary.badge_text || 'RandomForest · 18 features · Held-out test accuracy: 95.83% on 240 unseen rows'}
                 </span>
               )}
 
@@ -662,4 +662,3 @@ export function SiteFooter({ variant: forcedVariant }) {
     </footer>
   )
 }
-export default SiteFooter

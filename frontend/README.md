@@ -1,16 +1,74 @@
-# React + Vite
+<p align="center">
+  <img src="public/logo.png" width="120" height="120" alt="FinFlow Logo" />
+</p>
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+# FinFlow – Frontend Application
 
-Currently, two official plugins are available:
+Modern personal finance tracking dashboard and ML inference interface built with React 19, Vite, Tailwind CSS, Framer Motion, and Three.js.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+[![React](https://img.shields.io/badge/Frontend-React%2019-61DAFB.svg?logo=react&logoColor=black)](https://react.dev/)
+[![Vite](https://img.shields.io/badge/Bundler-Vite%206-646CFF.svg?logo=vite&logoColor=white)](https://vite.dev/)
+[![Tailwind CSS](https://img.shields.io/badge/Styling-Tailwind%20CSS-06B6D4.svg?logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](../LICENSE)
+[![Instagram](https://img.shields.io/badge/Instagram-@jay__dev._._-E4405F?logo=instagram&logoColor=white)](https://www.instagram.com/jay_dev._._/?hl=en)
 
-## React Compiler
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Developer & Community
 
-## Expanding the Oxlint configuration
+- **Developer**: **@jay_dev._._**
+- **Instagram**: Follow on Instagram: [@jay_dev._._](https://www.instagram.com/jay_dev._._/?hl=en) for dev updates and feature showcases.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+---
+
+## Overview
+
+The FinFlow frontend delivers an executive-grade financial telemetry experience:
+- **Executive Analytics Dashboard**: Real-time KPI summaries, monthly cashflow area charts, category distribution donut visualizations.
+- **ML Inference Playground**: Real-time transaction type prediction (`Income` vs `Expense`) with confidence breakdown and confusion matrix telemetry.
+- **Transaction Manager**: Multi-filter data table with search, category filtering, bulk batch deletion, and direct CSV exports.
+- **Smart Budgets & Goals**: Category spending caps with dynamic alerts, automated savings milestone progress rings, and upcoming recurring bills.
+- **Spending Heatmap**: GitHub-style 120-day activity calendar displaying daily cash outflows and transaction frequency.
+- **Global Command Palette (`Ctrl+K`)**: Rapid keyboard-driven navigation, transaction search, and quick shortcuts.
+- **Interactive Three.js 3D Hero**: Floating, reactive metallic coin stack hero scene built with `@react-three/fiber`.
+
+---
+
+## Getting Started Locally
+
+### Prerequisites
+- Node.js 18+
+- npm or yarn
+
+### Installation & Development
+```bash
+# Navigate to frontend directory
+cd frontend
+
+# Install dependencies
+npm install
+
+# Start Vite dev server
+npm run dev
+```
+
+The application will launch at `http://localhost:5173`.
+
+---
+
+## Available Scripts
+
+- `npm run dev` – Launch Vite development server with HMR
+- `npm run build` – Compile optimized production bundle to `dist/`
+- `npm run preview` – Locally preview production build
+- `npm run lint` – Run linter checks
+- `npm run test` – Run test suites with Vitest
+
+---
+
+## License & Copyright
+
+This project is licensed under the **MIT License**.
+
+**Copyright © 2026 @jay_dev._._. All rights reserved.**
+
+All source code, assets, design, and intellectual property are subject to copyright claim by the developer (**@jay_dev._._**). See the [LICENSE](../LICENSE) file for complete details.

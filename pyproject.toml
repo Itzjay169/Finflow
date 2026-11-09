@@ -14,6 +14,7 @@ ignore = [
     "E501",   # Line length handled by formatter
     "ARG001", # Unused function argument (FastAPI Depends & route signatures)
     "ARG002", # Unused method argument
+    "ARG004", # Unused static/class method argument (Pydantic validators)
     "B008",   # FastAPI Depends() in default argument
 ]
 
@@ -21,4 +22,5 @@ ignore = [
 min_confidence = 80
 paths = ["backend/app"]
 exclude = ["backend/venv"]
-ignore_decorators = ["@app.*", "@router.*", "@pytest.*"]
+ignore_decorators = ["@app.*", "@router.*", "@pytest.*", "@field_validator", "@classmethod"]
+ignore_names = ["cls", "v"]

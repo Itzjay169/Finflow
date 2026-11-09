@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react'
 import { supabase, isLiveSupabase, DEMO_USER, DEMO_TOKEN } from '../lib/supabase'
+import { createOfflineSession, createDemoSession } from '../lib/api'
 
 const AuthContext = createContext(null)
 
@@ -9,13 +10,29 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    // 1. Check local session cache
+    // 1. Check local offline auth session
+    const cachedAuth = localStorage.getItem('finflow_auth_session')
+    if (cachedAuth) {
+      try {
+        const parsed = JSON.parse(cachedAuth)
+        if (parsed?.user && parsed?.access_token) {
+          setUser(parsed.user)
+          setSession({ access_token: parsed.access_token, user: parsed.user })
+          setLoading(false)
+          return
+        }
+      } catch {
+        localStorage.removeItem('finflow_auth_session')
+      }
+    }
+
+    // 2. Check local demo session
     const cachedDemo = localStorage.getItem('finflow_demo_session')
     if (cachedDemo) {
       try {
         const parsed = JSON.parse(cachedDemo)
-        setUser(parsed.user)
-        setSession(parsed.session)
+        setUser(parsed.user || DEMO_USER)
+        setSession({ access_token: parsed.access_token || DEMO_TOKEN, user: parsed.user || DEMO_USER })
         setLoading(false)
         return
       } catch {
@@ -23,7 +40,7 @@ export const AuthProvider = ({ children }) => {
       }
     }
 
-    // 2. Check live Supabase session if connected
+    // 3. Check live Supabase session if connected
     if (isLiveSupabase && supabase) {
       supabase.auth.getSession().then(({ data: { session } }) => {
         setSession(session)
@@ -44,7 +61,6 @@ export const AuthProvider = ({ children }) => {
   }, [])
 
   const signIn = async (email, password) => {
-    // Check if demo user
     if (email.toLowerCase() === 'demo@finflow.app') {
       return signInWithDemo()
     }
@@ -59,17 +75,15 @@ export const AuthProvider = ({ children }) => {
       setSession(data.session)
       return data
     } else {
-      // Offline fallback: sign in with provided email
-      const mockUser = {
-        id: 'usr_' + Math.random().toString(36).substring(2, 9),
-        email,
-        user_metadata: { full_name: email.split('@')[0] },
-      }
-      const mockSession = { access_token: 'local_token_' + Date.now(), user: mockUser }
-      localStorage.setItem('finflow_demo_session', JSON.stringify({ user: mockUser, session: mockSession }))
-      setUser(mockUser)
-      setSession(mockSession)
-      return { user: mockUser, session: mockSession }
+      // Offline fallback: call backend to issue cryptographic local development JWT
+      const res = await createOfflineSession({ email, password })
+      localStorage.setItem('finflow_auth_session', JSON.stringify({
+        access_token: res.access_token,
+        user: res.user,
+      }))
+      setUser(res.user)
+      setSession({ access_token: res.access_token, user: res.user })
+      return { user: res.user, session: { access_token: res.access_token } }
     }
   }
 
@@ -85,28 +99,39 @@ export const AuthProvider = ({ children }) => {
       if (error) throw error
       return data
     } else {
-      const mockUser = {
-        id: 'usr_' + Math.random().toString(36).substring(2, 9),
-        email,
-        user_metadata: { full_name: fullName || email.split('@')[0] },
-      }
-      const mockSession = { access_token: 'local_token_' + Date.now(), user: mockUser }
-      localStorage.setItem('finflow_demo_session', JSON.stringify({ user: mockUser, session: mockSession }))
-      setUser(mockUser)
-      setSession(mockSession)
-      return { user: mockUser, session: mockSession }
+      // Offline fallback: create local user profile and receive signed development JWT
+      const res = await createOfflineSession({ email, password, full_name: fullName })
+      localStorage.setItem('finflow_auth_session', JSON.stringify({
+        access_token: res.access_token,
+        user: res.user,
+      }))
+      setUser(res.user)
+      setSession({ access_token: res.access_token, user: res.user })
+      return { user: res.user, session: { access_token: res.access_token } }
     }
   }
 
-  const signInWithDemo = () => {
-    const demoSession = {
-      access_token: DEMO_TOKEN,
-      user: DEMO_USER,
+  const signInWithDemo = async () => {
+    try {
+      const res = await createDemoSession()
+      localStorage.setItem('finflow_demo_session', JSON.stringify({
+        access_token: res.access_token,
+        user: res.user,
+      }))
+      setUser(res.user)
+      setSession({ access_token: res.access_token, user: res.user })
+      return { user: res.user, session: { access_token: res.access_token } }
+    } catch {
+      // Direct local fallback if backend unreachable
+      const demoSession = {
+        access_token: DEMO_TOKEN,
+        user: DEMO_USER,
+      }
+      localStorage.setItem('finflow_demo_session', JSON.stringify(demoSession))
+      setUser(DEMO_USER)
+      setSession(demoSession)
+      return { user: DEMO_USER, session: demoSession }
     }
-    localStorage.setItem('finflow_demo_session', JSON.stringify({ user: DEMO_USER, session: demoSession }))
-    setUser(DEMO_USER)
-    setSession(demoSession)
-    return { user: DEMO_USER, session: demoSession }
   }
 
   const signInWithGoogle = async () => {
@@ -136,9 +161,14 @@ export const AuthProvider = ({ children }) => {
   }
 
   const signOut = async () => {
+    localStorage.removeItem('finflow_auth_session')
     localStorage.removeItem('finflow_demo_session')
     if (isLiveSupabase && supabase) {
-      await supabase.auth.signOut()
+      try {
+        await supabase.auth.signOut()
+      } catch {
+        // Safe ignore
+      }
     }
     setUser(null)
     setSession(null)

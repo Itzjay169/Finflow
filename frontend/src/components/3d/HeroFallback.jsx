@@ -13,9 +13,9 @@ export const HeroFallback = () => {
         <motion.div
           animate={{ y: [-6, 6, -6], rotate: [-2, 2, -2] }}
           transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-          className="w-20 h-20 mx-auto rounded-2xl bg-gradient-to-tr from-indigo-600 via-purple-600 to-cyan-500 flex items-center justify-center shadow-xl shadow-indigo-500/30"
+          className="w-24 h-24 mx-auto rounded-3xl overflow-hidden shadow-2xl shadow-indigo-500/40 border border-indigo-500/30 p-1 bg-slate-900/40 backdrop-blur-md"
         >
-          <Coins className="w-10 h-10 text-white" />
+          <img src="/logo.png" alt="FinFlow Logo" className="w-full h-full object-cover rounded-2xl" />
         </motion.div>
 
         <div>

@@ -51,7 +51,7 @@ FinFlow is a full-stack personal finance application with machine learning predi
   - [x] Bulk select/delete and direct CSV export
   - [x] Pagination with page size selector
 - [x] **Phase 6: ML Predictor & Model Insights**
-  - [x] Inference endpoint POST /api/predict (exact 18-feature vector, 99.2% accuracy)
+  - [x] Inference endpoint POST /api/predict (exact 18-feature vector, Held-out test accuracy: 95.83% on 240 unseen rows)
   - [x] Interactive predictor playground with confidence and probability split meter
   - [x] Quick "Add as Verified Transaction" action
   - [x] Model Insights (confusion matrix, precision/recall, feature importances)

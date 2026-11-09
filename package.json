@@ -6,8 +6,15 @@
     "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
     "dev:backend": "backend\\venv\\Scripts\\python.exe -m uvicorn backend.app.main:app --reload --port 8000",
     "dev:frontend": "npm --prefix frontend run dev",
+    "lint": "backend\\venv\\Scripts\\ruff.exe check backend && npm --prefix frontend run lint",
+    "format": "backend\\venv\\Scripts\\ruff.exe format backend",
+    "test": "backend\\venv\\Scripts\\pytest.exe backend/tests && npm --prefix frontend test",
+    "typecheck": "npm --prefix frontend run build",
+    "clean": "powershell -Command \"Remove-Item -Recurse -Force -ErrorAction SilentlyContinue frontend/dist, backend/__pycache__, backend/app/__pycache__, backend/app/routers/__pycache__, backend/app/services/__pycache__\"",
+    "build": "npm --prefix frontend run build",
     "build:frontend": "npm --prefix frontend run build",
-    "test:backend": "backend\\venv\\Scripts\\pytest.exe"
+    "test:backend": "backend\\venv\\Scripts\\pytest.exe backend/tests",
+    "test:frontend": "npm --prefix frontend test"
   },
   "devDependencies": {
     "concurrently": "^9.1.2"

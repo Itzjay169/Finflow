@@ -2,6 +2,17 @@
 .env
 .env.local
 *.env
+*.pem
+*.key
+
+# SQLite & Database files
+*.db
+*.db-journal
+*.sqlite
+*.sqlite3
+backend/*.db
+backend/*.sqlite
+backend/*.sqlite3
 
 # Python
 __pycache__/
@@ -9,7 +20,9 @@ __pycache__/
 *$py.class
 backend/venv/
 venv/
+.venv/
 .pytest_cache/
+.ruff_cache/
 
 # Node
 node_modules/
@@ -17,6 +30,7 @@ frontend/node_modules/
 dist/
 frontend/dist/
 .npm
+.eslintcache
 
 # IDE / OS
 .DS_Store
@@ -24,8 +38,9 @@ Thumbs.db
 .vscode/
 .idea/
 
-# Playwright & Artifacts
+# Playwright, Tests & MCP Artifacts
 test-results/
 playwright-report/
 videos/
 .playwright-mcp/
+.playwright-mcp/*

@@ -1,24 +1,32 @@
-import React, { useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import React, { useState, useEffect, useCallback } from 'react'
+import { motion } from 'framer-motion'
 import {
   Cpu,
   Sparkles,
   TrendingUp,
   TrendingDown,
-  Percent,
   CheckCircle2,
   BarChart3,
   Layers,
-  ArrowRight,
   Database,
   PlusCircle,
   RefreshCw,
   Info,
   Sliders,
   Check,
-  AlertCircle,
+  Trash2,
+  ThumbsUp,
+  ThumbsDown,
+  AlertTriangle,
 } from 'lucide-react'
-import { predict, getModelInsights, createTransaction } from '../lib/api'
+import {
+  predict,
+  getModelInsights,
+  createTransaction,
+  getPredictionHistory,
+  deletePredictionHistoryItem,
+  recordPredictionFeedback,
+} from '../lib/api'
 import { formatINR } from '../lib/utils'
 import { useToast } from '../components/ui/Toast'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '../components/ui/Card'
@@ -41,7 +49,7 @@ const CATEGORIES = [
   'Food',
   'Salary',
   'Groceries',
-  'Investment',
+  'Investments',
   'Bills',
   'Entertainment',
   'Fuel',
@@ -63,26 +71,18 @@ const SAMPLE_SCENARIOS = [
     expected: 'Income',
   },
   {
-    name: 'Supermarket Groceries',
-    amount: 2400,
+    name: 'Swiggy Dinner',
+    amount: 680,
     payment_mode: 'UPI',
     location: 'Mumbai',
-    category: 'Groceries',
-    expected: 'Expense',
-  },
-  {
-    name: 'Dining Out',
-    amount: 3800,
-    payment_mode: 'Credit Card',
-    location: 'Delhi',
     category: 'Food',
     expected: 'Expense',
   },
   {
-    name: 'Freelance Retainer',
-    amount: 35000,
+    name: 'Consulting Gig',
+    amount: 45000,
     payment_mode: 'Net Banking',
-    location: 'Pune',
+    location: 'Delhi',
     category: 'Freelance',
     expected: 'Income',
   },
@@ -100,44 +100,66 @@ export default function PredictorPage() {
   const { toast } = useToast()
 
   // Form inputs
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState(() => ({
     amount: 5000,
-    date: new Date().toISOString().split('T')[0],
+    date: '2026-10-10',
     payment_mode: 'UPI',
     location: 'Mumbai',
     category: 'Food',
     notes: 'Predicted with FinFlow ML model',
-  })
+  }))
 
   // Predict state
   const [isPredicting, setIsPredicting] = useState(false)
   const [predictionResult, setPredictionResult] = useState(null)
+  const [manualSelection, setManualSelection] = useState(null)
   const [isSaving, setIsSaving] = useState(false)
   const [hasSaved, setHasSaved] = useState(false)
 
   // Insights state
   const [insights, setInsights] = useState(null)
-  const [loadingInsights, setLoadingInsights] = useState(true)
 
-  // Load model insights on mount
+  // History state
+  const [history, setHistory] = useState([])
+  const [historyTotal, setHistoryTotal] = useState(0)
+  const [historyPage, setHistoryPage] = useState(1)
+  const [loadingHistory, setLoadingHistory] = useState(false)
+
+  const fetchHistory = useCallback(async (page = 1) => {
+    try {
+      setLoadingHistory(true)
+      const data = await getPredictionHistory({ page, page_size: 5 })
+      if (data?.predictions) {
+        setHistory(data.predictions)
+        setHistoryTotal(data.total || data.predictions.length)
+      }
+    } catch {
+      // Non-blocking history load
+    } finally {
+      setLoadingHistory(false)
+    }
+  }, [])
+
+  // Load model insights and history on mount
   useEffect(() => {
     async function loadInsights() {
       try {
-        setLoadingInsights(true)
         const data = await getModelInsights()
         setInsights(data)
       } catch (err) {
         console.error('Failed to load model insights:', err)
-        // Fallback default insights
+        // Canonical benchmark fallback
         setInsights({
-          accuracy: 0.9917,
-          expense_precision: 0.9887,
+          model_name: 'RandomForest',
+          accuracy: 0.9583,
+          held_out_accuracy_label: 'Held-out test accuracy: 95.83% on 240 unseen rows.',
+          expense_precision: 0.9451,
           expense_recall: 1.0,
           income_precision: 1.0,
-          income_recall: 0.9695,
+          income_recall: 0.8529,
           confusion_matrix: [
-            [872, 0],
-            [10, 318],
+            [172, 0],
+            [10, 58],
           ],
           feature_importances: [
             { feature: 'amount', importance: 0.7883 },
@@ -149,23 +171,19 @@ export default function PredictorPage() {
             { feature: 'payment_mode_UPI', importance: 0.0121 },
           ],
           total_samples: 1200,
+          feature_columns: [],
         })
-      } finally {
-        setLoadingInsights(false)
       }
     }
     loadInsights()
-  }, [])
-
-  // Auto-run initial prediction
-  useEffect(() => {
-    handlePredict()
-  }, [])
+    fetchHistory(1)
+  }, [fetchHistory])
 
   const handlePredict = async (customParams = null) => {
     const params = customParams || formData
     setIsPredicting(true)
     setHasSaved(false)
+    setManualSelection(null)
     try {
       const res = await predict({
         amount: Number(params.amount),
@@ -174,59 +192,89 @@ export default function PredictorPage() {
         location: params.location,
       })
       setPredictionResult(res)
+      fetchHistory(historyPage)
     } catch (err) {
-      toast.error(err.message || 'Prediction failed')
+      toast.error(err.message || 'Model prediction failed.', 'Inference Error')
     } finally {
       setIsPredicting(false)
     }
   }
 
-  const applyScenario = (scenario) => {
+  // Initial prediction run once
+  useEffect(() => {
+    handlePredict()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  const applyScenario = (sc) => {
     const updated = {
       ...formData,
-      amount: scenario.amount,
-      payment_mode: scenario.payment_mode,
-      location: scenario.location,
-      category: scenario.category,
-      notes: `${scenario.name} - Classified by ML`,
+      amount: sc.amount,
+      payment_mode: sc.payment_mode,
+      location: sc.location,
+      category: sc.category,
+      notes: `${sc.name} - Scenario Test`,
     }
     setFormData(updated)
     handlePredict(updated)
   }
 
   const handleSaveAsTransaction = async () => {
-    if (!predictionResult || isSaving || hasSaved) return
+    if (!predictionResult) return
     setIsSaving(true)
     try {
+      const chosenType = manualSelection || (predictionResult.prediction === 'Uncertain' ? 'Expense' : predictionResult.prediction)
       await createTransaction({
-        amount: Number(formData.amount),
         date: formData.date,
-        transaction_type: predictionResult.prediction,
-        category: formData.category || (predictionResult.prediction === 'Income' ? 'Salary' : 'General'),
+        transaction_type: chosenType,
+        category: formData.category,
+        amount: Number(formData.amount),
         payment_mode: formData.payment_mode,
         location: formData.location,
-        notes: formData.notes || `Predicted ${predictionResult.prediction} (${(predictionResult.confidence * 100).toFixed(0)}% conf)`,
+        notes: formData.notes || `Classified as ${chosenType} with ${(predictionResult.confidence * 100).toFixed(1)}% confidence`,
       })
       setHasSaved(true)
       toast.success(
-        `Added ₹${formData.amount.toLocaleString()} as ${predictionResult.prediction} to transactions!`,
-        'Transaction Saved'
+        `Added ₹${formData.amount} (${chosenType}) to your transactions!`,
+        'Transaction Recorded'
       )
     } catch (err) {
-      toast.error(err.message || 'Failed to save transaction')
+      toast.error(err.message || 'Failed to save transaction', 'Error')
     } finally {
       setIsSaving(false)
     }
   }
 
+  const handleDeleteHistory = async (id) => {
+    try {
+      await deletePredictionHistoryItem(id)
+      toast.success('Prediction history record deleted.')
+      fetchHistory(historyPage)
+    } catch (err) {
+      toast.error(err.message || 'Failed to delete record.')
+    }
+  }
+
+  const handleFeedback = async (id, actualType) => {
+    try {
+      await recordPredictionFeedback(id, actualType)
+      toast.success(`Feedback recorded: actual type is ${actualType}.`)
+    } catch (err) {
+      toast.error(err.message || 'Failed to record feedback.')
+    }
+  }
+
+  const isUncertain = predictionResult?.is_uncertain || predictionResult?.prediction === 'Uncertain'
+  const displayPrediction = manualSelection || predictionResult?.prediction || 'Expense'
+
   return (
-    <div className="space-y-8 pb-16 animate-fade-in">
-      {/* Header */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-200 dark:border-slate-800/80 pb-6">
+    <div className="space-y-8 max-w-7xl mx-auto pb-16">
+      {/* Page Header */}
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 to-indigo-600 flex items-center justify-center text-white shadow-lg shadow-cyan-500/25">
-              <Cpu className="w-5 h-5" />
+            <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-indigo-600 via-purple-600 to-cyan-500 flex items-center justify-center text-white shadow-lg shadow-indigo-600/30">
+              <Cpu className="w-6 h-6" />
             </div>
             <div>
               <h1 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-2">
@@ -236,7 +284,7 @@ export default function PredictorPage() {
                 </Badge>
               </h1>
               <p className="text-xs text-slate-500 dark:text-slate-400">
-                Machine learning model trained on 18 engineered features to classify transaction types with 99.2% accuracy.
+                Machine learning model trained on 18 engineered features. Held-out test accuracy: 95.83% on 240 unseen rows.
               </p>
             </div>
           </div>
@@ -246,7 +294,7 @@ export default function PredictorPage() {
         <div className="flex flex-wrap items-center gap-2">
           <Badge variant="income" size="sm">
             <CheckCircle2 className="w-3 h-3 mr-1" />
-            99.2% Accuracy
+            Held-out Test: 95.83%
           </Badge>
           <Badge variant="cyan" size="sm">
             <Layers className="w-3 h-3 mr-1" />
@@ -254,12 +302,12 @@ export default function PredictorPage() {
           </Badge>
           <Badge variant="violet" size="sm">
             <Database className="w-3 h-3 mr-1" />
-            1,200 Dataset
+            1,200 Benchmark Rows
           </Badge>
         </div>
       </div>
 
-      {/* Main Grid: Left = Predictor Interactive Form, Right = Prediction Output */}
+      {/* Main Grid: Left = Predictor Form, Right = Prediction Output */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
         {/* Left Column: Interactive Input Form (7 cols) */}
         <div className="lg:col-span-7 space-y-6">
@@ -267,21 +315,17 @@ export default function PredictorPage() {
             <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
 
             <CardHeader className="pb-4">
-              <div className="flex items-center justify-between">
-                <div>
-                  <CardTitle className="text-lg flex items-center gap-2">
-                    <Sliders className="w-5 h-5 text-indigo-500" />
-                    Inference Playground
-                  </CardTitle>
-                  <CardDescription>
-                    Adjust transaction parameters to see live Random Forest classification in real time.
-                  </CardDescription>
-                </div>
-              </div>
+              <CardTitle className="text-lg flex items-center gap-2">
+                <Sliders className="w-5 h-5 text-indigo-500" />
+                Inference Playground
+              </CardTitle>
+              <CardDescription>
+                Adjust transaction parameters to see live Random Forest classification in real time.
+              </CardDescription>
             </CardHeader>
 
             <CardContent className="space-y-5">
-              {/* Preset Scenarios Pill Bar */}
+              {/* Quick Preset Scenarios */}
               <div>
                 <label className="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-2">
                   Quick Test Scenarios
@@ -304,7 +348,7 @@ export default function PredictorPage() {
 
               {/* Form Controls */}
               <div className="space-y-4 pt-2">
-                {/* Amount with Quick Presets */}
+                {/* Amount */}
                 <div>
                   <div className="flex justify-between items-center mb-1.5">
                     <label className="text-xs font-semibold text-slate-700 dark:text-slate-300">
@@ -373,7 +417,7 @@ export default function PredictorPage() {
                   </div>
                 </div>
 
-                {/* Payment Mode (Buttons) */}
+                {/* Payment Mode */}
                 <div>
                   <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-2">
                     Payment Mode
@@ -399,11 +443,11 @@ export default function PredictorPage() {
                   </div>
                 </div>
 
-                {/* Category & Notes (for quick saving) */}
+                {/* Category & Notes */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
                   <div>
                     <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
-                      Category (for Save)
+                      Category (for Saving)
                     </label>
                     <select
                       value={formData.category}
@@ -426,7 +470,7 @@ export default function PredictorPage() {
                       type="text"
                       value={formData.notes}
                       onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
-                      placeholder="Optional notes"
+                      placeholder="Optional transaction notes"
                       className="w-full px-3.5 py-2 rounded-xl text-xs bg-slate-100/80 dark:bg-slate-900/80 border border-slate-300 dark:border-slate-800 text-slate-900 dark:text-slate-100 focus:border-indigo-500 outline-none"
                     />
                   </div>
@@ -436,7 +480,7 @@ export default function PredictorPage() {
 
             <CardFooter className="pt-2 border-t border-slate-200 dark:border-slate-800/80 flex items-center justify-between">
               <span className="text-[11px] text-slate-400">
-                Uses trained Random Forest classifier
+                18-feature Random Forest pipeline
               </span>
               <Button
                 variant="gradient"
@@ -470,7 +514,7 @@ export default function PredictorPage() {
                   Model Output
                 </CardTitle>
                 {predictionResult && (
-                  <Badge variant={predictionResult.prediction === 'Income' ? 'income' : 'expense'}>
+                  <Badge variant={isUncertain ? 'amber' : predictionResult.prediction === 'Income' ? 'income' : 'expense'}>
                     {(predictionResult.confidence * 100).toFixed(1)}% Confidence
                   </Badge>
                 )}
@@ -479,27 +523,64 @@ export default function PredictorPage() {
 
             <CardContent className="space-y-6 flex-1 flex flex-col justify-center">
               {predictionResult ? (
-                <div className="space-y-6">
-                  {/* Big Glowing Result Card */}
+                <div className="space-y-5">
+                  {/* Uncertain Banner if confidence < 0.60 */}
+                  {isUncertain && (
+                    <div className="p-3.5 rounded-xl border border-amber-500/30 bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs flex items-start gap-2.5">
+                      <AlertTriangle className="w-4 h-4 shrink-0 mt-0.5 text-amber-500" />
+                      <div>
+                        <div className="font-bold">Uncertain Classification (Confidence &lt; 60%)</div>
+                        <p className="text-[11px] mt-0.5 text-slate-600 dark:text-slate-300">
+                          The model confidence is below the 0.60 threshold. Please select Income or Expense manually below.
+                        </p>
+                        <div className="flex gap-2 mt-2">
+                          <button
+                            type="button"
+                            onClick={() => setManualSelection('Expense')}
+                            className={`px-3 py-1 rounded-lg text-xs font-bold transition-all ${
+                              displayPrediction === 'Expense' ? 'bg-rose-600 text-white' : 'bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300'
+                            }`}
+                          >
+                            Mark as Expense
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => setManualSelection('Income')}
+                            className={`px-3 py-1 rounded-lg text-xs font-bold transition-all ${
+                              displayPrediction === 'Income' ? 'bg-emerald-600 text-white' : 'bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300'
+                            }`}
+                          >
+                            Mark as Income
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Main Result Card */}
                   <motion.div
-                    key={predictionResult.prediction + predictionResult.amount}
+                    key={displayPrediction + predictionResult.amount}
                     initial={{ scale: 0.9, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
                     transition={{ type: 'spring', stiffness: 350, damping: 25 }}
                     className={`rounded-2xl p-6 border text-center relative overflow-hidden ${
-                      predictionResult.prediction === 'Income'
+                      isUncertain && !manualSelection
+                        ? 'bg-amber-500/10 border-amber-500/30'
+                        : displayPrediction === 'Income'
                         ? 'bg-emerald-500/10 border-emerald-500/30'
                         : 'bg-rose-500/10 border-rose-500/30'
                     }`}
                   >
                     <div
                       className={`w-16 h-16 rounded-2xl mx-auto mb-3 flex items-center justify-center text-white shadow-lg ${
-                        predictionResult.prediction === 'Income'
+                        isUncertain && !manualSelection
+                          ? 'bg-amber-500 shadow-amber-500/30'
+                          : displayPrediction === 'Income'
                           ? 'bg-emerald-500 shadow-emerald-500/30'
                           : 'bg-rose-500 shadow-rose-500/30'
                       }`}
                     >
-                      {predictionResult.prediction === 'Income' ? (
+                      {displayPrediction === 'Income' ? (
                         <TrendingUp className="w-8 h-8" />
                       ) : (
                         <TrendingDown className="w-8 h-8" />
@@ -507,16 +588,18 @@ export default function PredictorPage() {
                     </div>
 
                     <span className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 block mb-1">
-                      Predicted Transaction Type
+                      {isUncertain && !manualSelection ? 'Model Status: Uncertain' : 'Classification Result'}
                     </span>
                     <h2
                       className={`text-3xl font-extrabold tracking-tight ${
-                        predictionResult.prediction === 'Income'
+                        isUncertain && !manualSelection
+                          ? 'text-amber-500 dark:text-amber-400'
+                          : displayPrediction === 'Income'
                           ? 'text-emerald-500 dark:text-emerald-400'
                           : 'text-rose-500 dark:text-rose-400'
                       }`}
                     >
-                      {predictionResult.prediction.toUpperCase()}
+                      {displayPrediction.toUpperCase()}
                     </h2>
                     <p className="text-xs text-slate-500 mt-1">
                       Amount: {formatINR(predictionResult.amount)} &bull; {predictionResult.payment_mode}
@@ -546,16 +629,15 @@ export default function PredictorPage() {
                     </div>
                   </div>
 
-                  {/* Reasoning & Key Factors */}
+                  {/* Model Explanation */}
                   <div className="bg-slate-100/60 dark:bg-slate-900/60 p-3.5 rounded-xl border border-slate-200 dark:border-slate-800/80 text-xs text-slate-600 dark:text-slate-300 space-y-1">
                     <div className="font-semibold text-slate-900 dark:text-white flex items-center gap-1.5">
                       <Info className="w-3.5 h-3.5 text-cyan-400" />
-                      Inference Drivers
+                      Inference Explanation
                     </div>
                     <p className="text-[11px] leading-relaxed">
-                      {predictionResult.prediction === 'Income'
-                        ? `Higher ticket value (${formatINR(predictionResult.amount)}) coupled with ${predictionResult.payment_mode} strongly matches salary and inflow distributions in training data.`
-                        : `Transaction volume of ${formatINR(predictionResult.amount)} via ${predictionResult.payment_mode} in ${predictionResult.location} correlates predominantly with outgoing operational expenses.`}
+                      {predictionResult.explanation ||
+                        'This prediction is mainly influenced by amount, payment mode, and location.'}
                     </p>
                   </div>
                 </div>
@@ -595,15 +677,122 @@ export default function PredictorPage() {
         </div>
       </div>
 
-      {/* Model Performance & Insights Section */}
+      {/* Recent Predictions History Panel (Bug Fix J) */}
+      <Card className="glass-panel border-slate-200 dark:border-slate-800 shadow-xl">
+        <CardHeader className="pb-3">
+          <div className="flex items-center justify-between">
+            <div>
+              <CardTitle className="text-base flex items-center gap-2">
+                <Database className="w-4 h-4 text-indigo-400" />
+                Recent Predictions History
+              </CardTitle>
+              <CardDescription>
+                Audited log of classifications evaluated by the ML model with confidence metrics and feedback.
+              </CardDescription>
+            </div>
+            {historyTotal > 0 && (
+              <Badge variant="outline" size="sm">
+                {historyTotal} Recorded
+              </Badge>
+            )}
+          </div>
+        </CardHeader>
+
+        <CardContent>
+          {loadingHistory ? (
+            <div className="py-6 text-center text-xs text-slate-400 flex items-center justify-center gap-2">
+              <RefreshCw className="w-4 h-4 animate-spin" /> Loading history...
+            </div>
+          ) : history.length === 0 ? (
+            <div className="py-8 text-center text-xs text-slate-400">
+              No predictions recorded yet. Run a prediction above to build your audit log.
+            </div>
+          ) : (
+            <div className="overflow-x-auto">
+              <table className="w-full text-left text-xs text-slate-600 dark:text-slate-300">
+                <thead>
+                  <tr className="border-b border-slate-200 dark:border-slate-800 text-slate-400 uppercase tracking-wider text-[10px]">
+                    <th className="py-2.5 px-3">Date</th>
+                    <th className="py-2.5 px-3">Amount</th>
+                    <th className="py-2.5 px-3">Payment Mode</th>
+                    <th className="py-2.5 px-3">City</th>
+                    <th className="py-2.5 px-3">Predicted</th>
+                    <th className="py-2.5 px-3">Confidence</th>
+                    <th className="py-2.5 px-3 text-right">Actions</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-100 dark:divide-slate-800/60">
+                  {history.map((item) => (
+                    <tr key={item.id} className="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">
+                      <td className="py-2.5 px-3 font-mono">{item.date}</td>
+                      <td className="py-2.5 px-3 font-bold text-slate-900 dark:text-white">
+                        {formatINR(item.amount)}
+                      </td>
+                      <td className="py-2.5 px-3">{item.payment_mode}</td>
+                      <td className="py-2.5 px-3">{item.location}</td>
+                      <td className="py-2.5 px-3">
+                        <Badge
+                          variant={
+                            item.is_uncertain
+                              ? 'amber'
+                              : item.predicted_type === 'Income'
+                              ? 'income'
+                              : 'expense'
+                          }
+                          size="sm"
+                        >
+                          {item.predicted_type}
+                        </Badge>
+                      </td>
+                      <td className="py-2.5 px-3 font-mono">
+                        {(item.confidence * 100).toFixed(1)}%
+                      </td>
+                      <td className="py-2.5 px-3 text-right">
+                        <div className="flex items-center justify-end gap-1">
+                          <button
+                            type="button"
+                            title="Confirm Income"
+                            onClick={() => handleFeedback(item.id, 'Income')}
+                            className="p-1 hover:text-emerald-400 text-slate-400 transition-colors cursor-pointer"
+                          >
+                            <ThumbsUp className="w-3.5 h-3.5" />
+                          </button>
+                          <button
+                            type="button"
+                            title="Confirm Expense"
+                            onClick={() => handleFeedback(item.id, 'Expense')}
+                            className="p-1 hover:text-rose-400 text-slate-400 transition-colors cursor-pointer"
+                          >
+                            <ThumbsDown className="w-3.5 h-3.5" />
+                          </button>
+                          <button
+                            type="button"
+                            title="Delete entry"
+                            onClick={() => handleDeleteHistory(item.id)}
+                            className="p-1 hover:text-rose-500 text-slate-400 transition-colors cursor-pointer"
+                          >
+                            <Trash2 className="w-3.5 h-3.5" />
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+        </CardContent>
+      </Card>
+
+      {/* Model Performance & Held-out Test Metrics */}
       <div className="space-y-6 pt-4">
         <div>
-          <h2 className="text-xl font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-2">
+          <h2 className="text-lg font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-2">
             <BarChart3 className="w-5 h-5 text-indigo-500" />
-            Model Insights & Evaluation Metrics
+            Model Benchmark & Validation
           </h2>
-          <p className="text-xs text-slate-500 dark:text-slate-400">
-            Validated against the 1,200 personal finance transaction benchmark dataset.
+          <p className="text-xs text-slate-500">
+            Rigorous evaluation on held-out test split (240 unseen rows from 1,200 benchmark dataset).
           </p>
         </div>
 
@@ -611,13 +800,13 @@ export default function PredictorPage() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           <Card className="glass-panel p-4 border-slate-200 dark:border-slate-800">
             <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider block">
-              Overall Accuracy
+              Held-Out Test Accuracy
             </span>
             <div className="text-2xl font-black text-indigo-500 dark:text-indigo-400 mt-1">
-              {insights ? `${(insights.accuracy * 100).toFixed(1)}%` : '99.2%'}
+              {insights ? `${(insights.accuracy * 100).toFixed(2)}%` : '95.83%'}
             </div>
             <span className="text-[10px] text-emerald-400 mt-0.5 block flex items-center gap-0.5">
-              <CheckCircle2 className="w-3 h-3" /> Benchmark Verified
+              <CheckCircle2 className="w-3 h-3" /> 240 Unseen Rows
             </span>
           </Card>
 
@@ -626,11 +815,11 @@ export default function PredictorPage() {
               Expense Precision / Recall
             </span>
             <div className="text-2xl font-black text-rose-500 dark:text-rose-400 mt-1">
-              {insights ? `${(insights.expense_precision * 100).toFixed(1)}% / ${(insights.expense_recall * 100).toFixed(0)}%` : '98.9% / 100%'}
+              {insights
+                ? `${(insights.expense_precision * 100).toFixed(1)}% / ${(insights.expense_recall * 100).toFixed(0)}%`
+                : '94.5% / 100%'}
             </div>
-            <span className="text-[10px] text-slate-400 mt-0.5 block">
-              Support: 872 transactions
-            </span>
+            <span className="text-[10px] text-slate-500 mt-0.5 block">Zero false negatives</span>
           </Card>
 
           <Card className="glass-panel p-4 border-slate-200 dark:border-slate-800">
@@ -638,159 +827,22 @@ export default function PredictorPage() {
               Income Precision / Recall
             </span>
             <div className="text-2xl font-black text-emerald-500 dark:text-emerald-400 mt-1">
-              {insights ? `${(insights.income_precision * 100).toFixed(0)}% / ${(insights.income_recall * 100).toFixed(1)}%` : '100% / 97.0%'}
+              {insights
+                ? `${(insights.income_precision * 100).toFixed(0)}% / ${(insights.income_recall * 100).toFixed(1)}%`
+                : '100% / 85.3%'}
             </div>
-            <span className="text-[10px] text-slate-400 mt-0.5 block">
-              Support: 328 transactions
-            </span>
+            <span className="text-[10px] text-slate-500 mt-0.5 block">100% clean precision</span>
           </Card>
 
           <Card className="glass-panel p-4 border-slate-200 dark:border-slate-800">
             <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider block">
-              Dataset Size
+              Input Vectors
             </span>
             <div className="text-2xl font-black text-cyan-500 dark:text-cyan-400 mt-1">
-              {insights?.total_samples ? `${insights.total_samples.toLocaleString()}` : '1,200'}
+              18 Features
             </div>
-            <span className="text-[10px] text-slate-400 mt-0.5 block">
-              18 Input Features Encoded
-            </span>
+            <span className="text-[10px] text-slate-500 mt-0.5 block">Temporal + Payment + Geo</span>
           </Card>
-        </div>
-
-        {/* Two Columns: Confusion Matrix Heatmap (Left) & Feature Importances (Right) */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-          {/* Confusion Matrix (5 cols) */}
-          <div className="lg:col-span-5">
-            <Card className="glass-panel border-slate-200 dark:border-slate-800 h-full p-6">
-              <div className="flex items-center justify-between mb-4">
-                <div>
-                  <h3 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
-                    <Layers className="w-4 h-4 text-indigo-400" />
-                    Confusion Matrix
-                  </h3>
-                  <p className="text-[11px] text-slate-500">
-                    Actual vs Predicted classifications across 1,200 records
-                  </p>
-                </div>
-              </div>
-
-              {/* 2x2 Table Layout */}
-              <div className="space-y-3 mt-4">
-                <div className="grid grid-cols-3 gap-2 text-center text-xs font-semibold">
-                  <div className="p-2 text-slate-400 text-[10px] flex items-center justify-center">
-                    Actual \ Pred
-                  </div>
-                  <div className="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-rose-400 font-bold">
-                    Pred Expense
-                  </div>
-                  <div className="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-emerald-400 font-bold">
-                    Pred Income
-                  </div>
-                </div>
-
-                {/* Row 1: Actual Expense */}
-                <div className="grid grid-cols-3 gap-2 text-center text-xs">
-                  <div className="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-rose-400 font-bold flex items-center justify-center">
-                    Act Expense
-                  </div>
-                  {/* True Negative */}
-                  <div className="p-3 rounded-xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-400">
-                    <span className="text-lg font-black block leading-none">
-                      {insights?.confusion_matrix?.[0]?.[0] ?? 872}
-                    </span>
-                    <span className="text-[10px] text-slate-400">True Negative (100%)</span>
-                  </div>
-                  {/* False Positive */}
-                  <div className="p-3 rounded-xl bg-slate-100 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 text-slate-400">
-                    <span className="text-lg font-black block leading-none">
-                      {insights?.confusion_matrix?.[0]?.[1] ?? 0}
-                    </span>
-                    <span className="text-[10px] text-slate-500">False Positive (0%)</span>
-                  </div>
-                </div>
-
-                {/* Row 2: Actual Income */}
-                <div className="grid grid-cols-3 gap-2 text-center text-xs">
-                  <div className="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-emerald-400 font-bold flex items-center justify-center">
-                    Act Income
-                  </div>
-                  {/* False Negative */}
-                  <div className="p-3 rounded-xl bg-amber-500/10 border border-amber-500/25 text-amber-400">
-                    <span className="text-lg font-black block leading-none">
-                      {insights?.confusion_matrix?.[1]?.[0] ?? 10}
-                    </span>
-                    <span className="text-[10px] text-slate-400">False Neg (3%)</span>
-                  </div>
-                  {/* True Positive */}
-                  <div className="p-3 rounded-xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-400">
-                    <span className="text-lg font-black block leading-none">
-                      {insights?.confusion_matrix?.[1]?.[1] ?? 318}
-                    </span>
-                    <span className="text-[10px] text-slate-400">True Pos (97%)</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-5 p-3 rounded-xl bg-slate-100 dark:bg-slate-900/40 border border-slate-200 dark:border-slate-800 text-[11px] text-slate-500 dark:text-slate-400">
-                Only 10 transactions out of 1,200 were misclassified as Expense due to edge amounts.
-              </div>
-            </Card>
-          </div>
-
-          {/* Feature Importances (7 cols) */}
-          <div className="lg:col-span-7">
-            <Card className="glass-panel border-slate-200 dark:border-slate-800 h-full p-6">
-              <div className="flex items-center justify-between mb-4">
-                <div>
-                  <h3 className="text-sm font-bold text-slate-900 dark:text-white flex items-center gap-2">
-                    <Percent className="w-4 h-4 text-cyan-400" />
-                    Feature Importances
-                  </h3>
-                  <p className="text-[11px] text-slate-500">
-                    Gini impurity reduction across all 100 decision trees in the ensemble
-                  </p>
-                </div>
-              </div>
-
-              <div className="space-y-3 mt-2">
-                {(insights?.feature_importances?.slice(0, 7) || []).map((item, idx) => {
-                  const pct = (item.importance * 100).toFixed(1)
-                  const cleanName = item.feature
-                    .replace('payment_mode_', 'Payment: ')
-                    .replace('location_', 'City: ')
-                    .replace('_', ' ')
-                    .toUpperCase()
-
-                  return (
-                    <div key={item.feature} className="space-y-1">
-                      <div className="flex justify-between items-center text-xs">
-                        <span className="font-semibold text-slate-700 dark:text-slate-300">
-                          {idx + 1}. {cleanName}
-                        </span>
-                        <span className="font-mono text-cyan-500 dark:text-cyan-400 font-bold">
-                          {pct}%
-                        </span>
-                      </div>
-                      <div className="w-full h-2 rounded-full bg-slate-100 dark:bg-slate-800 overflow-hidden">
-                        <motion.div
-                          initial={{ width: 0 }}
-                          animate={{ width: `${Math.max(Number(pct), 2)}%` }}
-                          transition={{ duration: 0.8, delay: idx * 0.08 }}
-                          className="h-full bg-gradient-to-r from-indigo-500 via-purple-500 to-cyan-400 rounded-full"
-                        />
-                      </div>
-                    </div>
-                  )
-                })}
-              </div>
-
-              <div className="mt-6 flex items-center justify-between text-[11px] text-slate-400 border-t border-slate-200 dark:border-slate-800 pt-3">
-                <span>Primary Predictor: Transaction Amount (~78.8%)</span>
-                <span>Secondary: Date & Mode (~12.6%)</span>
-              </div>
-            </Card>
-          </div>
         </div>
       </div>
     </div>

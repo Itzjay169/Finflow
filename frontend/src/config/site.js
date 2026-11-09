@@ -8,6 +8,7 @@ export const FIRST_YEAR = 2026
 
 export const siteConfig = {
   name: 'FinFlow',
+  logoUrl: '/logo.png',
   tagline: 'Track every rupee. Predict every move.',
   description:
     'FinFlow is an enterprise-grade personal finance management and intelligence platform. It pairs high-velocity cashflow telemetry with trained machine learning inference to help you monitor, project, and master your financial future.',

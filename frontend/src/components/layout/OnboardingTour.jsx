@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { Sparkles, ArrowRight, Check, X, LayoutDashboard, Cpu, Target } from 'lucide-react'
+import { motion } from 'framer-motion'
+import { ArrowRight, Check, X, LayoutDashboard, Cpu, Target } from 'lucide-react'
 import { Button } from '../ui'
 
 const TOUR_STEPS = [
@@ -13,8 +13,8 @@ const TOUR_STEPS = [
     badge: 'Step 1 of 3',
   },
   {
-    title: '99.2% Accurate ML Inference',
-    subtitle: 'Random Forest Transaction Classifier',
+    title: 'Held-out Test Accuracy: 95.83%',
+    subtitle: 'Random Forest Transaction Classifier (240 unseen rows)',
     description:
       'Classify inflows and expenses in real-time based on amount, date, payment mode, and location vectors.',
     icon: Cpu,
