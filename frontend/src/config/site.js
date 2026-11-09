@@ -14,11 +14,11 @@ export const siteConfig = {
     'FinFlow is an enterprise-grade personal finance management and intelligence platform. It pairs high-velocity cashflow telemetry with trained machine learning inference to help you monitor, project, and master your financial future.',
   ownerName: import.meta.env.VITE_OWNER_NAME || 'FinFlow',
   contactEmail: import.meta.env.VITE_CONTACT_EMAIL || '',
-  githubUrl: import.meta.env.VITE_GITHUB_URL || '',
+  githubUrl: import.meta.env.VITE_GITHUB_URL || 'https://github.com/Itzjay169/Finflow',
   linkedinUrl: import.meta.env.VITE_LINKEDIN_URL || '',
   xUrl: import.meta.env.VITE_X_URL || '',
   portfolioUrl: import.meta.env.VITE_PORTFOLIO_URL || '',
-  repoUrl: import.meta.env.VITE_REPO_URL || '',
+  repoUrl: import.meta.env.VITE_REPO_URL || 'https://github.com/Itzjay169/Finflow',
   changelogUrl: import.meta.env.VITE_CHANGELOG_URL || '',
   apiBaseUrl: import.meta.env.VITE_API_BASE_URL || 'http://127.0.0.1:8000',
   apiDocsEnabled: true, // FastAPI /docs enabled
