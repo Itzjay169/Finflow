@@ -46,6 +46,7 @@ import {
   deleteSavedFilter,
 } from '../lib/api'
 import { formatINR, formatDate } from '../lib/utils'
+import { usePreferences } from '../context/PreferencesContext'
 
 const ALL_CATEGORIES = [
   'Food',
@@ -88,6 +89,7 @@ const ALL_LOCATIONS = [
 ]
 
 export default function TransactionsPage() {
+  const { preferences } = usePreferences()
   const { toast } = useToast()
   const queryClient = useQueryClient()
 

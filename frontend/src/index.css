@@ -23,6 +23,8 @@
     --input: 241 245 249;
     --input-border: 203 213 225;
     --ring: 99 102 241;
+    --accent-color: #6366f1;
+    --accent-color-rgb: 99, 102, 241;
     --glass-bg: rgba(255, 255, 255, 0.88);
     --glass-border: rgba(15, 23, 42, 0.08);
   }
@@ -40,6 +42,8 @@
     --secondary: 139 92 246;   /* #8b5cf6 Violet */
     --secondary-foreground: 255 255 255;
     --accent: 6 182 212;       /* #06b6d4 Cyan */
+    --accent-color: #6366f1;
+    --accent-color-rgb: 99, 102, 241;
     --income: 16 185 129;      /* #10b981 Emerald */
     --income-foreground: 255 255 255;
     --expense: 244 63 94;      /* #f43f5e Rose */
@@ -50,6 +54,22 @@
     --glass-bg: rgba(13, 19, 33, 0.78);
     --glass-border: rgba(255, 255, 255, 0.09);
   }
+
+  /* Data-accent dynamic theme color maps */
+  :root[data-accent="indigo"], [data-accent="indigo"] { --accent-color: #6366f1; --accent-color-rgb: 99, 102, 241; --primary: 99 102 241; --ring: 99 102 241; }
+  :root[data-accent="blue"], [data-accent="blue"]     { --accent-color: #3b82f6; --accent-color-rgb: 59, 130, 246; --primary: 59 130 246; --ring: 59 130 246; }
+  :root[data-accent="emerald"], [data-accent="emerald"]{ --accent-color: #10b981; --accent-color-rgb: 16, 185, 129; --primary: 16 185 129; --ring: 16 185 129; }
+  :root[data-accent="rose"], [data-accent="rose"]     { --accent-color: #f43f5e; --accent-color-rgb: 244, 63, 94;  --primary: 244 63 94;  --ring: 244 63 94; }
+  :root[data-accent="amber"], [data-accent="amber"]   { --accent-color: #f59e0b; --accent-color-rgb: 245, 158, 11;  --primary: 245 158 11;  --ring: 245 158 11; }
+  :root[data-accent="violet"], [data-accent="violet"] { --accent-color: #8b5cf6; --accent-color-rgb: 139, 92, 246; --primary: 139 92 246; --ring: 139 92 246; }
+  :root[data-accent="cyan"], [data-accent="cyan"]     { --accent-color: #06b6d4; --accent-color-rgb: 6, 182, 212;  --primary: 6 182 212;  --ring: 6 182 212; }
+  :root[data-accent="orange"], [data-accent="orange"] { --accent-color: #f97316; --accent-color-rgb: 249, 115, 22;  --primary: 249 115 22;  --ring: 249 115 22; }
+
+  /* Accent Helper Utilities */
+  .accent-border { border-color: var(--accent-color) !important; }
+  .accent-bg-subtle { background-color: rgba(var(--accent-color-rgb), 0.15) !important; }
+  .accent-text { color: var(--accent-color) !important; }
+  .accent-glow { box-shadow: 0 0 24px -2px rgba(var(--accent-color-rgb), 0.4) !important; }
 
   * {
     border-color: rgb(var(--card-border) / 0.5);

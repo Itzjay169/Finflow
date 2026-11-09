@@ -43,6 +43,17 @@ const ACCENT_COLORS = {
   orange: '#f97316',
 }
 
+const ACCENT_RGB = {
+  indigo: '99, 102, 241',
+  blue: '59, 130, 246',
+  emerald: '16, 185, 129',
+  rose: '244, 63, 94',
+  amber: '245, 158, 11',
+  violet: '139, 92, 246',
+  cyan: '6, 182, 212',
+  orange: '249, 115, 22',
+}
+
 /**
  * PreferencesProvider fetches user preferences from the backend after login,
  * caches them in React state, and applies theme/density/accent CSS reactively.
@@ -109,10 +120,17 @@ export function PreferencesProvider({ children }) {
     root.classList.toggle('density-comfortable', preferences.ui_density !== 'compact')
   }, [preferences.ui_density])
 
-  // Apply accent color CSS variable
+  // Apply accent color attribute & CSS variables
   useEffect(() => {
-    const color = ACCENT_COLORS[preferences.accent_color] || ACCENT_COLORS.indigo
-    document.documentElement.style.setProperty('--accent-color', color)
+    const colorId = preferences.accent_color || 'indigo'
+    const hex = ACCENT_COLORS[colorId] || ACCENT_COLORS.indigo
+    const rgb = ACCENT_RGB[colorId] || ACCENT_RGB.indigo
+    const root = document.documentElement
+    root.setAttribute('data-accent', colorId)
+    root.style.setProperty('--accent-color', hex)
+    root.style.setProperty('--accent-color-rgb', rgb)
+    root.style.setProperty('--primary', rgb.replace(/,/g, ''))
+    root.style.setProperty('--ring', rgb.replace(/,/g, ''))
   }, [preferences.accent_color])
 
   // Apply active currency globally to formatters
@@ -128,6 +146,7 @@ export function PreferencesProvider({ children }) {
     const optimistic = { ...preferences, ...updates }
     setPreferences(optimistic)
     localStorage.setItem('finflow_preferences', JSON.stringify(optimistic))
+    if (optimistic.currency) setActiveCurrency(optimistic.currency)
 
     try {
       const data = await api.updateUserPreferences(updates)
@@ -135,12 +154,14 @@ export function PreferencesProvider({ children }) {
         const merged = { ...DEFAULTS, ...data }
         setPreferences(merged)
         localStorage.setItem('finflow_preferences', JSON.stringify(merged))
+        if (merged.currency) setActiveCurrency(merged.currency)
       }
       return { success: true }
     } catch (err) {
       // Rollback on error
       setPreferences(previous)
       localStorage.setItem('finflow_preferences', JSON.stringify(previous))
+      if (previous.currency) setActiveCurrency(previous.currency)
       return { success: false, error: err.message || 'Failed to update preferences' }
     }
   }, [preferences])

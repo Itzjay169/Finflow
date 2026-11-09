@@ -51,9 +51,11 @@ import {
   markRecurringPaid,
 } from '../lib/api'
 import { formatINR } from '../lib/utils'
+import { usePreferences } from '../context/PreferencesContext'
 
 export default function DashboardPage() {
   const { user, isDemo } = useAuth()
+  const { preferences, formatMoney } = usePreferences()
   const { toast } = useToast()
   const queryClient = useQueryClient()
 

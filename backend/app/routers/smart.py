@@ -1311,6 +1311,22 @@ async def update_user_profile(
                 (user_id, email, full_name, avatar_url, currency, theme, accent),
             )
 
+        # Also sync common preference fields to user_preferences table
+        pref_updates = []
+        pref_params = []
+        if data.currency is not None:
+            pref_updates.append("currency = ?")
+            pref_params.append(data.currency)
+        if data.theme_preference is not None:
+            pref_updates.append("theme_preference = ?")
+            pref_params.append(data.theme_preference)
+        if data.accent_color is not None:
+            pref_updates.append("accent_color = ?")
+            pref_params.append(data.accent_color)
+        if pref_updates:
+            pref_params.append(user_id)
+            cursor.execute(f"UPDATE user_preferences SET {', '.join(pref_updates)}, updated_at = CURRENT_TIMESTAMP WHERE user_id = ?", pref_params)
+
     return ProfileResponse(
         id=user_id,
         email=email,
@@ -1438,6 +1454,25 @@ async def update_user_preferences(
                 f"UPDATE user_preferences SET {', '.join(updates)}, updated_at = CURRENT_TIMESTAMP WHERE user_id = ?",
                 params,
             )
+
+            # Also sync common preference fields to profiles table
+            prof_updates = []
+            prof_params = []
+            if "currency" in dump:
+                prof_updates.append("currency = ?")
+                prof_params.append(dump["currency"])
+            if "theme_preference" in dump:
+                prof_updates.append("theme_preference = ?")
+                prof_params.append(dump["theme_preference"])
+            if "accent_color" in dump:
+                prof_updates.append("accent_color = ?")
+                prof_params.append(dump["accent_color"])
+            if prof_updates:
+                prof_params.append(user_id)
+                cursor.execute(
+                    f"UPDATE profiles SET {', '.join(prof_updates)}, updated_at = CURRENT_TIMESTAMP WHERE id = ?",
+                    prof_params,
+                )
 
         cursor.execute("SELECT * FROM user_preferences WHERE user_id = ?", (user_id,))
         row = cursor.fetchone()

@@ -1,7 +1,8 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { Card, CardHeader, CardContent } from '../ui'
-import { formatINR } from '../../lib/utils'
+import { formatCurrency } from '../../lib/utils'
+import { usePreferences } from '../../context/PreferencesContext'
 
 export const KPICard = ({
   title,
@@ -14,6 +15,10 @@ export const KPICard = ({
   progress, // number 0 - 100 (for savings rate)
   onClick,
 }) => {
+  const { preferences } = usePreferences()
+  const displayValue = formattedValue !== undefined
+    ? formattedValue
+    : formatCurrency(value, preferences?.currency || 'INR')
   const variantStyles = {
     emerald: {
       border: 'hover:border-emerald-500/40 border-emerald-500/20',
@@ -83,7 +88,7 @@ export const KPICard = ({
         <CardContent className="space-y-2">
           <div className="flex items-baseline justify-between gap-2">
             <h3 className="text-2xl sm:text-3xl font-black tracking-tight text-slate-900 dark:text-white font-mono">
-              {formattedValue !== undefined ? formattedValue : formatINR(value)}
+              {displayValue}
             </h3>
           </div>
 

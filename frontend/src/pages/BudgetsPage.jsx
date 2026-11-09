@@ -31,6 +31,7 @@ import {
   getDailyHeatmap,
 } from '../lib/api'
 import { formatINR } from '../lib/utils'
+import { usePreferences } from '../context/PreferencesContext'
 import { useToast } from '../components/ui/Toast'
 import { Card } from '../components/ui/Card'
 import { Button, Badge, Modal } from '../components/ui'
@@ -54,6 +55,7 @@ const MONTH_NAMES = [
 ]
 
 export default function BudgetsPage() {
+  const { preferences } = usePreferences()
   const { toast } = useToast()
   const queryClient = useQueryClient()
 

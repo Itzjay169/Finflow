@@ -201,6 +201,51 @@ export default function SettingsPage({ isDark, onToggleTheme }) {
     loadData()
   }, [])
 
+  // Sync state with global preferences from context
+  useEffect(() => {
+    if (globalPrefs) {
+      if (globalPrefs.currency) setCurrency(globalPrefs.currency)
+      if (globalPrefs.theme_preference) setThemePref(globalPrefs.theme_preference)
+      if (globalPrefs.accent_color) setAccentColor(globalPrefs.accent_color)
+      if (globalPrefs.ui_density) setDensity(globalPrefs.ui_density)
+      if (globalPrefs.timezone) setTimezone(globalPrefs.timezone)
+      if (globalPrefs.start_day_of_week) setWeekStartDay(globalPrefs.start_day_of_week)
+    }
+  }, [globalPrefs])
+
+  // Interactive preference switchers with immediate reactive feedback
+  const handleSelectCurrency = (curCode) => {
+    setCurrency(curCode)
+    if (updatePreferences) {
+      updatePreferences({ currency: curCode })
+    }
+    toast.success(`Currency switched to ${curCode}`, 'Currency')
+  }
+
+  const handleSelectTheme = (th) => {
+    setThemePref(th)
+    if (updatePreferences) {
+      updatePreferences({ theme_preference: th })
+    }
+    toast.success(`Theme mode set to ${th}`, 'Theme')
+  }
+
+  const handleSelectDensity = (d) => {
+    setDensity(d)
+    if (updatePreferences) {
+      updatePreferences({ ui_density: d, density: d })
+    }
+    toast.success(`Interface density set to ${d}`, 'Density')
+  }
+
+  const handleSelectAccent = (colorId) => {
+    setAccentColor(colorId)
+    if (updatePreferences) {
+      updatePreferences({ accent_color: colorId })
+    }
+    toast.success(`Accent color set to ${colorId}`, 'Accent Color')
+  }
+
   // Save Profile Handler
   const handleSaveProfile = async (e) => {
     e.preventDefault()
@@ -651,12 +696,21 @@ export default function SettingsPage({ isDark, onToggleTheme }) {
                       <button
                         key={cur.code}
                         type="button"
-                        onClick={() => setCurrency(cur.code)}
+                        onClick={() => handleSelectCurrency(cur.code)}
                         className={`p-3 rounded-xl border text-left transition-all cursor-pointer ${
                           isSelected
-                            ? 'border-indigo-500 bg-indigo-500/15 text-indigo-400 shadow-sm'
+                            ? 'shadow-sm'
                             : 'border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/40 text-slate-700 dark:text-slate-300 hover:border-slate-400'
                         }`}
+                        style={
+                          isSelected
+                            ? {
+                                borderColor: 'var(--accent-color, #6366f1)',
+                                backgroundColor: 'rgba(var(--accent-color-rgb, 99, 102, 241), 0.18)',
+                                color: 'var(--accent-color, #6366f1)',
+                              }
+                            : undefined
+                        }
                       >
                         <div className="text-lg font-bold font-mono">{cur.symbol}</div>
                         <div className="text-xs font-medium mt-0.5">{cur.name}</div>
@@ -677,16 +731,21 @@ export default function SettingsPage({ isDark, onToggleTheme }) {
                       <button
                         key={th}
                         type="button"
-                        onClick={() => {
-                          setThemePref(th)
-                          if (th === 'dark' && !isDark && onToggleTheme) onToggleTheme()
-                          if (th === 'light' && isDark && onToggleTheme) onToggleTheme()
-                        }}
+                        onClick={() => handleSelectTheme(th)}
                         className={`py-2 px-3 rounded-xl text-xs font-semibold capitalize border transition-all cursor-pointer ${
                           themePref === th
-                            ? 'border-indigo-500 bg-indigo-500/15 text-indigo-400 font-bold'
+                            ? 'font-bold'
                             : 'border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 bg-slate-50 dark:bg-slate-900/40'
                         }`}
+                        style={
+                          themePref === th
+                            ? {
+                                borderColor: 'var(--accent-color, #6366f1)',
+                                backgroundColor: 'rgba(var(--accent-color-rgb, 99, 102, 241), 0.18)',
+                                color: 'var(--accent-color, #6366f1)',
+                              }
+                            : undefined
+                        }
                       >
                         {th}
                       </button>
@@ -703,12 +762,21 @@ export default function SettingsPage({ isDark, onToggleTheme }) {
                       <button
                         key={d}
                         type="button"
-                        onClick={() => setDensity(d)}
+                        onClick={() => handleSelectDensity(d)}
                         className={`py-2 px-3 rounded-xl text-xs font-semibold capitalize border transition-all cursor-pointer ${
                           density === d
-                            ? 'border-indigo-500 bg-indigo-500/15 text-indigo-400 font-bold'
+                            ? 'font-bold'
                             : 'border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 bg-slate-50 dark:bg-slate-900/40'
                         }`}
+                        style={
+                          density === d
+                            ? {
+                                borderColor: 'var(--accent-color, #6366f1)',
+                                backgroundColor: 'rgba(var(--accent-color-rgb, 99, 102, 241), 0.18)',
+                                color: 'var(--accent-color, #6366f1)',
+                              }
+                            : undefined
+                        }
                       >
                         {d}
                       </button>
@@ -729,12 +797,20 @@ export default function SettingsPage({ isDark, onToggleTheme }) {
                       <button
                         key={color.id}
                         type="button"
-                        onClick={() => setAccentColor(color.id)}
+                        onClick={() => handleSelectAccent(color.id)}
                         className={`flex items-center gap-2 px-3 py-1.5 rounded-xl border text-xs font-medium cursor-pointer transition-all ${
                           isSelected
-                            ? 'border-indigo-500 bg-indigo-500/10 text-white shadow-sm ring-1 ring-indigo-500/30'
+                            ? 'text-white shadow-sm ring-1 ring-white/20'
                             : 'border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 bg-slate-50 dark:bg-slate-900/40'
                         }`}
+                        style={
+                          isSelected
+                            ? {
+                                borderColor: 'var(--accent-color, #6366f1)',
+                                backgroundColor: 'rgba(var(--accent-color-rgb, 99, 102, 241), 0.25)',
+                              }
+                            : undefined
+                        }
                       >
                         <span className={`w-3.5 h-3.5 rounded-full ${color.class}`} />
                         {color.name}
