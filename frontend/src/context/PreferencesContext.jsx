@@ -193,7 +193,12 @@ export function PreferencesProvider({ children }) {
 export function usePreferences() {
   const ctx = useContext(PreferencesContext)
   if (!ctx) {
-    throw new Error('usePreferences must be used within a PreferencesProvider')
+    return {
+      preferences: DEFAULTS,
+      loading: false,
+      updatePreferences: async () => ({ success: true }),
+      refreshPreferences: async () => {},
+    }
   }
   return ctx
 }

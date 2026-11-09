@@ -72,6 +72,22 @@ def advance_due_date(current_due_str: str, frequency: str) -> str:
 
 
 # ==============================================================================
+# CURRENCY HELPER
+# ==============================================================================
+
+def get_user_currency_symbol(conn, user_id: str) -> str:
+    try:
+        cursor = conn.cursor()
+        cursor.execute("SELECT currency FROM user_preferences WHERE user_id = ?", (user_id,))
+        row = cursor.fetchone()
+        code = row["currency"] if row and row["currency"] else "INR"
+        symbols = {"INR": "₹", "USD": "$", "EUR": "€", "GBP": "£"}
+        return symbols.get(code.upper(), "$")
+    except Exception:
+        return "₹"
+
+
+# ==============================================================================
 # 1. BUDGETS
 # ==============================================================================
 
@@ -630,6 +646,7 @@ async def get_smart_insights(user: dict = Depends(get_current_user)):
 
     with get_db() as conn:
         cursor = conn.cursor()
+        sym = get_user_currency_symbol(conn, user_id)
 
         # 1. Total summary & savings rate
         cursor.execute(
@@ -702,7 +719,7 @@ async def get_smart_insights(user: dict = Depends(get_current_user)):
                         "id": f"mom_increase_{top_cat}",
                         "type": "warning",
                         "title": f"{top_cat} Spending Jump",
-                        "description": f"Your {top_cat} spending increased {change_pct}% compared with last month (₹{cur_amt:,.0f} vs ₹{prev_amt:,.0f}).",
+                        "description": f"Your {top_cat} spending increased {change_pct}% compared with last month ({sym}{cur_amt:,.0f} vs {sym}{prev_amt:,.0f}).",
                         "icon": "TrendingDown",
                         "action_url": f"/transactions?category={top_cat}",
                     })
@@ -738,7 +755,7 @@ async def get_smart_insights(user: dict = Depends(get_current_user)):
                     "id": f"budget_exceeded_{c_name}_{cur_year}_{cur_month}",
                     "type": "alert",
                     "title": f"Budget Alert: {c_name} Over Limit",
-                    "description": f"Spent ₹{spent:,.0f} against your ₹{c_lim:,.0f} limit (+₹{over:,.0f}) in {now.strftime('%B %Y')}.",
+                    "description": f"Spent {sym}{spent:,.0f} against your {sym}{c_lim:,.0f} limit (+{sym}{over:,.0f}) in {now.strftime('%B %Y')}.",
                     "budget_name": f"{c_name} Monthly Budget",
                     "category": c_name,
                     "limit": c_lim,
@@ -755,7 +772,7 @@ async def get_smart_insights(user: dict = Depends(get_current_user)):
                     "id": f"budget_warning_{c_name}_{cur_year}_{cur_month}",
                     "type": "warning",
                     "title": f"Approaching Budget: {c_name}",
-                    "description": f"You have utilized {pct}% of your ₹{c_lim:,.0f} budget for {c_name}. ₹{rem:,.0f} remaining.",
+                    "description": f"You have utilized {pct}% of your {sym}{c_lim:,.0f} budget for {c_name}. {sym}{rem:,.0f} remaining.",
                     "budget_name": f"{c_name} Monthly Budget",
                     "category": c_name,
                     "limit": c_lim,
@@ -789,7 +806,7 @@ async def get_smart_insights(user: dict = Depends(get_current_user)):
                 "id": "top_category_overall",
                 "type": "info",
                 "title": f"Primary Expense: {cat_name}",
-                "description": f"Your top expense category is {cat_name}, representing {pct_exp}% of all recorded spending (₹{cat_amt:,.0f}).",
+                "description": f"Your top expense category is {cat_name}, representing {pct_exp}% of all recorded spending ({sym}{cat_amt:,.0f}).",
                 "icon": "PieChart",
                 "action_url": f"/transactions?category={cat_name}",
             })
@@ -824,6 +841,7 @@ async def get_cashflow_forecast(
     user_id = user["id"]
     with get_db() as conn:
         cursor = conn.cursor()
+        sym = get_user_currency_symbol(conn, user_id)
 
         # Overall summary to compute baseline net balance
         cursor.execute(
@@ -897,7 +915,7 @@ async def get_cashflow_forecast(
     return {
         "current_balance": round(current_balance, 2),
         "forecast_months": forecast_items,
-        "assumptions": f"Based on rolling 6-month averages (₹{avg_income:,.0f} income, ₹{avg_expense:,.0f} expenses) and ₹{rec_expenses:,.0f} scheduled recurring bills.",
+        "assumptions": f"Based on rolling 6-month averages ({sym}{avg_income:,.0f} income, {sym}{avg_expense:,.0f} expenses) and {sym}{rec_expenses:,.0f} scheduled recurring bills.",
         "disclaimer": "Algorithmic projection for informational purposes only. Not financial advice.",
     }
 
@@ -1147,12 +1165,13 @@ async def get_notifications(user: dict = Depends(get_current_user)):
     user_id = user["id"]
     with get_db() as conn:
         cursor = conn.cursor()
+        sym = get_user_currency_symbol(conn, user_id)
         cursor.execute("SELECT COUNT(*) FROM notifications WHERE user_id = ?", (user_id,))
         count = cursor.fetchone()[0]
 
         if count == 0:
             defaults = [
-                ("Upcoming Rent Bill", "Apartment rent of ₹22,000 is due in 3 days.", "recurring"),
+                ("Upcoming Rent Bill", f"Apartment rent of {sym}22,000 is due in 3 days.", "recurring"),
                 ("ML Model Evaluated", "Random Forest classifier evaluated with held-out test accuracy: 95.83% on 240 unseen rows.", "info"),
                 ("Budget Alert", "Food & Dining reached 82% of monthly target.", "budget"),
                 ("Savings Milestone", "Emergency Fund has reached 63% of your target goal!", "goal"),

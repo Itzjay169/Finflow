@@ -1,11 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import confetti from 'canvas-confetti'
 import { Modal, Input, Button } from '../ui'
 import { createTransaction, checkPotentialDuplicate } from '../../lib/api'
 import { useToast } from '../ui/Toast'
+import { usePreferences } from '../../context/PreferencesContext'
+import { formatCurrency, getCurrencySymbol } from '../../lib/utils'
 import {
-  IndianRupee,
   Sparkles,
   PlusCircle,
   TrendingUp,
@@ -61,22 +62,34 @@ const LOCATIONS = [
 
 export const AddTransactionModal = ({ isOpen, onClose, onSuccess }) => {
   const { toast } = useToast()
+  const { preferences } = usePreferences() || {}
+  const currencySymbol = getCurrencySymbol(preferences?.currency)
   const todayStr = new Date().toISOString().split('T')[0]
 
-  const [formData, setFormData] = useState({
+  const getInitialForm = () => ({
     amount: '',
-    type: 'Expense',
-    category: 'Food',
-    payment_mode: 'UPI',
-    location: 'Mumbai',
+    type: preferences?.default_transaction_type || 'Expense',
+    category: preferences?.default_category || (preferences?.default_transaction_type === 'Income' ? 'Salary' : 'Food'),
+    payment_mode: preferences?.default_payment_mode || 'UPI',
+    location: preferences?.default_location || 'Mumbai',
     date: todayStr,
     description: '',
     tags: '',
     attachment_url: '',
   })
+
+  const [formData, setFormData] = useState(getInitialForm)
   const [submitting, setSubmitting] = useState(false)
   const [duplicateWarning, setDuplicateWarning] = useState(null)
   const [error, setError] = useState('')
+
+  useEffect(() => {
+    if (isOpen) {
+      setFormData(getInitialForm())
+      setDuplicateWarning(null)
+      setError('')
+    }
+  }, [isOpen, preferences])
 
   const handleTypeChange = (newType) => {
     setFormData((prev) => ({
@@ -92,7 +105,7 @@ export const AddTransactionModal = ({ isOpen, onClose, onSuccess }) => {
 
     const numAmount = parseFloat(formData.amount)
     if (!numAmount || numAmount <= 0) {
-      setError('Please enter a valid amount greater than ₹0')
+      setError(`Please enter a valid amount greater than ${currencySymbol}0`)
       return
     }
 
@@ -132,16 +145,18 @@ export const AddTransactionModal = ({ isOpen, onClose, onSuccess }) => {
         attachment_url: formData.attachment_url ? formData.attachment_url.trim() : undefined,
       })
 
-      // Trigger celebratory confetti burst
-      confetti({
-        particleCount: 50,
-        spread: 60,
-        origin: { y: 0.7 },
-        colors: ['#6366f1', '#10b981', '#06b6d4', '#ec4899'],
-      })
+      // Trigger celebratory confetti burst if enabled
+      if (preferences?.enable_confetti !== false) {
+        confetti({
+          particleCount: 50,
+          spread: 60,
+          origin: { y: 0.7 },
+          colors: ['#6366f1', '#10b981', '#06b6d4', '#ec4899'],
+        })
+      }
 
       toast.success(
-        `Added ${formData.type} of ₹${numAmount.toLocaleString('en-IN')}`,
+        `Added ${formData.type} of ${formatCurrency(numAmount, preferences?.currency)}`,
         'Transaction Recorded'
       )
 
@@ -157,17 +172,7 @@ export const AddTransactionModal = ({ isOpen, onClose, onSuccess }) => {
   const handleClose = () => {
     setDuplicateWarning(null)
     setError('')
-    setFormData({
-      amount: '',
-      type: 'Expense',
-      category: 'Food',
-      payment_mode: 'UPI',
-      location: 'Mumbai',
-      date: todayStr,
-      description: '',
-      tags: '',
-      attachment_url: '',
-    })
+    setFormData(getInitialForm())
     onClose()
   }
 
@@ -196,7 +201,7 @@ export const AddTransactionModal = ({ isOpen, onClose, onSuccess }) => {
               <span>Potential Duplicate Detected</span>
             </div>
             <p className="text-[11px] leading-relaxed">
-              A transaction of <strong>₹{duplicateWarning.amount.toLocaleString('en-IN')}</strong> on <strong>{duplicateWarning.date}</strong> in <strong>{duplicateWarning.category}</strong> already exists. Would you like to record this anyway?
+              A transaction of <strong>{formatCurrency(duplicateWarning.amount, preferences?.currency)}</strong> on <strong>{duplicateWarning.date}</strong> in <strong>{duplicateWarning.category}</strong> already exists. Would you like to record this anyway?
             </p>
             <div className="flex justify-end gap-2 pt-1">
               <Button
@@ -261,11 +266,11 @@ export const AddTransactionModal = ({ isOpen, onClose, onSuccess }) => {
         {/* Amount Input */}
         <div>
           <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
-            Amount (INR) *
+            Amount ({preferences?.currency || 'INR'}) *
           </label>
           <div className="relative">
             <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 font-bold">
-              ₹
+              {currencySymbol}
             </span>
             <input
               type="number"

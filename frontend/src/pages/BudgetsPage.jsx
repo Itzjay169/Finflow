@@ -30,7 +30,7 @@ import {
   getSmartInsights,
   getDailyHeatmap,
 } from '../lib/api'
-import { formatINR } from '../lib/utils'
+import { formatINR, getCurrencySymbol } from '../lib/utils'
 import { usePreferences } from '../context/PreferencesContext'
 import { useToast } from '../components/ui/Toast'
 import { Card } from '../components/ui/Card'
@@ -56,6 +56,7 @@ const MONTH_NAMES = [
 
 export default function BudgetsPage() {
   const { preferences } = usePreferences()
+  const currSymbol = getCurrencySymbol(preferences?.currency)
   const { toast } = useToast()
   const queryClient = useQueryClient()
 
@@ -794,7 +795,7 @@ export default function BudgetsPage() {
 
           <div>
             <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
-              Monthly Spending Limit (₹)
+              Monthly Spending Limit ({currSymbol})
             </label>
             <input
               type="number"
@@ -842,7 +843,7 @@ export default function BudgetsPage() {
           <div className="grid grid-cols-2 gap-3">
             <div>
               <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
-                Target Amount (₹)
+                Target Amount ({currSymbol})
               </label>
               <input
                 type="number"
@@ -855,7 +856,7 @@ export default function BudgetsPage() {
             </div>
             <div>
               <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
-                Starting Amount (₹)
+                Starting Amount ({currSymbol})
               </label>
               <input
                 type="number"
@@ -918,7 +919,7 @@ export default function BudgetsPage() {
 
           <div>
             <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
-              Contribution Amount (₹)
+              Contribution Amount ({currSymbol})
             </label>
             <input
               type="number"
@@ -938,7 +939,7 @@ export default function BudgetsPage() {
                 onClick={() => setContributeAmount(amt)}
                 className="text-xs px-2.5 py-1 rounded bg-slate-100 dark:bg-slate-800 hover:bg-emerald-500/20 text-slate-600 dark:text-slate-300 cursor-pointer"
               >
-                +₹{amt >= 1000 ? `${amt / 1000}k` : amt}
+                +{currSymbol}{amt >= 1000 ? `${amt / 1000}k` : amt}
               </button>
             ))}
           </div>
@@ -978,7 +979,7 @@ export default function BudgetsPage() {
           <div className="grid grid-cols-2 gap-3">
             <div>
               <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
-                Amount (₹)
+                Amount ({currSymbol})
               </label>
               <input
                 type="number"

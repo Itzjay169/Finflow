@@ -3,6 +3,8 @@ import { motion } from 'framer-motion'
 import { Modal, Button } from '../ui'
 import { updateTransaction } from '../../lib/api'
 import { useToast } from '../ui/Toast'
+import { usePreferences } from '../../context/PreferencesContext'
+import { getCurrencySymbol } from '../../lib/utils'
 import { Save, AlertCircle, TrendingUp, TrendingDown } from 'lucide-react'
 
 const EXPENSE_CATEGORIES = [
@@ -56,6 +58,8 @@ export const EditTransactionModal = ({
   onSuccess,
 }) => {
   const { toast } = useToast()
+  const { preferences } = usePreferences() || {}
+  const currencySymbol = getCurrencySymbol(preferences?.currency)
 
   const [formData, setFormData] = useState({
     amount: '',
@@ -98,7 +102,7 @@ export const EditTransactionModal = ({
 
     const numAmount = parseFloat(formData.amount)
     if (!numAmount || numAmount <= 0) {
-      setError('Please enter a valid amount greater than ₹0')
+      setError(`Please enter a valid amount greater than ${currencySymbol}0`)
       return
     }
 
@@ -185,11 +189,11 @@ export const EditTransactionModal = ({
         {/* Amount */}
         <div>
           <label className="block text-xs font-semibold text-slate-300 mb-1">
-            Amount (INR) *
+            Amount ({preferences?.currency || 'INR'}) *
           </label>
           <div className="relative">
             <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 font-bold">
-              ₹
+              {currencySymbol}
             </span>
             <input
               type="number"

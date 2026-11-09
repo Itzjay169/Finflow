@@ -107,12 +107,17 @@ def check_potential_duplicate(
             updated_at=match.get("updated_at"),
         )
 
+        cursor.execute("SELECT currency FROM user_preferences WHERE user_id = ?", (user_id,))
+        pref_row = cursor.fetchone()
+        curr_code = pref_row["currency"] if pref_row and pref_row["currency"] else "INR"
+        curr_sym = {"INR": "₹", "USD": "$", "EUR": "€", "GBP": "£"}.get(curr_code.upper(), "$")
+
         return DuplicateCheckResponse(
             is_duplicate=score >= 0.75,
             confidence=round(score, 2),
             matched_transaction=matched_tx,
             message=(
-                f"Potential duplicate detected: identical amount of ₹{amount:,.2f} on {match['date']} "
+                f"Potential duplicate detected: identical amount of {curr_sym}{amount:,.2f} on {match['date']} "
                 f"({match['category']} via {match['payment_mode']})."
             ),
         )

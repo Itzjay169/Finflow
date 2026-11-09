@@ -27,6 +27,11 @@ export function getActiveCurrency() {
   return activeCurrencyCode
 }
 
+export function getCurrencySymbol(currency = activeCurrencyCode) {
+  const target = currency || activeCurrencyCode
+  return CURRENCY_MAP[target]?.symbol || '₹'
+}
+
 /**
  * Universal currency formatter that dynamically formats amounts based on selected currency.
  * Falls back to active currency or INR formatting if unknown currency code is provided.

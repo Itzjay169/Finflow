@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { ArrowRight, Check, X, LayoutDashboard, Cpu, Target } from 'lucide-react'
 import { Button } from '../ui'
+import { useAuth } from '../../context/AuthContext'
+import { usePreferences } from '../../context/PreferencesContext'
 
 const TOUR_STEPS = [
   {
@@ -31,16 +34,30 @@ const TOUR_STEPS = [
 ]
 
 export function OnboardingTour() {
+  const { isAuthenticated } = useAuth()
+  const { preferences } = usePreferences()
+  const location = useLocation()
   const [isOpen, setIsOpen] = useState(false)
   const [currentStep, setCurrentStep] = useState(0)
 
+  const isAuthRoute = ['/login', '/register'].includes(location.pathname)
+
   useEffect(() => {
+    if (!isAuthenticated || isAuthRoute) {
+      setIsOpen(false)
+      return
+    }
+    if (preferences && preferences.enable_onboarding_tour === false) {
+      setIsOpen(false)
+      return
+    }
+
     const hasSeenTour = localStorage.getItem('finflow_onboarding_completed')
     if (!hasSeenTour) {
       const timer = setTimeout(() => setIsOpen(true), 1200)
       return () => clearTimeout(timer)
     }
-  }, [])
+  }, [isAuthenticated, isAuthRoute, preferences?.enable_onboarding_tour])
 
   const handleComplete = () => {
     localStorage.setItem('finflow_onboarding_completed', 'true')

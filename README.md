@@ -287,4 +287,4 @@ FinFlow/
 
 This project is licensed under the **MIT License**.
 
-**Copyright © 2026 @jay_dev._._. All rights reserved.**
+**Copyright © 2026 Vexora Technology . All rights reserved.**

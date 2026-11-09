@@ -13,6 +13,8 @@ import {
   Cpu,
 } from 'lucide-react'
 import { useAuth } from '../../context/AuthContext'
+import { usePreferences } from '../../context/PreferencesContext'
+import { getCurrencySymbol } from '../../lib/utils'
 import { siteConfig, getCopyrightYear, TECH_CREDITS } from '../../config/site'
 
 const GithubIcon = ({ className = 'w-3.5 h-3.5' }) => (
@@ -133,9 +135,12 @@ function useModelSummary() {
 export function SiteFooter({ variant: forcedVariant }) {
   const location = useLocation()
   const { isAuthenticated } = useAuth()
+  const { preferences } = usePreferences() || {}
   const health = useApiHealth()
   const modelSummary = useModelSummary()
   const shouldReduceMotion = useReducedMotion()
+
+  const currencyBadgeText = preferences?.currency ? `${preferences.currency} (${getCurrencySymbol(preferences.currency)})` : 'INR (₹)'
 
   // State for mobile accordion expand/collapse
   const [openAccordions, setOpenAccordions] = useState({})
@@ -603,7 +608,7 @@ export function SiteFooter({ variant: forcedVariant }) {
 
               {/* Currency Badge */}
               <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 font-semibold">
-                INR (₹)
+                {currencyBadgeText}
               </span>
             </div>
           </motion.div>

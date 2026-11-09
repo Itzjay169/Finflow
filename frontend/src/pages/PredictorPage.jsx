@@ -27,7 +27,8 @@ import {
   deletePredictionHistoryItem,
   recordPredictionFeedback,
 } from '../lib/api'
-import { formatINR } from '../lib/utils'
+import { formatINR, formatCurrency, getCurrencySymbol } from '../lib/utils'
+import { usePreferences } from '../context/PreferencesContext'
 import { useToast } from '../components/ui/Toast'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '../components/ui/Card'
 import { Button, Badge } from '../components/ui'
@@ -98,16 +99,29 @@ const SAMPLE_SCENARIOS = [
 
 export default function PredictorPage() {
   const { toast } = useToast()
+  const { preferences } = usePreferences() || {}
+  const currSymbol = getCurrencySymbol(preferences?.currency)
 
   // Form inputs
   const [formData, setFormData] = useState(() => ({
     amount: 5000,
-    date: '2026-10-10',
-    payment_mode: 'UPI',
-    location: 'Mumbai',
-    category: 'Food',
+    date: new Date().toISOString().split('T')[0],
+    payment_mode: preferences?.default_payment_mode || 'UPI',
+    location: preferences?.default_location || 'Mumbai',
+    category: preferences?.default_category || 'Food',
     notes: 'Predicted with FinFlow ML model',
   }))
+
+  useEffect(() => {
+    if (preferences) {
+      setFormData((prev) => ({
+        ...prev,
+        payment_mode: prev.payment_mode || preferences.default_payment_mode || 'UPI',
+        location: prev.location || preferences.default_location || 'Mumbai',
+        category: prev.category || preferences.default_category || 'Food',
+      }))
+    }
+  }, [preferences])
 
   // Predict state
   const [isPredicting, setIsPredicting] = useState(false)
@@ -235,7 +249,7 @@ export default function PredictorPage() {
       })
       setHasSaved(true)
       toast.success(
-        `Added ₹${formData.amount} (${chosenType}) to your transactions!`,
+        `Added ${formatCurrency(formData.amount, preferences?.currency)} (${chosenType}) to your transactions!`,
         'Transaction Recorded'
       )
     } catch (err) {
@@ -352,7 +366,7 @@ export default function PredictorPage() {
                 <div>
                   <div className="flex justify-between items-center mb-1.5">
                     <label className="text-xs font-semibold text-slate-700 dark:text-slate-300">
-                      Amount (₹) <span className="text-rose-500">*</span>
+                      Amount ({currSymbol}) <span className="text-rose-500">*</span>
                     </label>
                     <div className="flex gap-1.5">
                       {[500, 2500, 15000, 50000, 95000].map((amt) => (
@@ -369,7 +383,7 @@ export default function PredictorPage() {
                               : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-indigo-400'
                           }`}
                         >
-                          ₹{amt >= 1000 ? `${amt / 1000}k` : amt}
+                          +{currSymbol}{amt >= 1000 ? `${amt / 1000}k` : amt}
                         </button>
                       ))}
                     </div>

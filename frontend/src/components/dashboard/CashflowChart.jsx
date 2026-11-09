@@ -14,9 +14,11 @@ import {
 } from 'recharts'
 import { Card, CardHeader, CardTitle, CardContent, Button } from '../ui'
 import { TrendingUp, BarChart3, LineChart, Calendar } from 'lucide-react'
-import { formatINR } from '../../lib/utils'
+import { formatCurrency, formatCompactCurrency } from '../../lib/utils'
+import { usePreferences } from '../../context/PreferencesContext'
 
 const CustomTooltip = ({ active, payload, label }) => {
+  const { preferences } = usePreferences() || {}
   if (active && payload && payload.length) {
     return (
       <div className="glass-panel p-3.5 rounded-xl border border-slate-700/80 shadow-2xl text-xs space-y-1.5 min-w-[180px]">
@@ -43,7 +45,7 @@ const CustomTooltip = ({ active, payload, label }) => {
                 {entry.name}:
               </span>
               <span className={`font-mono font-bold ${colorClass}`}>
-                {formatINR(entry.value)}
+                {formatCurrency(entry.value, preferences?.currency)}
               </span>
             </div>
           )
@@ -55,6 +57,7 @@ const CustomTooltip = ({ active, payload, label }) => {
 }
 
 export const CashflowChart = ({ data = [], loading = false }) => {
+  const { preferences } = usePreferences() || {}
   const [chartType, setChartType] = useState('area') // 'area' | 'bar'
   const [timeRange, setTimeRange] = useState('12m') // '6m' | '12m' | 'all'
 
@@ -193,7 +196,7 @@ export const CashflowChart = ({ data = [], loading = false }) => {
                     fontSize={11}
                     tickLine={false}
                     axisLine={false}
-                    tickFormatter={(val) => `₹${(val / 1000).toFixed(0)}k`}
+                    tickFormatter={(val) => formatCompactCurrency(val, preferences?.currency)}
                   />
                   <Tooltip content={<CustomTooltip />} />
                   <Legend
@@ -237,7 +240,7 @@ export const CashflowChart = ({ data = [], loading = false }) => {
                     fontSize={11}
                     tickLine={false}
                     axisLine={false}
-                    tickFormatter={(val) => `₹${(val / 1000).toFixed(0)}k`}
+                    tickFormatter={(val) => formatCompactCurrency(val, preferences?.currency)}
                   />
                   <Tooltip content={<CustomTooltip />} />
                   <Legend

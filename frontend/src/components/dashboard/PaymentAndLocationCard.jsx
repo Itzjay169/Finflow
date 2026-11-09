@@ -10,7 +10,8 @@ import {
 } from 'recharts'
 import { Card, CardHeader, CardTitle, CardContent } from '../ui'
 import { CreditCard, MapPin, Smartphone, Banknote, Landmark } from 'lucide-react'
-import { formatINR } from '../../lib/utils'
+import { formatCurrency, formatCompactCurrency } from '../../lib/utils'
+import { usePreferences } from '../../context/PreferencesContext'
 
 const PAYMENT_ICONS = {
   UPI: Smartphone,
@@ -22,13 +23,14 @@ const PAYMENT_ICONS = {
 }
 
 const CustomBarTooltip = ({ active, payload, label }) => {
+  const { preferences } = usePreferences() || {}
   if (active && payload && payload.length) {
     const data = payload[0].payload
     return (
       <div className="glass-panel p-2.5 rounded-xl border border-slate-200 dark:border-slate-700/80 shadow-2xl text-xs space-y-1 bg-white/95 dark:bg-slate-900/95">
         <p className="font-bold text-slate-900 dark:text-slate-100">{label}</p>
         <p className="text-cyan-600 dark:text-cyan-400 font-mono font-semibold">
-          {formatINR(data.amount)}
+          {formatCurrency(data.amount, preferences?.currency)}
         </p>
         <p className="text-[10px] text-slate-500 dark:text-slate-400">
           {data.percentage}% share &bull; {data.count} transactions
@@ -44,6 +46,7 @@ export const PaymentAndLocationCard = ({
   locationData = [],
   loading = false,
 }) => {
+  const { preferences } = usePreferences() || {}
   const [activeTab, setActiveTab] = useState('payment') // 'payment' | 'location'
 
   return (
@@ -128,7 +131,7 @@ export const PaymentAndLocationCard = ({
                     fontSize={10}
                     tickLine={false}
                     axisLine={false}
-                    tickFormatter={(val) => `₹${(val / 100000).toFixed(1)}L`}
+                    tickFormatter={(val) => formatCompactCurrency(val, preferences?.currency)}
                   />
                   <YAxis
                     type="category"
@@ -188,7 +191,7 @@ export const PaymentAndLocationCard = ({
                     fontSize={10}
                     tickLine={false}
                     axisLine={false}
-                    tickFormatter={(val) => `₹${(val / 100000).toFixed(1)}L`}
+                    tickFormatter={(val) => formatCompactCurrency(val, preferences?.currency)}
                   />
                   <YAxis
                     type="category"
