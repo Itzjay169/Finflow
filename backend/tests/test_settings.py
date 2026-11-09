@@ -327,3 +327,118 @@ async def test_system_info_and_printable_report():
         assert "summary" in rep_data
         assert "category_breakdown" in rep_data
         assert "active_budgets" in rep_data
+
+
+@pytest.mark.anyio
+async def test_user_preferences_multi_user_isolation():
+    """Verify that User B cannot access or modify User A's preferences."""
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        uid_alice = f"user_alice_{uuid.uuid4().hex[:8]}"
+        uid_bob = f"user_bob_{uuid.uuid4().hex[:8]}"
+        headers_alice = get_auth_headers(uid_alice, "alice@test.com")
+        headers_bob = get_auth_headers(uid_bob, "bob@test.com")
+
+        # Alice configures custom preferences: USD, compact, emerald, 35% savings rate
+        alice_payload = {
+            "currency": "USD",
+            "ui_density": "compact",
+            "accent_color": "emerald",
+            "savings_rate_target": 35.0,
+            "monthly_income_target": 95000.0,
+        }
+        res_alice_put = await client.put("/api/user/preferences", json=alice_payload, headers=headers_alice)
+        assert res_alice_put.status_code == 200
+
+        # Bob requests his preferences -> Must return Bob's default preferences, NOT Alice's
+        res_bob_get = await client.get("/api/user/preferences", headers=headers_bob)
+        assert res_bob_get.status_code == 200
+        bob_prefs = res_bob_get.json()
+        assert bob_prefs["user_id"] == uid_bob
+        assert bob_prefs["currency"] == "INR"  # Bob's default, not Alice's USD
+        assert bob_prefs["ui_density"] == "comfortable"
+        assert bob_prefs["accent_color"] == "indigo"
+        assert bob_prefs["savings_rate_target"] == 20.0
+
+        # Bob updates his preferences to EUR, rose, 50% savings rate
+        bob_payload = {
+            "currency": "EUR",
+            "accent_color": "rose",
+            "savings_rate_target": 50.0,
+        }
+        res_bob_put = await client.put("/api/user/preferences", json=bob_payload, headers=headers_bob)
+        assert res_bob_put.status_code == 200
+
+        # Alice requests her preferences again -> Alice's preferences remain completely unaltered
+        res_alice_get = await client.get("/api/user/preferences", headers=headers_alice)
+        assert res_alice_get.status_code == 200
+        alice_prefs = res_alice_get.json()
+        assert alice_prefs["user_id"] == uid_alice
+        assert alice_prefs["currency"] == "USD"
+        assert alice_prefs["accent_color"] == "emerald"
+        assert alice_prefs["ui_density"] == "compact"
+        assert alice_prefs["savings_rate_target"] == 35.0
+        assert alice_prefs["monthly_income_target"] == 95000.0
+
+
+@pytest.mark.anyio
+async def test_user_preferences_persistence_across_sessions():
+    """Verify that preferences persist in the database after logout and subsequent login."""
+    transport = ASGITransport(app=app)
+    async with AsyncClient(transport=transport, base_url="http://test") as client:
+        uid = f"user_sess_{uuid.uuid4().hex[:8]}"
+        email = f"{uid}@test.com"
+
+        # Session 1: User logs in (issues JWT 1)
+        token_session_1 = create_local_jwt(uid, email)
+        headers_session_1 = {"Authorization": f"Bearer {token_session_1}"}
+
+        # User customizes multiple preference fields
+        prefs_payload = {
+            "currency": "GBP",
+            "theme_preference": "light",
+            "accent_color": "violet",
+            "ui_density": "compact",
+            "timezone": "Europe/London",
+            "start_day_of_week": "Sunday",
+            "default_transaction_type": "Income",
+            "default_category": "Salary",
+            "monthly_income_target": 8000.0,
+            "monthly_expense_target": 4500.0,
+            "savings_rate_target": 43.75,
+            "quiet_hours_enabled": True,
+            "quiet_hours_start": "22:15",
+            "quiet_hours_end": "06:45",
+        }
+        put_res = await client.put("/api/user/preferences", json=prefs_payload, headers=headers_session_1)
+        assert put_res.status_code == 200
+
+        # Simulate user logout: Session 1 token is discarded
+        del headers_session_1
+        del token_session_1
+
+        # Session 2: User logs in again later (new distinct JWT issued)
+        token_session_2 = create_local_jwt(uid, email)
+        headers_session_2 = {"Authorization": f"Bearer {token_session_2}"}
+
+        # User fetches preferences in Session 2
+        get_res = await client.get("/api/user/preferences", headers=headers_session_2)
+        assert get_res.status_code == 200
+        data = get_res.json()
+
+        # All preferences persisted faithfully in the database
+        assert data["user_id"] == uid
+        assert data["currency"] == "GBP"
+        assert data["theme_preference"] == "light"
+        assert data["accent_color"] == "violet"
+        assert data["ui_density"] == "compact"
+        assert data["timezone"] == "Europe/London"
+        assert data["start_day_of_week"] == "Sunday"
+        assert data["default_transaction_type"] == "Income"
+        assert data["default_category"] == "Salary"
+        assert data["monthly_income_target"] == 8000.0
+        assert data["monthly_expense_target"] == 4500.0
+        assert data["savings_rate_target"] == 43.75
+        assert data["quiet_hours_enabled"] is True
+        assert data["quiet_hours_start"] == "22:15"
+        assert data["quiet_hours_end"] == "06:45"

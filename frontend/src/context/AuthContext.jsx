@@ -2,7 +2,7 @@ import React, { createContext, useContext, useState, useEffect } from 'react'
 import { supabase, isLiveSupabase, DEMO_USER, DEMO_TOKEN } from '../lib/supabase'
 import { createOfflineSession, createDemoSession } from '../lib/api'
 
-const AuthContext = createContext(null)
+export const AuthContext = createContext(null)
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null)
