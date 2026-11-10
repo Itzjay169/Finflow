@@ -1438,13 +1438,23 @@ export default function SettingsPage({ isDark: _isDark, onToggleTheme: _onToggle
                 <div className="text-xs text-slate-600 dark:text-slate-400">
                   Have feedback or spotted a bug? Contact the FinFlow core team directly.
                 </div>
-                <a
-                  href={`mailto:${siteConfig.contactEmail || 'support@finflow.app'}?subject=FinFlow%20Feedback%20v2.4.0`}
-                  className="px-4 py-2 rounded-xl text-xs font-semibold bg-indigo-600 hover:bg-indigo-700 text-white flex items-center gap-1.5 transition-colors shrink-0"
-                >
-                  <Mail className="w-3.5 h-3.5" />
-                  Send Feedback
-                </a>
+                <div className="flex items-center gap-2">
+                  <a
+                    href={siteConfig.instagramUrl || 'https://www.instagram.com/jay_dev._._?xtok=MTh1Z3B0eHo3NHdveQ=='}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-3.5 py-2 rounded-xl text-xs font-semibold bg-pink-600/10 hover:bg-pink-600/20 text-pink-600 dark:text-pink-400 border border-pink-500/20 flex items-center gap-1.5 transition-colors shrink-0"
+                  >
+                    Instagram
+                  </a>
+                  <a
+                    href={`mailto:${siteConfig.contactEmail || 'support@finflow.app'}?subject=FinFlow%20Feedback%20v2.4.0`}
+                    className="px-4 py-2 rounded-xl text-xs font-semibold bg-indigo-600 hover:bg-indigo-700 text-white flex items-center gap-1.5 transition-colors shrink-0"
+                  >
+                    <Mail className="w-3.5 h-3.5" />
+                    Send Feedback
+                  </a>
+                </div>
               </div>
             </CardContent>
           </Card>

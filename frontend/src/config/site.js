@@ -16,6 +16,9 @@ export const siteConfig = {
   contactEmail: import.meta.env.VITE_CONTACT_EMAIL || '',
   githubUrl: import.meta.env.VITE_GITHUB_URL || 'https://github.com/Itzjay169/Finflow',
   linkedinUrl: import.meta.env.VITE_LINKEDIN_URL || '',
+  instagramUrl:
+    import.meta.env.VITE_INSTAGRAM_URL ||
+    'https://www.instagram.com/jay_dev._._?xtok=MTh1Z3B0eHo3NHdveQ==',
   xUrl: import.meta.env.VITE_X_URL || '',
   portfolioUrl: import.meta.env.VITE_PORTFOLIO_URL || '',
   repoUrl: import.meta.env.VITE_REPO_URL || 'https://github.com/Itzjay169/Finflow',

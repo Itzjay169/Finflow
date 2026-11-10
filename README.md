@@ -9,10 +9,11 @@
 [![scikit-learn](https://img.shields.io/badge/ML-scikit--learn-F7931E.svg?logo=scikitlearn&logoColor=white)](https://scikit-learn.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Styling-Tailwind%20CSS-06B6D4.svg?logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Instagram](https://img.shields.io/badge/Instagram-@jay__dev._._-E4405F?logo=instagram&logoColor=white)](https://www.instagram.com/jay_dev._._?xtok=MTh1Z3B0eHo3NHdveQ==)
 
 FinFlow is an autonomous, full-stack personal finance tracking platform with integrated Machine Learning. It features real-time cashflow analytics, category budgeting, automated savings goals, recurring bills management, and an ensemble **Random Forest Classifier** trained on 18 engineered features to classify transaction types with **Held-out test accuracy: 95.83% on 240 unseen rows** (evaluated on an 80/20 train/test split on 1,200 rows; training-set accuracy was 99.17%).
 
-> **Organization**: **Vexora Technology**
+> **Organization**: **Vexora Technology** &nbsp;|&nbsp; Follow on Instagram: [@jay_dev._._](https://www.instagram.com/jay_dev._._?xtok=MTh1Z3B0eHo3NHdveQ==)
 
 ---
 
@@ -278,6 +279,7 @@ FinFlow/
 ## Organization & Maintenance
 
 - **Organization**: **Vexora Technology**
+- **Instagram**: Follow on Instagram: [@jay_dev._._](https://www.instagram.com/jay_dev._._?xtok=MTh1Z3B0eHo3NHdveQ==)
 
 ---
 

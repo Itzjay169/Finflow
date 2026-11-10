@@ -10,11 +10,12 @@ Modern personal finance tracking dashboard and ML inference interface built with
 [![Vite](https://img.shields.io/badge/Bundler-Vite%206-646CFF.svg?logo=vite&logoColor=white)](https://vite.dev/)
 [![Tailwind CSS](https://img.shields.io/badge/Styling-Tailwind%20CSS-06B6D4.svg?logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](../LICENSE)
-
+[![Instagram](https://img.shields.io/badge/Instagram-@jay__dev._._-E4405F?logo=instagram&logoColor=white)](https://www.instagram.com/jay_dev._._?xtok=MTh1Z3B0eHo3NHdveQ==)
 
 ## Organization & Maintenance
 
 - **Organization**: **Vexora Technology**
+- **Instagram**: Follow on Instagram: [@jay_dev._._](https://www.instagram.com/jay_dev._._?xtok=MTh1Z3B0eHo3NHdveQ==) for dev updates and feature showcases.
 
 ---
 
