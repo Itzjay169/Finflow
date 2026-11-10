@@ -12,7 +12,7 @@ import {
   CartesianGrid,
   Legend,
 } from 'recharts'
-import { Card, CardHeader, CardTitle, CardContent, Button } from '../ui'
+import { Card, CardHeader, CardTitle, CardContent } from '../ui'
 import { TrendingUp, BarChart3, LineChart, Calendar } from 'lucide-react'
 import { formatCurrency, formatCompactCurrency } from '../../lib/utils'
 import { usePreferences } from '../../context/PreferencesContext'

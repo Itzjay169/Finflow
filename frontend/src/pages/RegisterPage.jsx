@@ -7,13 +7,10 @@ import {
   Lock,
   ArrowRight,
   Sparkles,
-  TrendingUp,
-  ShieldCheck,
   CheckCircle2,
-  AlertCircle,
   Database,
 } from 'lucide-react'
-import { Button, Input, Badge, useToast } from '../components/ui'
+import { Button, Input, useToast } from '../components/ui'
 import { useAuth } from '../context/AuthContext'
 
 export default function RegisterPage() {

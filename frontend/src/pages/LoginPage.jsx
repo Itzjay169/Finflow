@@ -6,10 +6,7 @@ import {
   Lock,
   ArrowRight,
   Sparkles,
-  TrendingUp,
   ShieldCheck,
-  CheckCircle,
-  Coins,
   Cpu,
 } from 'lucide-react'
 import { Button, Input, Modal, useToast } from '../components/ui'

@@ -1,6 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { Sun, Moon, Sparkles } from 'lucide-react'
+import { Sun, Moon } from 'lucide-react'
 import { cn } from '../../lib/utils'
 
 /**

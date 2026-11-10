@@ -89,7 +89,7 @@ const CATEGORIES = [
 
 const PAYMENT_MODES = ['UPI', 'Credit Card', 'Debit Card', 'Cash', 'Net Banking', 'Bank Transfer']
 
-export default function SettingsPage({ isDark, onToggleTheme }) {
+export default function SettingsPage({ isDark: _isDark, onToggleTheme: _onToggleTheme } = {}) {
   const { user, isDemo, signOut } = useAuth()
   const { preferences: globalPrefs, updatePreferences } = usePreferences()
   const { toast } = useToast()

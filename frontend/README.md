@@ -10,13 +10,11 @@ Modern personal finance tracking dashboard and ML inference interface built with
 [![Vite](https://img.shields.io/badge/Bundler-Vite%206-646CFF.svg?logo=vite&logoColor=white)](https://vite.dev/)
 [![Tailwind CSS](https://img.shields.io/badge/Styling-Tailwind%20CSS-06B6D4.svg?logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](../LICENSE)
-[![Instagram](https://img.shields.io/badge/Instagram-@jay__dev._._-E4405F?logo=instagram&logoColor=white)](https://www.instagram.com/jay_dev._._/?hl=en)
 
 
-## Developer & Community
+## Organization & Maintenance
 
-- **Developer**: **@jay_dev._._**
-- **Instagram**: Follow on Instagram: [@jay_dev._._](https://www.instagram.com/jay_dev._._/?hl=en) for dev updates and feature showcases.
+- **Organization**: **Vexora Technology**
 
 ---
 
@@ -69,6 +67,6 @@ The application will launch at `http://localhost:5173`.
 
 This project is licensed under the **MIT License**.
 
-**Copyright © 2026 @jay_dev._._. All rights reserved.**
+**Copyright © 2026 Vexora Technology . All rights reserved.**
 
-All source code, assets, design, and intellectual property are subject to copyright claim by the developer (**@jay_dev._._**). See the [LICENSE](../LICENSE) file for complete details.
+All source code, assets, design, and intellectual property are subject to copyright claim by Vexora Technology. See the [LICENSE](../LICENSE) file for complete details.

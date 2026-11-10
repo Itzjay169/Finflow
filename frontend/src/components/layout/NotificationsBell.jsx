@@ -1,12 +1,21 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Bell, Check, Clock, AlertTriangle, Target, Info, Sparkles } from 'lucide-react'
+import { Bell, Clock, AlertTriangle, Target, Info } from 'lucide-react'
 import { getNotifications, markNotificationRead, markAllNotificationsRead } from '../../lib/api'
 
 export function NotificationsBell() {
   const [notifications, setNotifications] = useState([])
   const [isOpen, setIsOpen] = useState(false)
   const dropdownRef = useRef(null)
+
+  const loadNotifs = async () => {
+    try {
+      const data = await getNotifications()
+      setNotifications(data || [])
+    } catch (err) {
+      console.warn('Failed to load notifications:', err)
+    }
+  }
 
   useEffect(() => {
     loadNotifs()
@@ -23,15 +32,6 @@ export function NotificationsBell() {
     return () => document.removeEventListener('mousedown', handleClickOutside)
   }, [])
 
-  async function loadNotifs() {
-    try {
-      const data = await getNotifications()
-      setNotifications(data || [])
-    } catch (err) {
-      console.warn('Failed to load notifications:', err)
-    }
-  }
-
   const unreadCount = notifications.filter((n) => !n.is_read).length
 
   const handleMarkRead = async (id) => {
@@ -40,14 +40,18 @@ export function NotificationsBell() {
       setNotifications((prev) =>
         prev.map((n) => (n.id === id ? { ...n, is_read: true } : n))
       )
-    } catch (err) {}
+    } catch {
+      // ignore
+    }
   }
 
   const handleMarkAllRead = async () => {
     try {
       await markAllNotificationsRead()
       setNotifications((prev) => prev.map((n) => ({ ...n, is_read: true })))
-    } catch (err) {}
+    } catch {
+      // ignore
+    }
   }
 
   const getIcon = (type) => {

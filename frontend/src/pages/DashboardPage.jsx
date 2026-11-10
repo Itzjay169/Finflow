@@ -1,5 +1,4 @@
 import React, { useState, useMemo } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
 import { useQuery, useQueryClient } from '@tanstack/react-query'
 import {
   TrendingUp,
@@ -11,21 +10,15 @@ import {
   RefreshCw,
   Database,
   Cpu,
-  Sparkles,
-  Layers,
-  AlertCircle,
-  Calendar,
   Zap,
   SlidersHorizontal,
   Flame,
-  CheckCircle,
-  Clock,
   Eye,
   EyeOff,
 } from 'lucide-react'
 import { useAuth } from '../context/AuthContext'
 import { useToast } from '../components/ui/Toast'
-import { Button, Badge, Skeleton, Modal } from '../components/ui'
+import { Button, Badge, Modal } from '../components/ui'
 import { KPICard } from '../components/dashboard/KPICard'
 import { CashflowChart } from '../components/dashboard/CashflowChart'
 import { CategoryDonutChart } from '../components/dashboard/CategoryDonutChart'
@@ -50,12 +43,11 @@ import {
   getGoals,
   markRecurringPaid,
 } from '../lib/api'
-import { formatINR } from '../lib/utils'
 import { usePreferences } from '../context/PreferencesContext'
 
 export default function DashboardPage() {
   const { user, isDemo } = useAuth()
-  const { preferences, formatMoney } = usePreferences()
+  const { formatMoney } = usePreferences()
   const { toast } = useToast()
   const queryClient = useQueryClient()
 
@@ -85,7 +77,9 @@ export default function DashboardPage() {
     try {
       const saved = localStorage.getItem('finflow_dashboard_cards')
       if (saved) return JSON.parse(saved)
-    } catch (_) {}
+    } catch {
+      // ignore
+    }
     return {
       forecast: true,
       coach: true,
@@ -100,13 +94,14 @@ export default function DashboardPage() {
     setCardVisibility(updated)
     try {
       localStorage.setItem('finflow_dashboard_cards', JSON.stringify(updated))
-    } catch (_) {}
+    } catch {
+      // ignore
+    }
   }
 
   // --- TanStack Query Data Fetching ---
   const {
     data: summary,
-    isLoading: summaryLoading,
     refetch: refetchSummary,
   } = useQuery({
     queryKey: ['summary'],
@@ -180,11 +175,9 @@ export default function DashboardPage() {
   })
 
   const recentTransactions = transactionsData?.transactions || transactionsData?.items || []
-  const loading = summaryLoading || monthlyLoading
 
   // --- Advanced Analytics Calculations (Feature J) ---
   const advancedMetrics = useMemo(() => {
-    const daysInMonth = new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate()
     const currentDay = new Date().getDate()
     const totalExpense = summary?.total_expense || 0
     // Spending velocity: daily average spend this month so far
@@ -434,7 +427,7 @@ export default function DashboardPage() {
               Spending Velocity
             </span>
             <span className="text-sm font-extrabold font-mono text-slate-800 dark:text-slate-200">
-              {formatINR(advancedMetrics.spendingVelocity)} / day
+              {formatMoney(advancedMetrics.spendingVelocity)} / day
             </span>
           </div>
         </div>
@@ -448,7 +441,7 @@ export default function DashboardPage() {
               Largest Single Expense
             </span>
             <span className="text-sm font-extrabold font-mono text-rose-500 dark:text-rose-400">
-              {formatINR(advancedMetrics.largestExpense)}
+              {formatMoney(advancedMetrics.largestExpense)}
             </span>
           </div>
         </div>
@@ -462,7 +455,7 @@ export default function DashboardPage() {
               Average Transaction Size
             </span>
             <span className="text-sm font-extrabold font-mono text-emerald-500 dark:text-emerald-400">
-              {formatINR(advancedMetrics.avgTxSize)}
+              {formatMoney(advancedMetrics.avgTxSize)}
             </span>
           </div>
         </div>

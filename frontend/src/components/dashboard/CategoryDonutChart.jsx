@@ -7,7 +7,7 @@ import {
   Tooltip,
 } from 'recharts'
 import { Card, CardHeader, CardTitle, CardContent } from '../ui'
-import { PieChart as PieIcon, Layers } from 'lucide-react'
+import { PieChart as PieIcon } from 'lucide-react'
 import { formatINR } from '../../lib/utils'
 
 const CATEGORY_COLORS = [

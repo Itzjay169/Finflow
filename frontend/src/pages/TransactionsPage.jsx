@@ -4,7 +4,6 @@ import { useQuery, useQueryClient } from '@tanstack/react-query'
 import {
   Receipt,
   Search,
-  Filter,
   PlusCircle,
   Download,
   RefreshCw,
@@ -21,15 +20,10 @@ import {
   SlidersHorizontal,
   X,
   CheckSquare,
-  Square,
-  ArrowUpDown,
-  Tag,
   Paperclip,
   Bookmark,
-  ExternalLink,
-  AlertTriangle,
 } from 'lucide-react'
-import { Card, CardContent, Button, Badge, Skeleton, Modal } from '../components/ui'
+import { Card, CardContent, Button, Badge, Modal } from '../components/ui'
 import { useToast } from '../components/ui/Toast'
 import { AddTransactionModal } from '../components/dashboard/AddTransactionModal'
 import { EditTransactionModal } from '../components/transactions/EditTransactionModal'
@@ -43,9 +37,8 @@ import {
   getTags,
   getSavedFilters,
   createSavedFilter,
-  deleteSavedFilter,
 } from '../lib/api'
-import { formatINR, formatDate } from '../lib/utils'
+import { formatDate } from '../lib/utils'
 import { usePreferences } from '../context/PreferencesContext'
 
 const ALL_CATEGORIES = [
@@ -89,7 +82,7 @@ const ALL_LOCATIONS = [
 ]
 
 export default function TransactionsPage() {
-  const { preferences } = usePreferences()
+  const { formatMoney } = usePreferences()
   const { toast } = useToast()
   const queryClient = useQueryClient()
 
@@ -885,8 +878,8 @@ export default function TransactionsPage() {
                           }
                         >
                           {isIncome
-                            ? `+${formatINR(tx.amount)}`
-                            : `-${formatINR(tx.amount)}`}
+                            ? `+${formatMoney(tx.amount)}`
+                            : `-${formatMoney(tx.amount)}`}
                         </span>
                       </td>
 

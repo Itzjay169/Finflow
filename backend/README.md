@@ -10,7 +10,6 @@ High-performance asynchronous backend and ML inference service powering the FinF
 [![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB.svg?logo=python&logoColor=white)](https://python.org)
 [![scikit-learn](https://img.shields.io/badge/ML-scikit--learn-F7931E.svg?logo=scikitlearn&logoColor=white)](https://scikit-learn.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](../LICENSE)
-[![Instagram](https://img.shields.io/badge/Instagram-@jay__dev._._-E4405F?logo=instagram&logoColor=white)](https://www.instagram.com/jay_dev._._/?hl=en)
 
 ---
 
@@ -95,7 +94,6 @@ All 18 automated backend test cases pass with full multi-tenant isolation, stric
 
 ---
 
-## Developer & Community
+## Organization & Maintenance
 
-- **Developer**: **@jay_dev._._**
-- **Instagram**: Follow on Instagram: [@jay_dev._._](https://www.instagram.com/jay_dev._._/?hl=en)
+- **Organization**: **Vexora Technology**

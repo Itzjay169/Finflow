@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect, Suspense } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
-import { Float, Text } from '@react-three/drei'
+import { Float } from '@react-three/drei'
 import { HeroFallback } from './HeroFallback'
 
 function Coin({ position, rotation = [0, 0, 0], scale = 1, color = "#f59e0b" }) {

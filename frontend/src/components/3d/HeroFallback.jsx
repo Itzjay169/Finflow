@@ -1,6 +1,5 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { TrendingUp, Sparkles, Shield, Coins } from 'lucide-react'
 
 export const HeroFallback = () => {
   return (

@@ -10,7 +10,7 @@ import {
 } from 'recharts'
 import { Card, CardHeader, CardTitle, CardContent } from '../ui'
 import { CreditCard, MapPin, Smartphone, Banknote, Landmark } from 'lucide-react'
-import { formatCurrency, formatCompactCurrency, formatINR } from '../../lib/utils'
+import { formatCurrency, formatCompactCurrency } from '../../lib/utils'
 import { usePreferences } from '../../context/PreferencesContext'
 
 const PAYMENT_ICONS = {

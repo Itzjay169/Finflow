@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useCallback } from 'react'
 import { motion } from 'framer-motion'
 import { useQuery, useQueryClient } from '@tanstack/react-query'
 import {
@@ -68,38 +68,66 @@ export default function BudgetsPage() {
   const currentMonth = currentDate.getMonth() + 1
   const currentYear = currentDate.getFullYear()
 
-  // Modals state
-  const [isBudgetModalOpen, setIsBudgetModalOpen] = useState(false)
-  const [budgetForm, setBudgetForm] = useState(() => ({
-    category: 'Food',
-    limit: 8000,
+  // Helpers to prefill modal forms based on user financial defaults
+  const getInitialBudgetForm = useCallback(() => ({
+    category: preferences?.default_category || 'Food',
+    limit: preferences?.monthly_expense_target > 0 ? preferences.monthly_expense_target : 8000,
     month: currentMonth,
     year: currentYear,
-  }))
+  }), [preferences, currentMonth, currentYear])
+
+  const getInitialGoalForm = useCallback(() => {
+    const suggested =
+      preferences?.monthly_income_target > 0 && preferences?.savings_rate_target > 0
+        ? Math.round(preferences.monthly_income_target * (preferences.savings_rate_target / 100))
+        : 5000
+    return {
+      title: '',
+      target_amount: suggested * 10 || 50000,
+      current_amount: 0,
+      monthly_contribution: suggested,
+      deadline: `${currentYear}-12-31`,
+      category: 'Savings',
+    }
+  }, [preferences, currentYear])
+
+  const getInitialRecurringForm = useCallback(() => ({
+    title: '',
+    amount: 1500,
+    transaction_type: preferences?.default_transaction_type || 'Expense',
+    category: preferences?.default_category || 'Bills',
+    frequency: 'Monthly',
+    next_due_date: new Date().toISOString().split('T')[0],
+  }), [preferences])
+
+  // Modals state
+  const [isBudgetModalOpen, setIsBudgetModalOpen] = useState(false)
+  const [budgetForm, setBudgetForm] = useState(getInitialBudgetForm)
 
   const [isGoalModalOpen, setIsGoalModalOpen] = useState(false)
-  const [goalForm, setGoalForm] = useState({
-    title: '',
-    target_amount: 50000,
-    current_amount: 5000,
-    monthly_contribution: 5000,
-    deadline: '2026-12-31',
-    category: 'Savings',
-  })
+  const [goalForm, setGoalForm] = useState(getInitialGoalForm)
 
   const [isContributeModalOpen, setIsContributeModalOpen] = useState(false)
   const [selectedGoal, setSelectedGoal] = useState(null)
   const [contributeAmount, setContributeAmount] = useState(5000)
 
   const [isRecurringModalOpen, setIsRecurringModalOpen] = useState(false)
-  const [recurringForm, setRecurringForm] = useState(() => ({
-    title: '',
-    amount: 1500,
-    transaction_type: 'Expense',
-    category: 'Bills',
-    frequency: 'Monthly',
-    next_due_date: new Date().toISOString().split('T')[0],
-  }))
+  const [recurringForm, setRecurringForm] = useState(getInitialRecurringForm)
+
+  const handleOpenBudgetModal = () => {
+    setBudgetForm(getInitialBudgetForm())
+    setIsBudgetModalOpen(true)
+  }
+
+  const handleOpenGoalModal = () => {
+    setGoalForm(getInitialGoalForm())
+    setIsGoalModalOpen(true)
+  }
+
+  const handleOpenRecurringModal = () => {
+    setRecurringForm(getInitialRecurringForm())
+    setIsRecurringModalOpen(true)
+  }
 
   // --- TanStack Query Data Fetching ---
   const { data: budgets = [] } = useQuery({
@@ -293,7 +321,7 @@ export default function BudgetsPage() {
           <Button
             variant="outline"
             size="sm"
-            onClick={() => setIsRecurringModalOpen(true)}
+            onClick={handleOpenRecurringModal}
             className="gap-1.5"
           >
             <Clock className="w-3.5 h-3.5" />
@@ -302,7 +330,7 @@ export default function BudgetsPage() {
           <Button
             variant="outline"
             size="sm"
-            onClick={() => setIsBudgetModalOpen(true)}
+            onClick={handleOpenBudgetModal}
             className="gap-1.5"
           >
             <PieChart className="w-3.5 h-3.5" />
@@ -311,7 +339,7 @@ export default function BudgetsPage() {
           <Button
             variant="gradient"
             size="sm"
-            onClick={() => setIsGoalModalOpen(true)}
+            onClick={handleOpenGoalModal}
             className="gap-1.5"
           >
             <PlusCircle className="w-3.5 h-3.5" />
@@ -376,7 +404,7 @@ export default function BudgetsPage() {
               </span>
             </div>
             <button
-              onClick={() => setIsBudgetModalOpen(true)}
+              onClick={handleOpenBudgetModal}
               className="text-xs font-semibold text-indigo-500 hover:text-indigo-400 flex items-center gap-1 cursor-pointer"
             >
               <Plus className="w-3.5 h-3.5" /> Adjust Limits
@@ -572,7 +600,7 @@ export default function BudgetsPage() {
           <Button
             variant="outline"
             size="sm"
-            onClick={() => setIsGoalModalOpen(true)}
+            onClick={handleOpenGoalModal}
             className="gap-1.5 text-xs"
           >
             <Plus className="w-3.5 h-3.5" /> Create Goal

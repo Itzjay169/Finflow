@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import {
   Search,
   LayoutDashboard,
@@ -8,23 +8,17 @@ import {
   Cpu,
   PieChart,
   Settings,
-  PlusCircle,
   Download,
   Sparkles,
   X,
   ArrowRight,
-  TrendingUp,
-  Clock,
   Target,
   History,
-  Tag,
-  ArrowDownRight,
-  ArrowUpRight,
 } from 'lucide-react'
 import { getTransactions, getBudgets, getGoals, getRecurring } from '../../lib/api'
 import { formatINR } from '../../lib/utils'
 
-export function CommandPalette({ isOpen, onClose, onToggleTheme }) {
+export function CommandPalette({ isOpen, onClose }) {
   const navigate = useNavigate()
   const [query, setQuery] = useState('')
   const [selectedIndex, setSelectedIndex] = useState(0)
@@ -40,7 +34,7 @@ export function CommandPalette({ isOpen, onClose, onToggleTheme }) {
     try {
       const saved = localStorage.getItem('finflow_recent_searches')
       return saved ? JSON.parse(saved) : ['Groceries', 'Food', 'Salary', 'Netflix']
-    } catch (_) {
+    } catch {
       return ['Groceries', 'Food', 'Salary', 'Netflix']
     }
   })
@@ -216,7 +210,9 @@ export function CommandPalette({ isOpen, onClose, onToggleTheme }) {
     setRecentSearches(updated)
     try {
       localStorage.setItem('finflow_recent_searches', JSON.stringify(updated))
-    } catch (_) {}
+    } catch {
+      // ignore
+    }
   }
 
   // Keyboard Navigation: ArrowUp, ArrowDown, Enter

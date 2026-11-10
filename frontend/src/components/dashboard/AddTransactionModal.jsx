@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import confetti from 'canvas-confetti'
-import { Modal, Input, Button } from '../ui'
+import { Modal, Button } from '../ui'
 import { createTransaction, checkPotentialDuplicate } from '../../lib/api'
 import { useToast } from '../ui/Toast'
 import { usePreferences } from '../../context/PreferencesContext'
 import { formatCurrency, getCurrencySymbol } from '../../lib/utils'
 import {
-  Sparkles,
   PlusCircle,
   TrendingUp,
   TrendingDown,
@@ -126,7 +125,7 @@ export const AddTransactionModal = ({ isOpen, onClose, onSuccess }) => {
           })
           return
         }
-      } catch (_) {
+      } catch {
         // Continue if duplicate check fails
       }
     }

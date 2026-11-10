@@ -1,12 +1,8 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { motion } from 'framer-motion'
 import {
-  TrendingUp,
-  TrendingDown,
-  Calendar,
   Sparkles,
   Info,
-  ShieldAlert,
   ArrowUpRight,
   ArrowDownRight,
 } from 'lucide-react'

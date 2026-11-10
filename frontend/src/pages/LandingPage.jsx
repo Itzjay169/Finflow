@@ -1,8 +1,7 @@
 import React, { lazy, Suspense } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import {
-  TrendingUp,
   Cpu,
   Shield,
   PieChart,
@@ -11,11 +10,9 @@ import {
   Sparkles,
   CheckCircle,
   IndianRupee,
-  Layers,
-  BarChart3,
   Calendar,
 } from 'lucide-react'
-import { Button, Card, CardHeader, CardTitle, CardDescription, CardContent, Badge } from '../components/ui'
+import { Button, Card, CardHeader, CardTitle, CardContent, Badge } from '../components/ui'
 import { HeroFallback } from '../components/3d/HeroFallback'
 import { useAuth } from '../context/AuthContext'
 

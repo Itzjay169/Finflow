@@ -136,7 +136,7 @@ export default function PredictorPage() {
   // History state
   const [history, setHistory] = useState([])
   const [historyTotal, setHistoryTotal] = useState(0)
-  const [historyPage, setHistoryPage] = useState(1)
+  const [historyPage] = useState(1)
   const [loadingHistory, setLoadingHistory] = useState(false)
 
   const fetchHistory = useCallback(async (page = 1) => {
